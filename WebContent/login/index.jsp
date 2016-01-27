@@ -1,3 +1,4 @@
+<%@ page language="java" import="java.util.*" contentType="text/html;charset=utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -66,7 +67,7 @@
 
 			<div class="web_login">
 				<form name="form2" id="regUser" accept-charset="utf-8"
-					action="http://www.baidu.com" method="post">
+					action="regUser.jsp" method="post">
 					<input type="hidden" name="to" value="reg" /> <input type="hidden"
 						name="did" value="0" />
 					<ul class="reg_form" id="reg-ul">
@@ -78,7 +79,7 @@
 							</div></li>
 						<li><label for="passwd" class="input-tips2">密码：</label>
 							<div class="inputOuter2">
-								<input type="password" id="passwd" name="passwd" maxlength="16"
+								<input type="password" id="passwd" name="password" maxlength="16"
 									class="inputstyle2" />
 							</div></li>
 						<li><label for="passwd2" class="input-tips2">确认密码：</label>
