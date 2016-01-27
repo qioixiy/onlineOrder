@@ -34,7 +34,7 @@
 			<div class="web_login" id="web_login">
 				<div class="login-box">
 					<div class="login_form">
-						<form action="http://www.baidu.com" name="loginform"
+						<form action="loginCheck.jsp" name="loginform"
 							accept-charset="utf-8" id="login_form" class="loginForm"
 							method="post">
 							<input type="hidden" name="did" value="0" /> <input type="hidden"
@@ -42,13 +42,13 @@
 							<div class="uinArea" id="uinArea">
 								<label class="input-tips" for="u">帐号：</label>
 								<div class="inputOuter" id="uArea">
-									<input type="text" id="u" name="username" class="inputstyle" />
+									<input type="text" id="u" name="user" class="inputstyle" />
 								</div>
 							</div>
 							<div class="pwdArea" id="pwdArea">
 								<label class="input-tips" for="p">密码：</label>
 								<div class="inputOuter" id="pArea">
-									<input type="password" id="p" name="p" class="inputstyle" />
+									<input type="password" id="p" name="password" class="inputstyle" />
 								</div>
 							</div>
 							<div style="padding-left: 50px; margin-top: 20px;">
