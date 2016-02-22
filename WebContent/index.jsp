@@ -2,6 +2,7 @@
 <html>
 <head>
 <title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -10,6 +11,8 @@
 </head>
 
 <body>
-	<script>window.navigate('login/index.jsp');</script>
+	<script>
+		window.navigate('login/index.jsp');
+	</script>
 </body>
 </html>

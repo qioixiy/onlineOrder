@@ -1,14 +1,13 @@
-<%@page import="java.util.*" contentType="text/html; charset=gb2312" %>
+<%@page import="java.util.*" contentType="text/html; charset=gb2312"%>
 
 <html>
 <head>
 <title>
-sucess
+	<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+	login sucess
 </title>
 </head>
 <body bgcolor="#ffffff">
-<h1>
-登录成功，欢迎您！
-</h1><%=session.getAttribute("user")%>
+	<h1>登录成功</h1><%=session.getAttribute("user")%>
 </body>
 </html>

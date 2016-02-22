@@ -1,4 +1,4 @@
-<%@page import="java.sql.*" contentType="text/html;charset=GB2312"%>
+<%@page import="java.sql.*" contentType="text/html;charset=gb2312"%>
 <%@page import="java.util.*"%>
 <%
 
