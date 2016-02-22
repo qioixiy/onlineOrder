@@ -2,10 +2,10 @@
 -- version 3.3.10
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 27, 2016 at 10:39 PM
--- Server version: 5.1.56
--- PHP Version: 5.3.5
+-- 主机: 127.0.0.1
+-- 生成日期: 2016 年 02 月 22 日 07:50
+-- 服务器版本: 5.1.56
+-- PHP 版本: 5.2.17
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -16,13 +16,15 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `wldc`
+-- 数据库: `wldc`
 --
+CREATE DATABASE `wldc` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `wldc`;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `userinfo`
+-- 表的结构 `userinfo`
 --
 
 CREATE TABLE IF NOT EXISTS `userinfo` (
@@ -30,13 +32,14 @@ CREATE TABLE IF NOT EXISTS `userinfo` (
   `user` varchar(40) DEFAULT NULL,
   `password` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
--- Dumping data for table `userinfo`
+-- 转存表中的数据 `userinfo`
 --
 
 INSERT INTO `userinfo` (`id`, `user`, `password`) VALUES
 (1, 'a', 'ps'),
 (2, 'b', 'ps'),
-(8, 'test', 'ps');
+(3, 'test', 'ps'),
+(4, 'abcd', 'ps');
