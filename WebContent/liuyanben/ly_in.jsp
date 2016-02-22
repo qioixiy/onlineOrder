@@ -6,7 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 </head>
 <jsp:useBean id="wu" scope="page" class="liuyanben.jdbc" />
-<!-- jsp:useBean id="mail" scope="page" class="wu.mail" /  -->
 <%
 	Connection con = wu.getConn();
 	Statement stmt = con.createStatement();

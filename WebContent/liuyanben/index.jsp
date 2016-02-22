@@ -1,8 +1,7 @@
-<%@ page contentType="text/html; charset=gb2312"%>
+<%@ page contentType="text/html; charset=GBK"%>
 <html>
 <head>
 <title>index</title>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 </head>
 <body>
 	<h1>

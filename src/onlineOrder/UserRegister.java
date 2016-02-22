@@ -1,6 +1,5 @@
 package onlineOrder;
 
-import com.mysql.jdbc.Driver;
 import java.sql.*;
 
 public class UserRegister {
@@ -9,7 +8,7 @@ public class UserRegister {
 
 	// 获得数据库连接。
 	public UserRegister() {
-		String url = "jdbc:mysql://localhost:3306/wldc?" + "user=root&password=&useUnicode=true&characterEncoding=UTF8";
+		String url = "jdbc:mysql://localhost:3306/wldc?" + "user=root&password=&useUnicode=true&characterEncoding=gb2312";
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();

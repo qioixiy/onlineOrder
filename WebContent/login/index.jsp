@@ -35,7 +35,7 @@
 				<div class="login-box">
 					<div class="login_form">
 						<form action="loginCheck.jsp" name="loginform"
-							accept-charset="utf-8" id="login_form" class="loginForm"
+							accept-charset="gb2312" id="login_form" class="loginForm"
 							method="post">
 							<input type="hidden" name="did" value="0" /> <input
 								type="hidden" name="to" value="log" />
@@ -67,7 +67,7 @@
 		<div class="qlogin" id="qlogin" style="display: none;">
 
 			<div class="web_login">
-				<form name="form2" id="regUser" accept-charset="utf-8"
+				<form name="form2" id="regUser" accept-charset="gb2312"
 					action="regUser.jsp" method="post">
 					<input type="hidden" name="to" value="reg" /> <input type="hidden"
 						name="did" value="0" />
