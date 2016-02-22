@@ -10,6 +10,6 @@
 </head>
 
 <body>
-	<script>window.navigate('login/index.html');</script>
+	<script>window.navigate('login/index.jsp');</script>
 </body>
 </html>
