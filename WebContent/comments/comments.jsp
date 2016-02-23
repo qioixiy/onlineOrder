@@ -27,7 +27,7 @@
 	}
 </script>
 <body leftmargin="0" topmargin="1">
-	<jsp:useBean id="wu" scope="page" class="liuyanben.jdbc" />
+	<jsp:useBean id="wu" scope="page" class="comments.jdbc" />
 	<%
 		Connection con = wu.getConn();
 		Statement stmt = con.createStatement();
@@ -45,30 +45,24 @@
 	%>
 	<table width="775" border="0" align="center" cellpadding="0"
 		cellspacing="1">
-		<tr>
-			<td align="center"><img src="images/logo.gif" width="628"
-				height="59" border="1"></td>
-		</tr>
+		<p>所有留言</p>
 		<tr>
 			<td>
 				<table width="100%" border="0" cellpadding="2" cellspacing="1"
-					bgcolor="#16831C">
+					bgcolor="ffffff">
 					<tr>
 						<td colspan="2" bgcolor="#E8FCE2">
 							<div align="center">
 								<table width="100%" border="0" cellpadding="1" cellspacing="1">
 									<tr>
 										<td><div align="center">
-												<a href="#" onClick="return opend('ly_new.jsp')">添加留言</a>
-											</div></td>
-										<td><div align="center">
-												<a href="http://www.china1024.com">返回主页</a>
+												<a href="#" onClick="return opend('comments_new.jsp')">添加留言</a>
 											</div></td>
 										<td><div align="center">
 												<a href="login.jsp">留言管理</a>
 											</div></td>
 										<td><div align="center">
-												<a href="#" onClick="return opend('my.jsp')">我的介绍</a>
+												<a href="/onlineOrder">返回主页</a>
 											</div></td>
 									</tr>
 								</table>
@@ -122,7 +116,7 @@
 												width="16" height="16" align="absmiddle">留言人QQ
 										</div>
 									</td>
-									<td><a href="del.jsp?id=<%=rs.getString("id")%>">
+									<td><a href="comments_del.jsp?id=<%=rs.getString("id")%>">
 											<div align="center">
 												<img src="images/dele_1.gif" alt="删除" width="14" height="16"
 													border="0" align="absmiddle">删除留言

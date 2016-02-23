@@ -2,10 +2,10 @@
 	import="java.sql.*" errorPage=""%>
 <html>
 <head>
-<title>Untitled Document</title>
+<title>删除留言</title>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 </head>
-<jsp:useBean id="wu" scope="page" class="liuyanben.jdbc" />
+<jsp:useBean id="wu" scope="page" class="comments.jdbc" />
 <body>
 	<%
 		String login = (String) session.getAttribute("login");

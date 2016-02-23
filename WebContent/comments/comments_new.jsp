@@ -8,7 +8,7 @@
 </head>
 
 <body bgcolor="#E8FCE2" background="images/background-line.gif">
-	<form name="form1" method="post" action="ly_in.jsp">
+	<form name="form1" method="post" action="comments_post.jsp">
 		<table width="498" border="0" align="center">
 			<tr>
 				<td valign="top"><div align="center">¡Ù—‘»À£∫</div></td>

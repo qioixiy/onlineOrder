@@ -6,7 +6,7 @@
 <body>
 	<h1>
 		<%
-			response.sendRedirect("ly.jsp");
+			response.sendRedirect("comments.jsp");
 		%>
 	</h1>
 </body>
