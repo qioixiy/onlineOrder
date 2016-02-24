@@ -5,24 +5,24 @@
 <title>Untitled Document</title>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 </head>
-<jsp:useBean id="wu" scope="page" class="comments.jdbc" />
+<jsp:useBean id="jdbc_conn" scope="page" class="comments.jdbc" />
 <%
-	Connection con = wu.getConn();
+	Connection con = jdbc_conn.getConn();
 	Statement stmt = con.createStatement();
 	String content = request.getParameter("content");
-	content = wu.ex_chinese(content);
+	content = jdbc_conn.ex_chinese(content);
 	String qq = request.getParameter("qq");
-	qq = wu.ex_chinese(qq);
+	qq = jdbc_conn.ex_chinese(qq);
 	String email = request.getParameter("email");
-	email = wu.ex_chinese(email);
+	email = jdbc_conn.ex_chinese(email);
 	String url = request.getParameter("url");
-	url = wu.ex_chinese(url);
+	url = jdbc_conn.ex_chinese(url);
 	String xm = request.getParameter("yhm");
-	xm = wu.ex_chinese(xm);
+	xm = jdbc_conn.ex_chinese(xm);
 	String msg = "您在留言成功。";
 	String sql = "insert into liuyan(url,ip,email,qq,sj,content,xm) values('" + url + "','"
-			+ request.getRemoteHost() + "','" + email + "','" + qq + "','" + wu.gettime() + "','" + content
-			+ "','" + xm + "')";
+			+ request.getRemoteHost() + "','" + email + "','" + qq + "','" + jdbc_conn.gettime() + "','"
+			+ content + "','" + xm + "')";
 	stmt.executeUpdate(sql);
 	try {
 		stmt.close();

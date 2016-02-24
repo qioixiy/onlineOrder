@@ -27,9 +27,9 @@
 	}
 </script>
 <body leftmargin="0" topmargin="1">
-	<jsp:useBean id="wu" scope="page" class="comments.jdbc" />
+	<jsp:useBean id="jdbc_conn" scope="page" class="comments.jdbc" />
 	<%
-		Connection con = wu.getConn();
+		Connection con = jdbc_conn.getConn();
 		Statement stmt = con.createStatement();
 		String sql = "select * from liuyan order by id desc";
 		ResultSet rs = stmt.executeQuery(sql);
