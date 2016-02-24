@@ -24,6 +24,7 @@
 			regist.setUserBean(userBean);
 			regist.regist();
 			out.println("×¢²á³É¹¦");
+			response.sendRedirect("..");
 		} catch (Exception e) {
 			out.println(e.getMessage());
 		}

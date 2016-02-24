@@ -8,6 +8,11 @@
 </title>
 </head>
 <body bgcolor="#ffffff">
-	<h1>登录成功</h1><%=session.getAttribute("user")%>
+	<h1>登录成功</h1>
+	<%=session.getAttribute("user")%>
+	<%
+		session.setAttribute("login", "true");
+		response.sendRedirect("../comments/");
+	%>
 </body>
 </html>
