@@ -1,4 +1,4 @@
-package comments;
+package db;
 
 import java.sql.*;
 

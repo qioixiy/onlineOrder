@@ -1,4 +1,4 @@
-package onlineOrder;
+package db;
 
 public class UserBean {
 	private String user;

@@ -5,7 +5,7 @@
 <title>Untitled Document</title>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 </head>
-<jsp:useBean id="jdbc_conn" scope="page" class="comments.jdbc" />
+<jsp:useBean id="jdbc_conn" scope="page" class="db.jdbc" />
 <%
 	Connection con = jdbc_conn.getConn();
 	Statement stmt = con.createStatement();

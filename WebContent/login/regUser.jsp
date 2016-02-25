@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=gb2312" pageEncoding="gb2312"
-	import="onlineOrder.*"%>
-<jsp:useBean id="userBean" class="onlineOrder.UserBean" scope="request">
+	import="db.*"%>
+<jsp:useBean id="userBean" class="db.UserBean" scope="request">
 	<jsp:setProperty name="userBean" property="*" />
 </jsp:useBean>
-<jsp:useBean id="regist" class="onlineOrder.UserRegister"
+<jsp:useBean id="regist" class="db.UserRegister"
 	scope="request" />
 <html>
 <head>

@@ -27,7 +27,7 @@
 	}
 </script>
 <body leftmargin="0" topmargin="1">
-	<jsp:useBean id="jdbc_conn" scope="page" class="comments.jdbc" />
+	<jsp:useBean id="jdbc_conn" scope="page" class="db.jdbc" />
 	<%
 		Connection con = jdbc_conn.getConn();
 		Statement stmt = con.createStatement();
