@@ -20,7 +20,7 @@
 	String xm = request.getParameter("yhm");
 	xm = jdbc_conn.ex_chinese(xm);
 	String msg = "ÄúÔÚÁôÑÔ³É¹¦¡£";
-	String sql = "insert into liuyan(url,ip,email,qq,sj,content,xm) values('" + url + "','"
+	String sql = "insert into comments(url,ip,email,qq,sj,content,xm) values('" + url + "','"
 			+ request.getRemoteHost() + "','" + email + "','" + qq + "','" + jdbc_conn.gettime() + "','"
 			+ content + "','" + xm + "')";
 	stmt.executeUpdate(sql);

@@ -15,7 +15,7 @@
 			Connection con = jdbc_conn.getConn();
 			Statement stmt = con.createStatement();
 			String id = request.getParameter("id");
-			String sql = "delete from liuyan where id=" + id;
+			String sql = "delete from comments where id=" + id;
 			stmt.executeUpdate(sql);
 			try {
 				stmt.close();

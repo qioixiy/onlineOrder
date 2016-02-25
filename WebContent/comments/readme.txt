@@ -5,7 +5,7 @@ jdbc你修改编译之后请放到WEB-INF\classes\wu目录下面
 
 数据库采用的是mysql
 建表语言是：
-CREATE TABLE liuyan (
+CREATE TABLE comments (
   id int(6) NOT NULL auto_increment,
   url varchar(100) default '#',
   ip varchar(20) default NULL,

@@ -31,7 +31,7 @@
 	<%
 		Connection con = jdbc_conn.getConn();
 		Statement stmt = con.createStatement();
-		String sql = "select * from liuyan order by id desc";
+		String sql = "select * from comments order by id desc";
 		ResultSet rs = stmt.executeQuery(sql);
 		String pages = request.getParameter("page");
 		int pageInt = 1, i = 1;
@@ -57,9 +57,6 @@
 									<tr>
 										<td><div align="center">
 												<a href="#" onClick="return opend('comments_new.jsp')">添加留言</a>
-											</div></td>
-										<td><div align="center">
-												<a href="login.jsp">留言管理</a>
 											</div></td>
 										<td><div align="center">
 												<a href="/onlineOrder">返回主页</a>
@@ -139,7 +136,7 @@
 					<tr bgcolor="#F9CDBB">
 						<td>&nbsp;</td>
 						<%
-							sql = "select count(*) from liuyan";
+							sql = "select count(*) from comments";
 							rs = stmt.executeQuery(sql);
 							while (rs.next())
 								i = rs.getInt(1);
