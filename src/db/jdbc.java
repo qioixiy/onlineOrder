@@ -12,12 +12,12 @@ public class jdbc {
 	String re = "";
 	String dbip = "127.0.0.1";
 	String user = "root";
-	String pass = "";
+	String password = "";
 
 	public java.sql.Connection getConn() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			String url = "jdbc:mysql://" + dbip + ":3306/wldc" + "?user=" + user + "&password=" + pass
+			String url = "jdbc:mysql://" + dbip + ":3306/wldc" + "?user=" + user + "&password=" + password
 					+ "&useUnicode=true&characterEncoding=gb2312";
 			conn = DriverManager.getConnection(url);
 		} catch (Exception e) {

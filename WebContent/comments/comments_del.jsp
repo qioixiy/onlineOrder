@@ -10,7 +10,7 @@
 	<%
 		String login = (String) session.getAttribute("login");
 		if (login == null) {
-			out.println("您不是管理员！不能登陆删除");
+			out.println("您不是管理员！不能删除留言");
 		} else {
 			Connection con = jdbc_conn.getConn();
 			Statement stmt = con.createStatement();
@@ -22,7 +22,7 @@
 				con.close();
 			} catch (Exception ex) {
 			}
-			response.sendRedirect("ly.jsp");
+			response.sendRedirect("comments.jsp");
 		}
 	%>
 </body>
