@@ -29,7 +29,7 @@
 			</div>
 		</div>
 		<div class="web_qr_login" id="web_qr_login"
-			style="display: block; height: 235px;">
+			style="display: block; height: 270px;">
 			<!--µÇÂ¼-->
 			<div class="web_login" id="web_login">
 				<div class="login-box">
@@ -51,6 +51,11 @@
 									<input type="password" id="p" name="password"
 										class="inputstyle" />
 								</div>
+							</div>
+							<div>
+								<label>ÑéÖ¤Âë</label>
+								<img src="../verfiy_code/gen_code.jsp">
+								<input type=text name=rand maxlength=4 value="">
 							</div>
 							<div style="padding-left: 50px; margin-top: 20px;">
 								<input type="submit" value="µÇ Â¼" style="width: 150px;"

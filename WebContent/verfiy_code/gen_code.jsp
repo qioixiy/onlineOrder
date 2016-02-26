@@ -72,5 +72,5 @@ java.awt.image.*,java.util.*,javax.imageio.*"%>
 	out.clear();
 	out = pageContext.pushBody();
 	
-	//在页面上调用 <img src="/yourPath/checkNum.jsp" />
+	//在页面上调用 <img src=".jsp" />
 %>

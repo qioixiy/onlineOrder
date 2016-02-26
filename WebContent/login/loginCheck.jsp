@@ -1,5 +1,6 @@
-<%@page import="java.sql.*" contentType="text/html;charset=gb2312"%>
-<%@page import="java.util.*" import="java.security.MessageDigest"%>
+<%@page import="java.sql.*" import="java.util.*"
+	import="java.security.MessageDigest"
+	contentType="text/html;charset=gb2312"%>
 
 <jsp:useBean id="jdbc_conn" scope="page" class="db.jdbc" />
 
@@ -17,7 +18,8 @@
 		String db_password = new String(rs.getString("password"));
 		String encrypt = new String(rs.getString("encrypt"));
 		if (encrypt.equals("1")) {
-			final char hexDigits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+			final char hexDigits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D',
+					'E', 'F' };
 
 			try {
 				byte[] btInput = password.getBytes();
@@ -42,12 +44,19 @@
 				e.printStackTrace();
 			}
 		}
-		System.out.println(db_password);
-		System.out.println(password);
+
 		if (db_password.equals(password)) {
 			System.out.println(user + " login");
 			session.setAttribute("user", user);
 			redirect = "loginSuccess.jsp";
+		}
+
+		// verfiy code
+		String rand = (String) session.getAttribute("rand");
+		String input = request.getParameter("rand");
+		System.out.println(rand + ":" + input);
+		if (!rand.equals(input)) {
+			redirect="errCode.jsp";
 		}
 	}
 	response.sendRedirect(redirect);
