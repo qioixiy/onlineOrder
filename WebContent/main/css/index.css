@@ -1,0 +1,82 @@
+div {border:0px #0f0 solid;}
+h1,li,ul {margin:0px};
+
+/*主面板样式*/
+#container {
+    width:90%;
+    margin:0px auto;/*主面板DIV居中*/
+}
+/*顶部面板样式*/
+#header {
+    width:100%;
+    height:120px;
+    border:1px #FFF solid;
+}
+#header {background:url(../image/logo.gif) no-repeat}
+
+#menu li {float:left;}
+#menu ul {float:right;list-style:none;margin:1px;}
+#menu a:link,a:visited
+{
+    display:block;
+    width:120px;
+    font-weight:bold;
+    color:#FFFFFF;
+    background-color:#bebebe;
+    text-align:center;
+    padding:4px;
+    text-decoration:none;
+    text-transform:uppercase;
+}
+#menu a:hover,a:active
+{
+    background-color:#cc0000;
+}
+
+#main li {margin:0px; list-style:none;}
+
+/*中间部分面板样式*/
+#main {
+    width:100%;
+    height:800px;
+    border:0px #F00 solid;
+}
+/*底部面板样式*/
+#footer {
+    width:100%;
+    height:50px;
+    border:0px #F00 solid;
+}
+#first, #second, #third{
+    width:100px;
+    height:50px;
+    border:0px #333 solid;
+    margin:5px;
+    float:left;
+}
+.cat, .sidebar {
+    float:left;
+    width:20%;
+    height:100%;
+}
+.content {
+    float:left;
+    width:60%;
+    height:100%;
+    /*background:#f00;*/
+}
+.item {
+    border:0px #333 solid;
+}
+
+.pic {
+    float:left;
+    width: 20%;
+}
+.txt {
+    float:left;
+    width: 80%;
+}
+.div-clear {
+    clear:both;height:0;width:0;
+}
