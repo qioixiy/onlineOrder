@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=gb2312" />
-<link href="css/index.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../css/main.css" rel="stylesheet" type="text/css" media="all" />
 <title>自助订餐系统主页</title>
 </head>
 <body>
@@ -29,7 +29,7 @@
 						<li class="item">
 							<div class="pic">
 								<a title="" rel="nofollow" href="/" target="_blank"> <img
-									src="image/thumb_001.jpg" width="150"></img>
+									src="../image/thumb_001.jpg" width="150"></img>
 								</a>
 							</div>
 							<div class="txt">
@@ -42,7 +42,7 @@
 						<li class="item">
 							<div class="pic">
 								<a title="" rel="nofollow" href="/" target="_blank"> <img
-									src="image/thumb_002.jpg" width="150"></img>
+									src="../image/thumb_002.jpg" width="150"></img>
 								</a>
 							</div>
 							<div class="txt">
@@ -55,7 +55,7 @@
 						<li class="item">
 							<div class="pic">
 								<a title="" rel="nofollow" href="/" target="_blank"> <img
-									src="image/thumb_003.jpg" width="150"></img>
+									src="../image/thumb_003.jpg" width="150"></img>
 								</a>
 							</div>
 							<div class="txt">

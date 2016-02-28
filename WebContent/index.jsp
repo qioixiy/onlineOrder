@@ -11,8 +11,8 @@
 </head>
 
 <body>
-	<script>
-		window.navigate('login/index.jsp');
-	</script>
+<%
+	response.sendRedirect("login/index.jsp");
+%>
 </body>
 </html>
