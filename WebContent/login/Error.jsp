@@ -4,15 +4,10 @@
 <head>
 <title>
 	<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-	login sucess
+	Error
 </title>
 </head>
 <body bgcolor="#ffffff">
-	<h1>登录成功</h1>
-	<%=session.getAttribute("user")%>
-	<%
-		session.setAttribute("login", "true");
-		response.sendRedirect("../main/");
-	%>
+	<h1>Err</h1>
 </body>
 </html>

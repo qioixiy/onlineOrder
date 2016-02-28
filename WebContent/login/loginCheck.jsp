@@ -13,10 +13,12 @@
 	String sql = "select * from  userinfo where user='" + user + "';";
 	ResultSet rs = stmt.executeQuery(sql);
 
-	String redirect = "index.jsp";
+	String redirect = "";
 	if (rs.next()) {
 		String db_password = new String(rs.getString("password"));
 		String encrypt = new String(rs.getString("encrypt"));
+		
+		// get real password
 		if (encrypt.equals("1")) {
 			final char hexDigits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D',
 					'E', 'F' };
@@ -45,6 +47,7 @@
 			}
 		}
 
+		// check password
 		if (db_password.equals(password)) {
 			System.out.println(user + " login");
 			session.setAttribute("user", user);
@@ -56,7 +59,12 @@
 		String input = request.getParameter("rand");
 		System.out.println(rand + ":" + input);
 		if (!rand.equals(input)) {
-			redirect="errCode.jsp";
+			redirect="Error.jsp";
+			System.out.println("verfiy code Error");
+		}
+		System.out.println(redirect);
+		if (redirect.equals("")) {
+			redirect="index.jsp";
 		}
 	}
 	response.sendRedirect(redirect);

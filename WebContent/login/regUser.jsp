@@ -56,7 +56,5 @@
 		}
 
 	%>
-	<br>
-	<a href="index.jsp">·µ»Ø</a>
 </body>
 </html>

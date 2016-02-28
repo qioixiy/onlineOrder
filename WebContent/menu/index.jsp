@@ -2,18 +2,11 @@
 	import="java.sql.*" errorPage=""%>
 <html>
 <head>
-<title>留言本</title>
+<title>订餐主页</title>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 <link href="images/web.css" rel="stylesheet" type="text/css">
 </head>
 <script language="JavaScript">
-	String
-	login = (String)
-	session.getAttribute("login");
-	if (login == null) {
-		out.println("need login");
-		response.sendRedirect("../");
-	}
 	function openw(url) {
 		var newwin = window
 				.open(
@@ -34,7 +27,7 @@
 	}
 </script>
 <body leftmargin="0" topmargin="1">
-	<jsp:useBean id="jdbc_conn" scope="page" class="db.jdbc" />
+	<jsp:useBean id="jdbc_conn" scope="page" class="comments.jdbc" />
 	<%
 		Connection con = jdbc_conn.getConn();
 		Statement stmt = con.createStatement();
@@ -50,17 +43,17 @@
 			i++;
 		}
 	%>
-	<table width="720" border="0" align="center" cellpadding="1"
+	<table width="775" border="0" align="center" cellpadding="0"
 		cellspacing="1">
 		<p>所有留言</p>
 		<tr>
 			<td>
-				<table width="100%" border="0" cellpadding="1" cellspacing="1"
+				<table width="100%" border="0" cellpadding="2" cellspacing="1"
 					bgcolor="ffffff">
 					<tr>
 						<td colspan="2" bgcolor="#E8FCE2">
 							<div align="center">
-								<table width="100%" border="0" cellpadding="1">
+								<table width="100%" border="0" cellpadding="1" cellspacing="1">
 									<tr>
 										<td><div align="center">
 												<a href="#" onClick="return opend('comments_new.jsp')">添加留言</a>
