@@ -1,12 +1,11 @@
 div {border:0px #0f0 solid;}
 h1,li,ul {margin:0px};
 
-/*主面板样式*/
 #container {
     width:90%;
-    margin:0px auto;/*主面板DIV居中*/
+    margin:0px auto;
 }
-/*顶部面板样式*/
+
 #header {
     width:100%;
     height:120px;
@@ -35,13 +34,12 @@ h1,li,ul {margin:0px};
 
 #main li {margin:0px; list-style:none;}
 
-/*中间部分面板样式*/
 #main {
     width:100%;
     height:800px;
     border:0px #F00 solid;
 }
-/*底部面板样式*/
+
 #footer {
     width:100%;
     height:50px;
