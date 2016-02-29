@@ -18,6 +18,18 @@
 <body>
 	<div id="container">
 		<div id="header">
+			<div class="login_status">
+				<%
+					String status = (String)session.getAttribute("username");
+					if (status == null) {
+						status = "请登录";
+					} else {
+						status = "欢迎你" + session.getAttribute("username");
+					}
+				%>
+				<p> <%=status%></p>
+			</div>
+
 			<div id="menu">
 				<ul>
 					<li><a href="../index.jsp">首页</a></li>
@@ -25,7 +37,7 @@
 					<li><a href="#">关于我们</a></li>
 				</ul>
 			</div>
-			<h1 style="border: 0px; margin-top: 50px; text-align: center">自助订餐系统</h1>
+			<h1 style="border: 0px; margin-top: 50px; text-align: center; ">自助订餐系统</h1>
 		</div>
 		<div id="main">
 			<div class="cat"></div>

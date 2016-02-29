@@ -5,12 +5,12 @@
 <jsp:useBean id="jdbc_conn" scope="page" class="db.jdbc" />
 
 <%
-	String user = new String(request.getParameter("user"));
+	String username = new String(request.getParameter("user"));
 	String password = new String(request.getParameter("password"));
 
 	Connection con = jdbc_conn.getConn();
 	Statement stmt = con.createStatement();
-	String sql = "select * from  userinfo where user='" + user + "';";
+	String sql = "select * from  userinfo where user='" + username + "';";
 	ResultSet rs = stmt.executeQuery(sql);
 
 	String redirect = "";
@@ -49,8 +49,8 @@
 
 		// check password
 		if (db_password.equals(password)) {
-			System.out.println(user + " login");
-			session.setAttribute("user", user);
+			System.out.println(username + " login");
+			session.setAttribute("username", username);
 			redirect = "loginSuccess.jsp";
 		}
 

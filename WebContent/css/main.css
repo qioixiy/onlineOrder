@@ -11,6 +11,10 @@
     border:1px #FFF solid;
 }
 #header {background:url(../images/logo.gif) no-repeat}
+.login_status {
+	float:left;
+	margin-top:80px;
+}
 
 #menu li {float:left;}
 #menu ul {float:right; list-style:none; margin:1px;}
