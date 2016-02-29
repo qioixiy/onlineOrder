@@ -56,7 +56,7 @@
 								<label class="input-tips">бщжЄТы</label>
 								<div class="inputOuter">
 									<img src="../verfiy_code/gen_code.jsp"/>
-									<input class="inputstyle" type="text" name="rand" maxlength=4 />
+									<input class="inputstyle" type="text" name=rand maxlength=4 />
 								</div>
 							</div>
 							<div style="padding-left: 50px; margin-top: 20px;">
