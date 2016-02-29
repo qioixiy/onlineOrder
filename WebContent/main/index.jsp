@@ -54,16 +54,19 @@
 
 							ResultSet rs = stmt.executeQuery("select * from menu order by id desc");
 
-							int i = 1, pageInt = Integer.parseInt(pages);
-
-							while (i < page_size * (pageInt - 1) && rs.next()) {
+							int i = 0, pageInt = Integer.parseInt(pages);
+							int skip = page_size * (pageInt - 1);
+							System.out.println(skip);
+							while (i < skip && rs.next()) {
+								String _id = rs.getString("id");
+								System.out.println(_id);
 								i++;
 							}
 						%>
 
 						<%
 							i = 0;
-							while (rs.next() & i < page_size) {
+							while (rs.next() && i < page_size) {
 								i++;
 								String _id = rs.getString("id");
 								String _name = rs.getString("name");
