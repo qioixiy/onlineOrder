@@ -1,8 +1,7 @@
-div {border:0px #0f0 solid;}
-h1,li,ul {margin:0px};
+* {border:0px; margin:0px}
 
 #container {
-    width:90%;
+    width:960px;
     margin:0px auto;
 }
 
@@ -11,11 +10,11 @@ h1,li,ul {margin:0px};
     height:120px;
     border:1px #FFF solid;
 }
-#header {background:url(../image/logo.gif) no-repeat}
+#header {background:url(../images/logo.gif) no-repeat}
 
 #menu li {float:left;}
-#menu ul {float:right;list-style:none;margin:1px;}
-#menu a:link,a:visited
+#menu ul {float:right; list-style:none;margin:1px;}
+#menu a:link
 {
     display:block;
     width:120px;
@@ -29,14 +28,14 @@ h1,li,ul {margin:0px};
 }
 #menu a:hover,a:active
 {
-    background-color:#cc0000;
+    background-color:#c00;
 }
 
 #main li {margin:0px; list-style:none;}
 
 #main {
     width:100%;
-    height:800px;
+    height:600px;
     border:0px #F00 solid;
 }
 
@@ -45,36 +44,41 @@ h1,li,ul {margin:0px};
     height:50px;
     border:0px #F00 solid;
 }
-#first, #second, #third{
+.cat{
+    float:left;
     width:100px;
-    height:50px;
-    border:0px #333 solid;
-    margin:5px;
-    float:left;
-}
-.cat, .sidebar {
-    float:left;
-    width:20%;
     height:100%;
+    border:0px #0f0 solid;
 }
 .content {
     float:left;
-    width:60%;
+    width:600px;
     height:100%;
     /*background:#f00;*/
 }
+ .sidebar {
+ 	float:left;
+    width:200px;
+    border:1px #333 solid;
+ }
 .item {
-    border:0px #333 solid;
+    border:0px #f00 solid;
 }
 
-.pic {
+.item .pic {
     float:left;
-    width: 20%;
+    width:150px;
 }
 .txt {
     float:left;
-    width: 80%;
+    margin-left:10px;
+    width:400px;
 }
 .div-clear {
     clear:both;height:0;width:0;
+}
+
+.index {
+	float:right;
+	border:1px #000 solid;
 }

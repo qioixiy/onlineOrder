@@ -111,13 +111,13 @@
 										<div align="center">
 											<a href="mailto:<%=email%>"><img src="images/EMAIL.gif"
 												alt="<%=email%>" width="16" height="16" border="0"
-												align="absmiddle"></a>ÁôÑÔÈËemail
+												align="absmiddle"></a>email
 										</div>
 									</td>
 									<td>
 										<div align="center">
 											<img src="images/oicq.gif" alt="<%=rs.getString("qq")%>"
-												width="16" height="16" align="absmiddle">ÁôÑÔÈËQQ
+												width="16" height="16" align="absmiddle">QQ
 										</div>
 									</td>
 									<td><a href="comments_del.jsp?id=<%=rs.getString("id")%>">
@@ -154,7 +154,7 @@
 								<%
 								for (int j = 1; j < (i + 40) / 20; j++) {
 							%>
-								<a href="ly.jsp?page=<%=j%>">^<%=j%>^
+								<a href="comments.jsp?page=<%=j%>">^<%=j%>^
 								</a>
 								<%
 									}

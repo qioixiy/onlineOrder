@@ -29,31 +29,39 @@
 					<ul>
 						<jsp:useBean id="jdbc_conn" scope="page" class="db.jdbc" />
 						<%
+							int page_size = 5;
+							String pages = request.getParameter("page");
+							if (null == pages) {
+								pages="1";
+							}
+							System.out.println("pages:" + pages);
+
 							Connection con = jdbc_conn.getConn();
 							Statement stmt = con.createStatement();
 							String sql = "select * from menu order by id desc";
 							ResultSet rs = stmt.executeQuery(sql);
-							String pages = request.getParameter("page");
 							int pageInt = 1, i = 1;
-							if (pages == null) {
-							} else {
-								pageInt = Integer.parseInt(pages);
-							}
-							while (i < 5 * (pageInt - 1) && rs.next()) {
+
+							pageInt = Integer.parseInt(pages);
+
+							while (i < page_size * (pageInt - 1) && rs.next()) {
 								i++;
 							}
 						%>
+
 						<%
 							i = 0;
-							while (rs.next() & i < 5) {
+							while (rs.next() & i < page_size) {
 								i++;
 								String _name = rs.getString("name");
 								String _thumb = rs.getString("thumb");
+								System.out.println("name:" + _name);
+								System.out.println("thumb:" + _thumb);
 						%>
 						<li class="item">
 							<div class="pic">
-								<a title="" rel="nofollow" href="/" target="_blank"> <img
-									src="../image/<%=_thumb%>" width="150"></img>
+								<a title="" rel="nofollow" href="/" target="_blank">
+									<img src="../images/thumb/<%=_thumb%>" width="150" height=120></img>
 								</a>
 							</div>
 							<div class="txt">
@@ -66,10 +74,28 @@
 						<%
 							}
 						%>
+
+						<div align="right">
+							总共有菜单<%=i%>条/<%=(i + 19) / 20%>页，这是第<%=pageInt%>页，转到第
+							<%
+								rs.last();
+								int rowCount = rs.getRow();
+								System.out.println("rowCount:" + rowCount);
+								int j = 1;
+								for (j = 1; j < (rowCount + page_size) / page_size; j++) {
+							%>
+									<a href="index.jsp?page=<%=j%>"><%=j%></a>
+							<%
+								}
+							%>页
+						</div>
 					</ul>
 				</div>
 			</div>
+
+			<div class="sidebar"></div>
 		</div>
+		<div class="div-clear"></div>
 		<div id="footer"></div>
 	</div>
 </body>
