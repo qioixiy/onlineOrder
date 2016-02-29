@@ -65,10 +65,12 @@
 							i = 0;
 							while (rs.next() & i < page_size) {
 								i++;
+								String _id = rs.getString("id");
 								String _name = rs.getString("name");
 								String _thumb = rs.getString("thumb");
-								System.out.println("name:" + _name);
-								System.out.println("thumb:" + _thumb);
+								String _price = rs.getString("price");
+								String _details = rs.getString("details");
+								System.out.println("name:" + _name + ",thumb:" + _thumb);
 						%>
 						<li class="item">
 							<div class="pic">
@@ -77,8 +79,10 @@
 								</a>
 							</div>
 							<div class="txt">
-								<div class="title"><%=_name%></div>
-								<div class="comment"><%=_thumb%></div>
+								<div class="title">菜名:<%=_name%></div>
+								<div class="price">单价:<%=_price%>元</div>
+								<div class="details">描述:<%=_details%></div>
+								<div class="comments"><a href="../pingjia/?menu_id=<%=_id%>">查看评价</a></div>
 							</div>
 							<div class="info"></div>
 							<div class="div-clear"></div>
