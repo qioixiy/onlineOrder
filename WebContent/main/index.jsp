@@ -83,6 +83,7 @@
 								<div class="price">单价:<%=_price%>元</div>
 								<div class="details">描述:<%=_details%></div>
 								<div class="comments"><a href="../pingjia/?menu_id=<%=_id%>">查看评价</a></div>
+								<div class="buy"><a href="../buy/?menu_id=<%=_id%>">下单</a></div>
 							</div>
 							<div class="info"></div>
 							<div class="div-clear"></div>
@@ -92,7 +93,7 @@
 						%>
 
 						<div align="right">
-							总共有菜单<%=i%>条/<%=(i + 19) / 20%>页，这是第<%=pageInt%>页，转到第
+							第<%=pageInt%>页，转到第
 							<%
 								rs.last();
 								int rowCount = rs.getRow();

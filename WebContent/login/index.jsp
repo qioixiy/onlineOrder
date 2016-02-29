@@ -12,7 +12,7 @@
 	<link href="css/login2.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<h1>
+	<h1 style="color:#2F4F4F;">
 		基于公安海警学院的网上自助订餐系统<sup>V2016</sup>
 	</h1>
 
