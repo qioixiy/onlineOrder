@@ -1,17 +1,9 @@
-html {
-	
-}
+* {padding:0px; margin:0px auto;}
 
 body {
-	font-family: "Microsoft Yahei";
 	font-size: 12px;
 	margin: 0;
 	background: #fff url(../images/bg.jpg) 50% 0 no-repeat;
-}
-
-ul {
-	padding: 0;
-	margin: 0;
 }
 
 ul li {
@@ -42,16 +34,15 @@ input::-ms-clear {
 .login {
 	margin: 0 auto;
 	width: 370px;
-	border: 2px solid #eee;
+	border: 0px solid #eee;
 	border-bottom: none;
 	position: relative;
 }
 
 .header {
 	height: 50px;
-	border-bottom: 1px solid #e2e2e2;
+	border-bottom: 0px solid #e2e2e2;
 	position: relative;
-	font-family: "Microsoft Yahei";
 }
 
 .header .switch {
@@ -203,7 +194,12 @@ input::-ms-clear {
 	position: relative;
 	z-index: 3;
 }
-
+.web_login .verfiy{
+	height: 55px;
+	margin-bottom: 10px;
+	position: relative;
+	z-index: 3;
+}
 .web_qr_login {
 	position: relative;
 	overflow: hidden;

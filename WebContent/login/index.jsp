@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 	<script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
 	<script type="text/javascript" src="images/login.js"></script>
-	<link href="css/login2.css" rel="stylesheet" type="text/css" />
+	<link href="css/login.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<h1 style="color:#2F4F4F;">
@@ -52,10 +52,12 @@
 										class="inputstyle" />
 								</div>
 							</div>
-							<div>
-								<label>验证码</label>
-								<img src="../verfiy_code/gen_code.jsp">
-								<input type=text name=rand maxlength=4 value="">
+							<div class="pwdArea">
+								<label class="input-tips">验证码</label>
+								<div class="inputOuter">
+									<img src="../verfiy_code/gen_code.jsp"/>
+									<input class="inputstyle" type="text" name="rand" maxlength=4 />
+								</div>
 							</div>
 							<div style="padding-left: 50px; margin-top: 20px;">
 								<input type="submit" value="登 录" style="width: 150px;"
