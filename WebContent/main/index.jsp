@@ -9,14 +9,19 @@
 	media="all" />
 <title>自助订餐系统主页</title>
 </head>
+
+<jsp:useBean id="jdbc_conn" scope="page" class="db.jdbc" />
+<%
+	Connection con = jdbc_conn.getConn();
+	Statement stmt = con.createStatement();
+%>
 <body>
 	<div id="container">
 		<div id="header">
 			<div id="menu">
 				<ul>
 					<li><a href="../index.jsp">首页</a></li>
-					<li><a href="#">系统管理</a></li>
-					<li><a href="#">发布新闻、信息</a></li>
+					<li><a href="../manager/index.jsp" target="view_manager">系统管理</a></li>
 					<li><a href="#">关于我们</a></li>
 				</ul>
 			</div>
@@ -27,7 +32,6 @@
 			<div class="content">
 				<div id="shop-all-list">
 					<ul>
-						<jsp:useBean id="jdbc_conn" scope="page" class="db.jdbc" />
 						<%
 							int page_size = 5;
 							String pages = request.getParameter("page");
@@ -36,13 +40,9 @@
 							}
 							System.out.println("pages:" + pages);
 
-							Connection con = jdbc_conn.getConn();
-							Statement stmt = con.createStatement();
-							String sql = "select * from menu order by id desc";
-							ResultSet rs = stmt.executeQuery(sql);
-							int pageInt = 1, i = 1;
+							ResultSet rs = stmt.executeQuery("select * from menu order by id desc");
 
-							pageInt = Integer.parseInt(pages);
+							int i = 1, pageInt = Integer.parseInt(pages);
 
 							while (i < page_size * (pageInt - 1) && rs.next()) {
 								i++;
@@ -92,8 +92,27 @@
 					</ul>
 				</div>
 			</div>
+			<div class="sidebar">
+				<div class="new">
+					<p>新闻信息</p>
+					<div id="new-content">
+						<ul>
+						<%
+							rs = stmt.executeQuery("select * from news order by id desc");
 
-			<div class="sidebar"></div>
+							int news_max_size = 5;
+							for (i = 0; rs.next() && i < news_max_size; i++) {
+								String _id = rs.getString("id");
+								String _title = rs.getString("title");
+						%>
+							<li><a href="../news/index.jsp?id=<%=_id%>"><%=_title%></a></li>
+						<%
+							}
+						%>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class="div-clear"></div>
 		<div id="footer"></div>

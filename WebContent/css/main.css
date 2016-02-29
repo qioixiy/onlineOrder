@@ -13,8 +13,8 @@
 #header {background:url(../images/logo.gif) no-repeat}
 
 #menu li {float:left;}
-#menu ul {float:right; list-style:none;margin:1px;}
-#menu a:link
+#menu ul {float:right; list-style:none; margin:1px;}
+#menu a
 {
     display:block;
     width:120px;
@@ -26,7 +26,7 @@
     text-decoration:none;
     text-transform:uppercase;
 }
-#menu a:hover,a:active
+#menu a:hover
 {
     background-color:#c00;
 }
@@ -59,7 +59,7 @@
  .sidebar {
  	float:left;
     width:200px;
-    border:1px #333 solid;
+    border:0px #333 solid;
  }
 .item {
     border:0px #f00 solid;
@@ -76,9 +76,4 @@
 }
 .div-clear {
     clear:both;height:0;width:0;
-}
-
-.index {
-	float:right;
-	border:1px #000 solid;
 }
