@@ -49,7 +49,7 @@
 		} else {
 			pageInt = Integer.parseInt(pages);
 		}
-		int i = 1;
+		int i = 0;
 		// skip some
 		final int page_size = 5;
 		while (i < page_size * (pageInt - 1) && rs.next()) {
@@ -125,26 +125,19 @@
 				while (rs.next()) {
 					totle_rs = rs.getInt(1);
 				}
+				int page_totle = (totle_rs + page_size - 1)/page_size;
+				System.out.println("totle_rs:"+totle_rs + ",page_size:" + page_size + ",page_totle:"+page_totle);
 			%>
 			<td>
 				<div align="right">
-				共有留言<%=totle_rs%>条/<%=(totle_rs + page_size - 1)/page_size%>页，这是第<%=pageInt%>页，转到第
+				共有留言<%=totle_rs%>条，这是第<%=pageInt%>页，转到第
 				<%
-					for (int j = 1; j < (totle_rs + page_size*2)/page_size; j++) {
+					for (int j = 1; j <= page_totle; j++) {
 				%>
-					<a href="comments.jsp?page=<%=j%>"><%=j%>
-					</a>
-					<%
+					<a href="comments.jsp?page=<%=j%>"><%=j%></a>
+				<%
 						}
-						try {
-							rs.close();
-							stmt.close();
-							con.close();
-						} catch (Exception ex) {
-							;
-						}
-					%>
-					页
+				%>页
 				</div>
 			</td>
 		</tr>
@@ -153,3 +146,12 @@
 	</div>
 </body>
 </html>
+<%
+	try {
+		rs.close();
+		stmt.close();
+		con.close();
+	} catch (Exception ex) {
+		;
+	}
+%>
