@@ -92,7 +92,7 @@
 						</td>
 						<td><a href="mailto:<%=email%>"><img
 								src="../images/user/email.jpg" alt="<%=email%>" width="16" height="16"
-								border="0" align="absmiddle"></a>email</td>
+								border="0" align="absmiddle"></a></td>
 						<td>
 							QQ:<%=qq%>
 						</td>
