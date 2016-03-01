@@ -6,6 +6,7 @@
 	Connection con = jdbc_conn.getConn();
 	Statement stmt = con.createStatement();
 	String user = (String) session.getAttribute("username");
+	
 	ResultSet rs = stmt.executeQuery("select * from manager where username=" + "'" + user + "'");
 %>
 
@@ -19,21 +20,43 @@
 
 <body>
 
-	<div style="width: 720px; margin: 0px auto;">
 	<%
 		if (rs.next()) {
 			System.out.println(user + " find");
 	%>
-	
+
+	<div id="container">
+		<div id="header">
+			<h1 id="h1-header">系统管理页面</h1>
+		</div>
+
+		<div id="main">
+			<div id="menu">
+				<ul>
+					<li><a href="#">会员管理</a></li>
+					<li><a href="#">订单管理</a></li>
+					<li><a href="#">添加菜单信息</a></li>
+					<li><a href="#">发布行业信息、新闻</a></li>
+				</ul>
+			</div>
+			
+			<div id="content">
+				
+			</div>
+		</div>
+
+		<div id="footer"></div>
+	</div>
+
 	<%
 		} else {
 			System.out.println(user + " no find");
 	%>
-
+	<h2 id="h2-err">你不是系统管理员</h2>
+	<a href="../">返回登录页面</a>
 	<%
 		}
 	%>
-	</div>
 
 </body>
 </html>

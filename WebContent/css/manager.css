@@ -1,1 +1,22 @@
-* {border:0px; margin:0px; background:url(../images/logo.gif) no-repeat; }
+* {border:0px; margin:0px; padding:0px;}
+a {text-decoration:none;}
+
+body {background:url(../images/logo.gif) no-repeat; }
+#h1-header {text-align:center; border:0px #000 solid; margin:0px auto;}
+#h2-err {margin:0px auto; margin-top:100px;}
+
+#container {width:720px; margin:50px auto;}
+
+#main {}
+
+#menu {border:0px #808080 solid; float:left}
+#menu li {
+	background-color: #ffffff;
+	border: 1px #4e667d solid;
+	display:block;
+	line-height: 1.35em;
+}
+
+#content {float:left; margin-left:10px; border:0px #808080 solid;}
+
+#footer {}
