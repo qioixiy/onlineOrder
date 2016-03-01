@@ -19,27 +19,20 @@
 </head>
 
 <script>
-	function openw(url) {
+
+	function open_window(url) {
 		var newwin = window
 				.open(
 						url,
 						"NewWin",
-						"toolbar=no,resizable=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,top=220,left=220,width=500,height=330");
-		// newwin.focus();
-		return false;
-	}
-	function opend(url) {
-		var newwin = window
-				.open(
-						url,
-						"NewWin",
-						"toolbar=no,resizable=yes,location=no,directories=no,status=no,menubar=no,scrollbars=no,top=100,left=50,width=650,height=350");
-		// newwin.focus();
+						"");
+		//toolbar=no,resizable=yes,location=no,directories=no,status=no,menubar=no,top=100,left=50,width=720,height=400
+		newwin.focus();
 		return false;
 	}
 </script>
 
-<body >
+<body>
 <div align="center" style="padding:10px;">
 	<%	
 		ResultSet rs = stmt.executeQuery("select * from comments order by id desc");
@@ -59,7 +52,7 @@
 	
 	<div align="left">
 		<h2>所有留言</h2>
-		<a href="#" onClick="return opend('comments_new.jsp')">添加留言</a>
+		<a href="#" onClick="return open_window('comments_new.jsp')">添加留言</a>
 		<a href="../">返回主页</a>
 	</div>
 	<table border="1" cellpadding="1" cellspacing="1">
