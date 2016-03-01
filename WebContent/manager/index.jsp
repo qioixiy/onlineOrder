@@ -35,21 +35,44 @@
 		<div id="main">
 			<div id="menu">
 				<ul>
-					<li><a href="#">会员管理</a></li>
+					<li><a href="./index.jsp?func_id=user_manager">会员管理</a></li>
 					<li><a href="#">订单管理</a></li>
 					<li><a href="#">添加菜单信息</a></li>
 					<li><a href="#">发布行业信息、新闻</a></li>
 				</ul>
 			</div>
-			
+
 			<div id="content">
-				<table border="0" cellpadding="0" cellspacing="0">
-					<tr align="center">
-						<td >
-							<a href="#">href</a>
-						</td>
+				<%
+					if (null == func_id) {
+						;
+					} else if (func_id.equals("user_manager")) {
+						Statement user_smt = con.createStatement();
+						ResultSet user_rs = user_smt.executeQuery("select * from userinfo order by id desc");
+						System.out.println("func_id.equals(\"user_manager\")");
+				%>
+				<table id="table-user-manager" border="1" cellpadding="0" cellspacing="0">
+				<%
+						while (user_rs.next()) {
+							String _id = user_rs.getString("id");
+							String _user = user_rs.getString("user");
+							String _encrypt = user_rs.getString("encrypt");
+
+							System.out.println("id:" + _id + ",user:" + _user + ",encrypt:" + _encrypt);
+				%>
+					<tr>
+						<td><%=_id%></td>
+						<td><%=_user%></td>
+						<td><%=_encrypt%></td>
 					</tr>
+				<%
+						}
+				%>
 				</table>
+				<%
+					}
+				%>
+
 			</div>
 		</div>
 
