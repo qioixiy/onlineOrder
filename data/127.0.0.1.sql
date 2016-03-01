@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: 127.0.0.1
--- 生成日期: 2016 年 02 月 29 日 11:04
+-- 生成日期: 2016 年 03 月 01 日 03:59
 -- 服务器版本: 5.1.56
 -- PHP 版本: 5.2.17
 
@@ -52,22 +52,23 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `ip` varchar(20) DEFAULT NULL,
   `email` varchar(50) DEFAULT '#',
   `qq` varchar(20) DEFAULT NULL,
-  `sj` varchar(30) DEFAULT NULL,
+  `date` varchar(30) DEFAULT NULL,
   `content` text,
   `xm` varchar(20) DEFAULT 'none',
   KEY `id` (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=gb2312 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=gb2312 AUTO_INCREMENT=8 ;
 
 --
 -- 转存表中的数据 `comments`
 --
 
-INSERT INTO `comments` (`id`, `url`, `ip`, `email`, `qq`, `sj`, `content`, `xm`) VALUES
-(1, 'http://localhost/1', '0:0:0:0:0:0:0:1', 'a@b.com', '123456789', '2016年02月23日 11点17分', 'hi 大家好', '张三'),
-(2, 'http://localhost:8080/onlineOrder/comments', '0:0:0:0:0:0:0:1', 'b@d.com', '2345', '2016年02月23日 22点43分', 'hi 我是李四', '李四'),
-(3, 'baidu.com', '127.0.0.1', 'c@c.com', '3456', '2016年02月23日 22点09分', 'hi 我是王五', '王五'),
-(4, 'www.google.com', '0:0:0:0:0:0:0:1', 'mazi@c.com', '98765423', '2016年02月24日 22点52分', 'hi，我是麻子', '麻子'),
-(5, 'www.baidu.com', '0:0:0:0:0:0:0:1', 'xiaowang@c.com', '7898889090', '2016年02月24日 22点53分', 'hi 我是小王， 大王叫我来巡山', '小王');
+INSERT INTO `comments` (`id`, `url`, `ip`, `email`, `qq`, `date`, `content`, `xm`) VALUES
+(1, 'http://localhost/1', '0:0:0:0:0:0:0:1', 'a@localhost.com', '123456789', '2016年02月23日 11点17分', 'hi 大家好', '张三'),
+(2, 'http://localhost:8080/onlineOrder/comments', '0:0:0:0:0:0:0:1', 'b@localhost.com', '123456789', '2016年02月23日 22点43分', 'hi 我是李四', '李四'),
+(3, 'www.baidu.com', '127.0.0.1', 'c@localhost.com', '123456789', '2016年02月23日 22点09分', 'hi 我是王五', '王五'),
+(4, 'www.google.com', '0:0:0:0:0:0:0:1', 'mazi@localhost.com', '98765423', '2016年02月24日 22点52分', 'hi，我是麻子', '麻子'),
+(5, 'www.baidu.com', '0:0:0:0:0:0:0:1', 'xiaowang@localhost.com', '7898889090', '2016年02月24日 22点53分', 'hi 我是小王， 大王叫我来巡山', '小王'),
+(7, 'www.zxy.com', '0:0:0:0:0:0:0:1', 'zxy@zxy.com', '9876554321', '2016年03月01日 10点04分', 'zxy到此留言', 'zxy');
 
 -- --------------------------------------------------------
 
