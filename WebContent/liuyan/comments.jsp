@@ -60,7 +60,7 @@
 		<a href="#" onClick="return opend('comments_new.jsp')">Ìí¼ÓÁôÑÔ</a>
 		<a href="../">·µ»ØÖ÷Ò³</a>
 	</div>
-	<table>
+	<table border="1" cellpadding="1" cellspacing="1">
 		<%
 			i = 0;
 			while (rs.next() && i < 20) {
