@@ -3,11 +3,13 @@
 
 <jsp:useBean id="jdbc_conn" scope="page" class="db.jdbc" />
 <%
+	String func_id = request.getParameter("func_id");
+	
 	Connection con = jdbc_conn.getConn();
-	Statement stmt = con.createStatement();
+	Statement manager_smt = con.createStatement();
 	String user = (String) session.getAttribute("username");
 	
-	ResultSet rs = stmt.executeQuery("select * from manager where username=" + "'" + user + "'");
+	ResultSet rs = manager_smt.executeQuery("select * from manager where username=" + "'" + user + "'");
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -41,7 +43,13 @@
 			</div>
 			
 			<div id="content">
-				
+				<table border="0" cellpadding="0" cellspacing="0">
+					<tr align="center">
+						<td >
+							<a href="#">href</a>
+						</td>
+					</tr>
+				</table>
 			</div>
 		</div>
 

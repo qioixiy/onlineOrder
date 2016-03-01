@@ -101,7 +101,7 @@
 		</tr>
 		<tr>
 			<td align="center" valign="middle" bgcolor="#ffffff"><img
-				src="../images/user/user_log_default.jpg" width="100" height="100"><br>
+				src="../images/user/thumb/user_log_default.jpg" width="100" height="100"><br>
 				<br> ¡Ù—‘»À£∫<%=name%></td>
 			<td bgcolor="#F2F2F2"><%=content%></td>
 		</tr>
