@@ -76,17 +76,17 @@
 				String qq = rs.getString("qq");
 		%>
 		<tr>
-			<td width="23%" bgcolor="<%=bg_str%>">
+			<td width="20%" bgcolor="<%=bg_str%>">
 				<div align="center" style="font-size:15px;"><%=date%></div>
 			</td>
-			<td width="77%" bgcolor="<%=bg_str%>">
+			<td width="80%" bgcolor="<%=bg_str%>">
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr align="center">
 						<td >
 							<a href="<%=url%>">TaµÄÖ÷Ò³</a>
 						</td>
 						<td>
-							<strong>ÁôÑÔÈËIP:</strong><span><%=ip%></span>
+							<strong>TaµÄIP:</strong><span><%=ip%></span>
 						</td>
 						<td><a href="mailto:<%=email%>"><img
 								src="../images/user/email.jpg" alt="<%=email%>" width="16" height="16"
@@ -95,11 +95,11 @@
 							QQ:<%=qq%>
 						</td>
 						<td><a href="comments_del.jsp?id=<%=rs.getString("id")%>">
-								<div align="center">
-									<img src="../images/user/del.jpg" alt="É¾³ýÁôÑÔ" width="16" height="16"
-										border="0" align="absmiddle">
-								</div>
-						</a></td>
+									<div>
+										<img src="../images/user/del.jpg" alt="É¾³ýÁôÑÔ" width="16"
+											height="16" border="0">
+									</div>
+							</a></td>
 					</tr>
 				</table>
 			</td>
