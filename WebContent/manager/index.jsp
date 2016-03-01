@@ -60,10 +60,10 @@
 
 							System.out.println("id:" + _id + ",user:" + _user + ",encrypt:" + _encrypt);
 				%>
-					<tr>
-						<td><%=_id%></td>
-						<td><%=_user%></td>
-						<td><%=_encrypt%></td>
+					<tr >
+						<td width=50><%=_id%></td>
+						<td width=100><%=_user%></td>
+						<td width=50><%=_encrypt%></td>
 					</tr>
 				<%
 						}

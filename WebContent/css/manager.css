@@ -1,4 +1,4 @@
-/* * {border:0px; margin:0px; padding:0px;} */
+* {border:0px; margin:0px; padding:0px;}
 a {text-decoration:none;}
 
 body {background:url(../images/logo.gif) no-repeat; }
@@ -17,6 +17,6 @@ body {background:url(../images/logo.gif) no-repeat; }
 	line-height: 1.35em;
 }
 
-#content {float:left; margin-left:10px; border:0px #808080 solid;}
+#content {float:left; margin-left:20px; margin-top:10px; border:0px #808080 solid;}
 
 #footer {}
