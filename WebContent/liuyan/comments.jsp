@@ -50,7 +50,9 @@
 			pageInt = Integer.parseInt(pages);
 		}
 		int i = 1;
-		while (i < 20 * (pageInt - 1) && rs.next()) {
+		// skip some
+		final int page_size = 5;
+		while (i < page_size * (pageInt - 1) && rs.next()) {
 			i++;
 		}
 	%>
@@ -63,7 +65,7 @@
 	<table border="1" cellpadding="1" cellspacing="1">
 		<%
 			i = 0;
-			while (rs.next() && i < 20) {
+			while (rs.next() && i < page_size) {
 				String bg_str = "#F0F0F0";
 				
 				i++;
@@ -126,9 +128,9 @@
 			%>
 			<td>
 				<div align="right">
-				共有留言<%=totle_rs%>条/<%=(totle_rs + 19)/20%>页，这是第<%=pageInt%>页，转到第
+				共有留言<%=totle_rs%>条/<%=(totle_rs + page_size - 1)/page_size%>页，这是第<%=pageInt%>页，转到第
 				<%
-					for (int j = 1; j < (totle_rs + 40) / 20; j++) {
+					for (int j = 1; j < (totle_rs + page_size*2)/page_size; j++) {
 				%>
 					<a href="comments.jsp?page=<%=j%>"><%=j%>
 					</a>
