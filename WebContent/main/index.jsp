@@ -77,7 +77,7 @@
 						%>
 						<li class="item">
 							<div class="pic">
-								<a title="" rel="nofollow" href="/" target="_blank">
+								<a title="" rel="nofollow" href="#" target="_blank">
 									<img src="../images/thumb/<%=_thumb%>" width="150" height=120></img>
 								</a>
 							</div>

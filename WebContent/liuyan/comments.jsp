@@ -1,19 +1,24 @@
-<%@page contentType="text/html; charset=gb2312" language="java"
-	import="java.sql.*" errorPage=""%>
-<html>
-<head>
-<title>留言本</title>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<link href="images/web.css" rel="stylesheet" type="text/css">
-</head>
-<script language="JavaScript">
-	String
-	login = (String)
-	session.getAttribute("login");
+<%@page contentType="text/html; charset=gb2312" language="java" import="java.sql.*" errorPage=""%>
+<jsp:useBean id="jdbc_conn" scope="page" class="db.jdbc" />
+<%
+	String login = (String)session.getAttribute("login");
 	if (login == null) {
 		out.println("need login");
 		response.sendRedirect("../");
 	}
+
+	Connection con = jdbc_conn.getConn();
+	Statement stmt = con.createStatement();
+%>
+
+<html>
+<head>
+<title>留言页面</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<link href="images/web.css" rel="stylesheet" type="text/css">
+</head>
+
+<script>
 	function openw(url) {
 		var newwin = window
 				.open(
@@ -33,41 +38,42 @@
 		return false;
 	}
 </script>
-<body leftmargin="0" topmargin="1">
-	<jsp:useBean id="jdbc_conn" scope="page" class="db.jdbc" />
-	<%
-		Connection con = jdbc_conn.getConn();
-		Statement stmt = con.createStatement();
-		String sql = "select * from comments order by id desc";
-		ResultSet rs = stmt.executeQuery(sql);
+<body>
+	<%	
+		ResultSet rs = stmt.executeQuery("select * from comments order by id desc");
 		String pages = request.getParameter("page");
-		int pageInt = 1, i = 1;
+		int pageInt = 1;
 		if (pages == null) {
 		} else {
 			pageInt = Integer.parseInt(pages);
 		}
+		int i = 1;
 		while (i < 20 * (pageInt - 1) && rs.next()) {
 			i++;
 		}
 	%>
-	<table width="720" border="0" align="center" cellpadding="1"
-		cellspacing="1">
-		<p>所有留言</p>
+	
+	<h2>所有留言</h2>
+
+	<table width="720" border="0" align="center" cellpadding="0" cellspacing="0">
 		<tr>
 			<td>
-				<table width="100%" border="0" cellpadding="1" cellspacing="1"
-					bgcolor="ffffff">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="fff">
 					<tr>
-						<td colspan="2" bgcolor="#E8FCE2">
+						<td colspan="2" bgcolor="#F0F0F0">
 							<div align="center">
-								<table width="100%" border="0" cellpadding="1">
+								<table width="100%" border="0" cellpadding="0">
 									<tr>
-										<td><div align="center">
+										<td>
+											<div align="center">
 												<a href="#" onClick="return opend('comments_new.jsp')">添加留言</a>
-											</div></td>
-										<td><div align="center">
-												<a href="/onlineOrder">返回主页</a>
-											</div></td>
+											</div>
+										</td>
+										<td>
+											<div align="center">
+												<a href="../">返回主页</a>
+											</div>
+										</td>
 									</tr>
 								</table>
 							</div>
@@ -77,7 +83,7 @@
 						i = 0;
 						String str = "#E8FCE2", str1 = "";
 						java.util.Random rd = new java.util.Random();
-						while (rs.next() & i < 20) {
+						while (rs.next() && i < 20) {
 							i++;
 							String email = rs.getString("email");
 							String content = rs.getString("content");
@@ -143,8 +149,7 @@
 					<tr bgcolor="#F9CDBB">
 						<td>&nbsp;</td>
 						<%
-							sql = "select count(*) from comments";
-							rs = stmt.executeQuery(sql);
+							rs = stmt.executeQuery("select count(*) from comments");
 							while (rs.next())
 								i = rs.getInt(1);
 						%>
@@ -175,9 +180,6 @@
 					</tr>
 				</table>
 			</td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
 		</tr>
 	</table>
 </body>
