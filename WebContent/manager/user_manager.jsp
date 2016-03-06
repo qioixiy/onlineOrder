@@ -61,20 +61,10 @@
 						<td bgcolor="<%=bg_str%>" width=50><%=_id%></td>
 						<td bgcolor="<%=bg_str%>" width=200><%=_user%></td>
 						<td bgcolor="<%=bg_str%>" width=50><%=_encrypt%></td>
-						<td bgcolor="#ffffff" width=50 style="text-align: center;"><form
-								action="user_manager_op.jsp">
-								<input type=hidden name="type" value="del" /> <input
-									type=hidden name="user_id" value="<%=_id%>" /> <input
-									type="submit" value="删除" />
-							</form></td>
-						<td bgcolor="#ffffff" style="text-align: center;"><form
-								action="user_manager_op.jsp">
-								<input type=hidden name="type" value="set_as_manager" /> <input
-									type=hidden name="user_id" value="<%=_id%>" /> <input
-									type=hidden name="type" value="set_as_manager" /> <input
-									type=hidden name="user_name" value="<%=_user%>" /> <input
-									type="submit" value="设置为管理员" />
-							</form></td>
+						<td bgcolor="#ffffff" width=50 style="text-align: center;"><a
+							href="user_manager_op.jsp?type=del&user_id=<%=_id%>">删除</a></td>
+						<td bgcolor="#ffffff" style="text-align: center;"><a
+							href="user_manager_op.jsp?type=set_as_manager&user_id=<%=_id%>&user_name=<%=_user%>">设置为管理员</a></td>
 					</tr>
 					<%
 						}
