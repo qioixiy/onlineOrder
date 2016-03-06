@@ -24,7 +24,7 @@
 
 	<%
 		if (rs.next()) {
-			System.out.println(user + " find");
+			System.out.println("find manager " + user);
 	%>
 
 	<div id="container">
@@ -35,6 +35,7 @@
 		<div id="main">
 			<div id="menu">
 				<ul>
+					<li><a href="../main/index.jsp">返回主页</a></li>
 					<li><a href="user_manager.jsp">会员管理</a></li>
 					<li><a href="order_form_manager.jsp">订单管理</a></li>
 					<li><a href="menu_manager.jsp">菜单管理</a></li>

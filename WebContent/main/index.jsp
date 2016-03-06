@@ -33,7 +33,7 @@
 			<div id="menu">
 				<ul>
 					<li><a href="../index.jsp">首页</a></li>
-					<li><a href="../manager/index.jsp" target="view_manager">系统管理</a></li>
+					<li><a href="../manager/index.jsp">系统管理</a></li>
 					<li><a href="../liuyan/comments.jsp">查看留言</a></li>
 					<li><a href="http://www.gahjxy.com/xxgk/show.aspx?id=14&cid=13">关于我们</a></li>
 				</ul>

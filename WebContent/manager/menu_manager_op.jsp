@@ -28,6 +28,14 @@
 					Statement menu_smt = con.createStatement();
 					ResultSet meun_rs = menu_smt.executeQuery("select * from menu order by id desc");
 				%>
+				<form action="commit.jsp">
+					<strong><p>添加新的菜式</p></strong>
+					名字<input type="text" name="num" /><p></p>
+					类别<input type="text" name="num" /><p></p>
+					价格<input type="text" name="num" /><p></p>
+					详细描述<input type="text" name="num" /><p></p>
+					<input type="submit" value="提交" />
+				</form>
 			</div>
 		</div>
 

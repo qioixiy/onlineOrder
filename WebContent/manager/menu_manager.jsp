@@ -46,6 +46,7 @@
 						<td width=200>菜名</td>
 						<td width=200>菜的类别</td>
 						<td width=50>价格</td>
+						<td width=50>时间</td>
 						<td width=130>简介、说明</td></strong>
 					</tr>
 					<%
@@ -60,6 +61,7 @@
 							String _style = meun_rs.getString("style");
 							String _price = meun_rs.getString("price");
 							String _thumb = meun_rs.getString("thumb");
+							String _timestamp = meun_rs.getString("timestamp");
 							String _details = meun_rs.getString("details");
 					%>
 					<tr>
@@ -67,6 +69,7 @@
 						<td bgcolor="<%=bg_str%>" width=200><%=_name%></td>
 						<td bgcolor="<%=bg_str%>" width=50><%=_style%></td>
 						<td bgcolor="<%=bg_str%>" width=50><%=_price%></td>
+						<td bgcolor="<%=bg_str%>" width=50><%=_timestamp%></td>
 						<td bgcolor="<%=bg_str%>" width=50><%=_details%></td>
 						<td bgcolor="#ffffff" width=50 style="text-align: center;">
 							<a href="menu_manager_op.jsp?op=del&menu_id=1">删除</a>
