@@ -38,7 +38,10 @@
 					<li><a href="http://www.gahjxy.com/xxgk/show.aspx?id=14&cid=13">关于我们</a></li>
 				</ul>
 			</div>
-			<h1 style="border: 0px; margin-top: 50px; text-align:center; ">自助订餐系统</h1>
+			<div class="div-clear"></div>
+			<div id="title">
+				<h1>自助订餐系统</h1>
+			</div>
 		</div>
 		<div id="main">
 			<div class="cat"></div>
@@ -115,16 +118,22 @@
 			</div>
 			<div class="sidebar">
 				<div class="new">
-					<p>新闻信息</p>
+					<div id="title">
+						<span><strong>新闻信息</strong></span>
+					</div>
 					<div id="new-content">
 						<ul>
 						<%
 							rs = stmt.executeQuery("select * from news order by id desc");
 
-							int news_max_size = 5;
+							int news_max_size = 10;
+							int title_max_len = 7;
 							for (i = 0; rs.next() && i < news_max_size; i++) {
 								String _id = rs.getString("id");
 								String _title = rs.getString("title");
+								if (_title.length() > title_max_len) {
+									_title = _title.substring(0, title_max_len) + "...";
+								}
 						%>
 							<li><a href="../news/index.jsp?id=<%=_id%>"><%=_title%></a></li>
 						<%

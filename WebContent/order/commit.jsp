@@ -15,7 +15,8 @@
 		user_id = rs_userinfo.getString("id");
 		System.out.println("username:" + username + ",user_id:" + user_id);
 	} else {
-		response.sendRedirect("login/index.jsp");
+		response.sendRedirect("../login/index.jsp");
+		return;
 	}
 	ResultSet rs_menu = stmt.executeQuery("select * from menu where id=" + menu_id);
 %>
