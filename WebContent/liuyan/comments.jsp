@@ -53,7 +53,7 @@
 	<div align="left">
 		<h2>所有留言</h2>
 		<a href="#" onClick="return open_window('comments_new.jsp')">添加留言</a>
-		<a href="../">返回主页</a>
+		<a href="../main">返回主页</a>
 	</div>
 	<table border="1" cellpadding="1" cellspacing="1">
 		<%
