@@ -101,9 +101,9 @@
 							<%
 								rs.last();
 								int rowCount = rs.getRow();
-								System.out.println("rowCount:" + rowCount);
+								System.out.println("rowCount:" + rowCount + ",page_size:" + page_size);
 								int j = 1;
-								for (j = 1; j < (rowCount + page_size) / page_size; j++) {
+								for (j = 1; j <= (rowCount + page_size) / page_size; j++) {
 							%>
 									<a href="index.jsp?page=<%=j%>"><%=j%></a>
 							<%
