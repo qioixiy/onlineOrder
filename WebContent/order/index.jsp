@@ -28,7 +28,8 @@ if(rs_menu.next()) {
 	<h2><%=name%>(<%=menu_id%>)</h2>
 	<img src="../images/thumb/<%=thumb%>" width="150" height=120></img>
 	<form action="commit.jsp">
-		<p>数量<input type="text" name="num" /></p>
+		<p>数量</p>
+		<input type="text" name="num" />
 		<input type=hidden name="menu_id" value="<%=request.getParameter("menu_id")%>"/>
   		<input type="submit" value="提交" />
 	</form>
