@@ -7,6 +7,16 @@
 	Connection con = jdbc_conn.getConn();
 	Statement stmt = con.createStatement();
 	String menu_id = request.getParameter("menu_id");
+	String num = request.getParameter("num");
+	String username = (String)session.getAttribute("username");
+	String user_id = null;
+	ResultSet rs_userinfo = stmt.executeQuery("select * from userinfo where user=" + "'" + username + "'");
+	if (rs_userinfo.next()) {
+		user_id = rs_userinfo.getString("id");
+		System.out.println("username:" + username + ",user_id:" + user_id);
+	} else {
+		response.sendRedirect("login/index.jsp");
+	}
 	ResultSet rs_menu = stmt.executeQuery("select * from menu where id=" + menu_id);
 %>
 
@@ -22,16 +32,27 @@
 if(rs_menu.next()) {
 	String name = rs_menu.getString("name");
 	String thumb = rs_menu.getString("thumb");
+	String price = rs_menu.getString("price");
 %>
 
 <div style="width:720px; margin:0px auto;">
 	<h2><%=name%>(<%=menu_id%>)</h2>
 	<img src="../images/thumb/<%=thumb%>" width="150" height=120></img>
-	<form action="commit.jsp?menu_id=1">
-		<p>数量<input type="text" name="num" /></p>
-  		<input type="submit" value="提交" />
-	</form>
-	
+<%
+	try {
+		Statement stmt_order = con.createStatement();
+		String sql = "INSERT INTO `order` ( `id` , `user_id` , `menu_id` , `repeat` , `spec` ) VALUES (NULL , '" + user_id + "', '" + menu_id + "', '" + num + "', 'null')";
+		System.out.println(sql);
+		boolean result = stmt_order.execute(sql);
+		System.out.println(result);
+%>
+	<p>下单成功</p>
+	<a href="../main/index.jsp">返回主页</a>
+<%
+	}catch(Exception e) {
+		e.printStackTrace();
+	}
+%>
 </div>
 
 <%
