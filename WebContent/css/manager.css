@@ -2,7 +2,12 @@
 a {text-decoration:none;}
 
 body {background:url(../images/logo.gif) no-repeat; }
-#h1-header {text-align:center; border:0px #000 solid; margin:0px auto;}
+#header {
+	text-align:center;
+	border:0px #000 solid;
+	margin:0px auto;
+	margin:20px;
+}
 #h2-err {margin:0px auto; margin-top:100px;}
 
 #container {width:720px; margin:50px auto;}
@@ -12,7 +17,7 @@ body {background:url(../images/logo.gif) no-repeat; }
 #menu {border:0px #808080 solid; float:left}
 #menu li {
 	background-color: #ffffff;
-	border: 1px #4e667d solid;
+	border: 0px #4e667d solid;
 	display:block;
 	line-height: 1.35em;
 }

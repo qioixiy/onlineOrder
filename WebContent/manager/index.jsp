@@ -29,16 +29,16 @@
 
 	<div id="container">
 		<div id="header">
-			<h1 id="h1-header">系统管理页面</h1>
+			<h1 id="title">系统管理页面</h1>
 		</div>
 
 		<div id="main">
 			<div id="menu">
 				<ul>
-					<li><a href="./index.jsp?func_id=user_manager">会员管理</a></li>
-					<li><a href="#">订单管理</a></li>
-					<li><a href="#">添加菜单信息</a></li>
-					<li><a href="#">发布行业信息、新闻</a></li>
+					<li><a href="user_manager.jsp">会员管理</a></li>
+					<li><a href="order_form_manager.jsp">订单管理</a></li>
+					<li><a href="menu_manager.jsp">菜单管理</a></li>
+					<li><a href="news_manager.jsp">信息、新闻管理</a></li>
 				</ul>
 			</div>
 
@@ -83,7 +83,7 @@
 		} else {
 			System.out.println(user + " no find");
 	%>
-	<h2 id="h2-err">你不是系统管理员</h2>
+	<h2 id="err">你不是系统管理员</h2>
 	<a href="../">返回登录页面</a>
 	<%
 		}

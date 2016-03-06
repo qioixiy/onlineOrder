@@ -42,7 +42,7 @@ if(rs_menu.next()) {
 <%
 	try {
 		Statement stmt_order = con.createStatement();
-		String sql = "INSERT INTO `order` ( `id` , `user_id` , `menu_id` , `repeat` , `spec` ) VALUES (NULL , '" + user_id + "', '" + menu_id + "', '" + num + "', 'null')";
+		String sql = "INSERT INTO `order_form` ( `id` , `user_id` , `menu_id` , `repeat` , `spec` ) VALUES (NULL , '" + user_id + "', '" + menu_id + "', '" + num + "', 'null')";
 		System.out.println(sql);
 		boolean result = stmt_order.execute(sql);
 		System.out.println(result);
