@@ -3,7 +3,7 @@ MD5 Ëã·¨µÄJava Bean
 @author:Topcat Tuppin  
 Last Modified:10,Mar,2001  
 *************************************************/
-package util;
+package misc;
 
 import java.lang.reflect.*;
 
