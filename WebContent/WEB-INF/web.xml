@@ -14,9 +14,25 @@
     <servlet-name>UploadHandleServlet</servlet-name>
     <servlet-class>misc.UploadHandleServlet</servlet-class>
 </servlet>
+<servlet>
+    <servlet-name>UploadServlet</servlet-name>
+    <servlet-class>upload.UploadServlet</servlet-class>
+</servlet>
+<servlet>
+    <servlet-name>getProgressServlet</servlet-name>
+    <servlet-class>upload.getProgressServlet</servlet-class>
+</servlet>
 
 <servlet-mapping>
     <servlet-name>UploadHandleServlet</servlet-name>
     <url-pattern>/servlet/UploadHandleServlet</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+    <servlet-name>UploadServlet</servlet-name>
+    <url-pattern>/servlet/UploadServlet</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+    <servlet-name>getProgressServlet</servlet-name>
+    <url-pattern>/servlet/getProgressServlet</url-pattern>
 </servlet-mapping>
 </web-app>
