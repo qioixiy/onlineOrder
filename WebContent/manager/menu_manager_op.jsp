@@ -7,8 +7,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="../css/manager.css" rel="stylesheet" type="text/css"
 	media="all" />
+
+<link rel="stylesheet" type="text/css" href="../css/progress.css">
 <title>²Ëµ¥¹ÜÀí²Ù×÷Ò³Ãæ</title>
 </head>
+
+<script type="text/javascript" src="../js/ajax_upload.js" charset="utf-8"></script>
 
 <body>
 	<div id="container">
@@ -21,10 +25,11 @@
 
 				<form action="menu_manager_op_result.jsp">
 					<strong><p style="margin-bottom:20px;">Ìí¼ÓÐÂµÄ²ËÊ½</p></strong>
-					Ãû×Ö<input type="text" name="menu_name" /><p></p>
-					Àà±ð<input type="text" name="menu_type" /><p></p>
-					¼Û¸ñ<input type="text" name="menu_price" /><p></p>
-					<textarea id="" cols="50" rows="10" name="menu_detail"></textarea><p></p>
+					Ãû×Ö<input type="text" name="menu_name" /></br>
+					Àà±ð<input type="text" name="menu_type" /></br>
+					¼Û¸ñ<input type="text" name="menu_price" /></br>
+					ÃèÊö</br>
+					<textarea id="" cols="50" rows="10" name="menu_detail"></textarea></br>
 					<input type="submit" value="Ìá½»" />
 				</form>
 			</div>

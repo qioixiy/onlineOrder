@@ -30,7 +30,6 @@ public class getProgressServlet extends HttpServlet {
 
 		out.flush();
 		out.close();
-		System.out.println("get");
 	}
 
 }

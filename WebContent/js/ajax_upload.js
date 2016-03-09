@@ -14,7 +14,7 @@ function getP() {
 	}
 
 	xmlHttpRequest.onreadystatechange = callBack;
-	url = "servlet/getProgressServlet";
+	url = "../servlet/getProgressServlet";
 	xmlHttpRequest.open("post", url, true);
 
 	xmlHttpRequest.setRequestHeader("Content-type",

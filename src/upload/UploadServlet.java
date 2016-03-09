@@ -90,7 +90,7 @@ public class UploadServlet extends HttpServlet {
 							persent += length / (double) upFileSize * 100D;
 							fos.write(by, 0, length);
 							session.setAttribute("prog", Math.round(persent) + "");
-							Thread.sleep(1);
+							//Thread.sleep(1);
 							System.out.println(".");
 						}
 						System.out.println("done");
