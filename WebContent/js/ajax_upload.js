@@ -51,3 +51,7 @@ function callBack() {
 		}
 	}
 }
+
+function test_alert() {
+	alert("for test");
+}
