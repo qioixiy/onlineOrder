@@ -22,6 +22,10 @@
     <servlet-name>getProgressServlet</servlet-name>
     <servlet-class>upload.getProgressServlet</servlet-class>
 </servlet>
+<servlet>
+    <servlet-name>ClientApi</servlet-name>
+    <servlet-class>api.ClientApi</servlet-class>
+</servlet>
 
 <servlet-mapping>
     <servlet-name>UploadHandleServlet</servlet-name>
@@ -35,4 +39,9 @@
     <servlet-name>getProgressServlet</servlet-name>
     <url-pattern>/servlet/getProgressServlet</url-pattern>
 </servlet-mapping>
+<servlet-mapping>
+    <servlet-name>ClientApi</servlet-name>
+    <url-pattern>/servlet/ClientApi</url-pattern>
+</servlet-mapping>
+
 </web-app>
