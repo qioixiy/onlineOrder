@@ -23,6 +23,31 @@ public class ClientApi extends HttpServlet {
 		doPost(request, response);
 	}
 
+	public void dispatcher(String fun_id)
+	{
+		;
+	}
+	
+	JSONArray ClientLogin(HttpServletRequest request, HttpServletResponse response)
+	{
+		String user = request.getParameter("user");
+		String password = request.getParameter("password");
+
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("user", user);
+		
+		return JSONArray.fromObject(map);
+	}
+	
+	JSONArray dispatcher(HttpServletRequest request, HttpServletResponse response)
+	{
+		String id = request.getParameter("id");
+		switch(id) {
+		case "login": break;
+		}
+		return ClientLogin(request, response);
+	}
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
@@ -31,20 +56,11 @@ public class ClientApi extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 		String str = (String) sesson.getAttribute("prog");
-		String res = (String) sesson.getAttribute("result");
-		String err = (String) sesson.getAttribute("error");
-		System.out.println(str + "," + res + "," + err);
+		
+		
+		JSONArray jsonArray = dispatcher(request, response);
+		out.print(jsonArray.toString());
 
-		String user = request.getParameter("user");
-		String password = request.getParameter("password");
-		System.out.println(user + password);
-		List list = new ArrayList();
-		list.add( "first" );
-		list.add( "second" );
-		JSONArray jsonArray2 = JSONArray.fromObject( list );
-		//out.print(jsonArray2.toString());
-
-		//BuildJson();
 		out.flush();
 		out.close();
 	}
