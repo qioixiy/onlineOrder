@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,32 +23,46 @@ public class ClientApi extends HttpServlet {
 			throws ServletException, IOException {
 		doPost(request, response);
 	}
-
-	public void dispatcher(String fun_id)
-	{
+	
+	String getUuid() {
+		UUID uuid = UUID.randomUUID();
+		return uuid.toString();
+	}
+	public void dispatcher(String fun_id) {
 		;
 	}
-	
-	JSONArray ClientLogin(HttpServletRequest request, HttpServletResponse response)
-	{
+
+	JSONArray ClientLogin(HttpServletRequest request, HttpServletResponse response) {
 		String user = request.getParameter("user");
 		String password = request.getParameter("password");
 
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("user", user);
-		
+		map.put("uuid", getUuid());
+
 		return JSONArray.fromObject(map);
 	}
-	
-	JSONArray dispatcher(HttpServletRequest request, HttpServletResponse response)
-	{
+
+	JSONArray dispatcher(HttpServletRequest request, HttpServletResponse response) {
 		String id = request.getParameter("id");
-		switch(id) {
-		case "login": break;
+		if (id != null) {
+			switch (id) {
+			case "login":
+				return ClientLogin(request, response);
+			default:
+				Map<String, String> ret = new HashMap<String, String>();
+				ret.put("ret", "fail");
+				ret.put("reson", "invalid_func_id");
+				return JSONArray.fromObject(ret);
+			}
+		} else {
+			Map<String, String> ret = new HashMap<String, String>();
+			ret.put("ret", "fail");
+			ret.put("reson", "invalid_func_id");
+			return JSONArray.fromObject(ret);
 		}
-		return ClientLogin(request, response);
 	}
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
@@ -56,50 +71,50 @@ public class ClientApi extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 		String str = (String) sesson.getAttribute("prog");
-		
-		
+
 		JSONArray jsonArray = dispatcher(request, response);
 		out.print(jsonArray.toString());
 
 		out.flush();
 		out.close();
 	}
+
 	public String BuildJson() {
 
-        // JSON格式数据解析对象
-        JSONObject jo = new JSONObject();
+		// JSON格式数据解析对象
+		JSONObject jo = new JSONObject();
 
-        // 下面构造两个map、一个list和一个Employee对象
-        Map<String, String> map1 = new HashMap<String, String>();
-        map1.put("name", "Alexia");
-        map1.put("sex", "female");
-        map1.put("age", "23");
+		// 下面构造两个map、一个list和一个Employee对象
+		Map<String, String> map1 = new HashMap<String, String>();
+		map1.put("name", "Alexia");
+		map1.put("sex", "female");
+		map1.put("age", "23");
 
-        Map<String, String> map2 = new HashMap<String, String>();
-        map2.put("name", "Edward");
-        map2.put("sex", "male");
-        map2.put("age", "24");
+		Map<String, String> map2 = new HashMap<String, String>();
+		map2.put("name", "Edward");
+		map2.put("sex", "male");
+		map2.put("age", "24");
 
-        List<Map> list = new ArrayList<Map>();
-        list.add(map1);
-        list.add(map2);
+		List<Map> list = new ArrayList<Map>();
+		list.add(map1);
+		list.add(map2);
 
-        // 将Map转换为JSONArray数据
-        JSONArray ja1 = JSONArray.fromObject(map1);
-        // 将List转换为JSONArray数据
-        JSONArray ja2 = JSONArray.fromObject(list);
+		// 将Map转换为JSONArray数据
+		JSONArray ja1 = JSONArray.fromObject(map1);
+		// 将List转换为JSONArray数据
+		JSONArray ja2 = JSONArray.fromObject(list);
 
-        System.out.println("JSONArray对象数据格式：");
-        System.out.println(ja1.toString());
-        System.out.println(ja2.toString());
+		System.out.println("JSONArray对象数据格式：");
+		System.out.println(ja1.toString());
+		System.out.println(ja2.toString());
 
-        // 构造Json数据，包括一个map和一个Employee对象
-        jo.put("map", ja1);
-        jo.put("employee", ja2);
-        System.out.println("\n最终构造的JSON数据格式：");
-        System.out.println(jo.toString());
+		// 构造Json数据，包括一个map和一个Employee对象
+		jo.put("map", ja1);
+		jo.put("employee", ja2);
+		System.out.println("\n最终构造的JSON数据格式：");
+		System.out.println(jo.toString());
 
-        return jo.toString();
+		return jo.toString();
 
-    }
+	}
 }
