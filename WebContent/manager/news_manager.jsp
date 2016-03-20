@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link href="../css/manager.css" rel="stylesheet" type="text/css"
+<link href="../css/main.css" rel="stylesheet" type="text/css"
 	media="all" />
 <title>·¢²¼ÏûÏ¢</title>
 </head>

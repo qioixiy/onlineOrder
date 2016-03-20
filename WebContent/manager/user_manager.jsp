@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link href="../css/manager.css" rel="stylesheet" type="text/css"
+<link href="../css/main.css" rel="stylesheet" type="text/css"
 	media="all" />
 <title>»áÔ±¹ÜÀíÒ³Ãæ</title>
 </head>
@@ -22,8 +22,9 @@
 		</div>
 
 		<div id="main">
-			<div id="menu">
+			<div id="menu-v">
 				<ul>
+					<li><a href="index.jsp">·µ»Ø¹ÜÀíÖ÷Ò³</a></li>
 					<li><a href="user_manager.jsp">²é¿´ËùÓÐ</a></li>
 				</ul>
 			</div>
@@ -33,9 +34,9 @@
 					Statement user_smt = con.createStatement();
 					ResultSet user_rs = user_smt.executeQuery("select * from userinfo order by id desc");
 				%>
-				<table id="table-userinfo" border="1" cellpadding="1"
-					cellspacing="1">
+				<table id="table-userinfo">
 					<%
+						String td_class = "td_class_1";
 						String bg_str = "#F0F0F0";
 						int index = 0;
 					%>
@@ -47,9 +48,9 @@
 					<%
 						while (user_rs.next()) {
 							if (0 == index++ % 2) {
-								bg_str = "#F0F0F0";
+								td_class = "td_class_1";
 							} else {
-								bg_str = "#F2F272";
+								td_class = "td_class_2";
 							}
 							String _id = user_rs.getString("id");
 							String _user = user_rs.getString("user");
@@ -58,9 +59,9 @@
 							System.out.println("id:" + _id + ",user:" + _user + ",encrypt:" + _encrypt);
 					%>
 					<tr>
-						<td bgcolor="<%=bg_str%>" width=50><%=_id%></td>
-						<td bgcolor="<%=bg_str%>" width=200><%=_user%></td>
-						<td bgcolor="<%=bg_str%>" width=50><%=_encrypt%></td>
+						<td class="<%=td_class%>" width=50><%=_id%></td>
+						<td class="<%=td_class%>" width=200><%=_user%></td>
+						<td class="<%=td_class%>" width=50><%=_encrypt%></td>
 						<td bgcolor="#ffffff" width=50 style="text-align: center;"><a
 							href="user_manager_op.jsp?type=del&user_id=<%=_id%>">É¾³ý</a></td>
 						<td bgcolor="#ffffff" style="text-align: center;"><a

@@ -48,10 +48,10 @@
 
 		<div align="left">
 			<h2>所有留言</h2>
-			<a href="#" onClick="return open_window('comments_new.jsp')"
-				style="text-decoration: none; text-transform: uppercase";>添加留言</a> <a
-				href="../main"
-				style="text-decoration: none; text-transform: uppercase";>返回主页</a>
+			<a href="../main"
+				style="text-decoration: none; text-transform: uppercase";>返回主页</a> <a
+				href="#" onClick="return open_window('comments_new.jsp')"
+				style="text-decoration: none; text-transform: uppercase";>添加留言</a>
 		</div>
 		<div style="margin: 20px;">
 			<table border="0" cellpadding="1" cellspacing="1">
@@ -104,9 +104,9 @@
 				<%}%>
 
 				<!-- table end -->
-							<tr bgcolor="#ffffff">
-								<td></td>
-								<%
+				<tr bgcolor="#ffffff">
+					<td></td>
+					<%
 									rs = stmt.executeQuery("select count(*) from comments");
 									int totle_rs = 0;
 									while (rs.next()) {
@@ -115,21 +115,21 @@
 									int page_totle = (totle_rs + page_size - 1) / page_size;
 									System.out.println("totle_rs:" + totle_rs + ",page_size:" + page_size + ",page_totle:" + page_totle);
 								%>
-								<td>
-									<div align="right">
-										共有留言<%=totle_rs%>条，这是第<%=pageInt%>页，转到第
-										<%
+					<td>
+						<div align="right">
+							共有留言<%=totle_rs%>条，这是第<%=pageInt%>页，转到第
+							<%
 										for (int j = 1; j <= page_totle; j++) {
 									%>
-										<a href="comments.jsp?page=<%=j%>"><%=j%></a>
-										<%
+							<a href="comments.jsp?page=<%=j%>"><%=j%></a>
+							<%
 											}
 										%>页
-									</div>
-								</td>
-							</tr>
+						</div>
+					</td>
+				</tr>
 
-						</table>
+			</table>
 		</div>
 	</div>
 </body>

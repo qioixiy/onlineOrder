@@ -13,6 +13,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link href="../css/main.css" rel="stylesheet" type="text/css" media="all" />
 <title>ÆÀ¼ÛÒ³Ãæ</title>
 </head>
 <body>

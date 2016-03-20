@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link href="../css/manager.css" rel="stylesheet" type="text/css"
+<link href="../css/main.css" rel="stylesheet" type="text/css"
 	media="all" />
 <title>²Ëµ¥¹ÜÀíÒ³Ãæ</title>
 </head>
@@ -22,9 +22,9 @@
 		</div>
 
 		<div id="main">
-			<div id="menu">
+			<div id="menu-v">
 				<ul>
-					<li><a href="#">²é¿´ËùÓÐµÄ²Ëµ¥</a></li>
+					<li><a href="index.jsp">·µ»Ø¹ÜÀíÖ÷Ò³</a></li>
 					<li><a href="menu_manager_op.jsp?op=add">Ìí¼ÓÐÂµÄ²ËÊ½</a></li>
 				</ul>
 			</div>
@@ -34,27 +34,27 @@
 					Statement menu_smt = con.createStatement();
 					ResultSet meun_rs = menu_smt.executeQuery("select * from menu order by id desc");
 				%>
-				<table id="table-userinfo" style="text-align: center;" border="1" cellpadding="1"
-					cellspacing="1">
+				<table id="table-userinfo">
 					<%
-						String bg_str = "#F0F0F0";
+						String td_class = "td_class_1";
 						int index = 0;
 					%>
 					<tr bgcolor="ccccc0">
 						<strong>
-						<td width=50>id</td>
-						<td width=200>²ËÃû</td>
-						<td width=200>²ËµÄÀà±ð</td>
-						<td width=50>¼Û¸ñ</td>
-						<td width=50>Ê±¼ä</td>
-						<td width=130>¼ò½é¡¢ËµÃ÷</td></strong>
+							<td width=50>id</td>
+							<td width=150>²ËÃû</td>
+							<td width=150>²ËµÄÀà±ð</td>
+							<td width=50>¼Û¸ñ</td>
+							<td width=150>Ê±¼ä</td>
+							<td width=150>¼ò½é¡¢ËµÃ÷</td>
+						</strong>
 					</tr>
 					<%
 						while (meun_rs.next()) {
 							if (0 == index++ % 2) {
-								bg_str = "#F0F0F0";
+								td_class = "td_class_1";
 							} else {
-								bg_str = "#F2F272";
+								td_class = "td_class_2";
 							}
 							String _id = meun_rs.getString("id");
 							String _name = meun_rs.getString("name");
@@ -65,15 +65,14 @@
 							String _details = meun_rs.getString("details");
 					%>
 					<tr>
-						<td bgcolor="<%=bg_str%>" width=50><%=_id%></td>
-						<td bgcolor="<%=bg_str%>" width=200><%=_name%></td>
-						<td bgcolor="<%=bg_str%>" width=50><%=_style%></td>
-						<td bgcolor="<%=bg_str%>" width=50><%=_price%></td>
-						<td bgcolor="<%=bg_str%>" width=50><%=_timestamp%></td>
-						<td bgcolor="<%=bg_str%>" width=50><%=_details%></td>
-						<td bgcolor="#ffffff" width=50 style="text-align: center;">
-							<a href="menu_manager_op.jsp?op=del&menu_id=1">É¾³ý</a>
-						</td>
+						<td class="<%=td_class%>" width=50><%=_id%></td>
+						<td class="<%=td_class%>" width=200><%=_name%></td>
+						<td class="<%=td_class%>" width=50><%=_style%></td>
+						<td class="<%=td_class%>" width=50><%=_price%></td>
+						<td class="<%=td_class%>" width=50><%=_timestamp%></td>
+						<td class="<%=td_class%>" width=50><%=_details%></td>
+						<td bgcolor="#ffffff" width=50 style="text-align: center;"><a
+							href="menu_manager_op.jsp?op=del&menu_id=1">É¾³ý</a></td>
 					</tr>
 					<%
 						}

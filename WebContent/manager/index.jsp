@@ -16,12 +16,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link href="../css/manager.css" rel="stylesheet" type="text/css" media="all"/>
+<link href="../css/main.css" rel="stylesheet" type="text/css" media="all"/>
 <title>ÏµÍ³¹ÜÀíÒ³Ãæ</title>
 </head>
 
 <body>
-
 	<div id="container">
 		<div id="header">
 			<h1 id="title">ÏµÍ³¹ÜÀíÒ³Ãæ</h1>
@@ -30,10 +29,8 @@
 		if (rs.next()) {
 			System.out.println("find manager " + user);
 	%>
-
-
 		<div id="main">
-			<div id="menu">
+			<div id="menu-v">
 				<ul>
 					<li><a href="../main/index.jsp">·µ»ØÖ÷Ò³</a></li>
 					<li><a href="user_manager.jsp">»áÔ±¹ÜÀí</a></li>

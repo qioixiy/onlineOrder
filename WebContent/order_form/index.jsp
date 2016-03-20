@@ -14,31 +14,49 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link href="../css/main.css" rel="stylesheet" type="text/css"
+	media="all" />
 <title>ÏÂµ¥Ò³Ãæ</title>
 </head>
+
 <body>
+	<%
+		if (rs_menu.next()) {
+			String id = rs_menu.getString("id");
+			String name = rs_menu.getString("name");
+			String style = rs_menu.getString("style");
+			String price = rs_menu.getString("price");
+			String thumb = rs_menu.getString("thumb");
+			String details = rs_menu.getString("details");
+	%>
 
-<%
-if(rs_menu.next()) {
-	String name = rs_menu.getString("name");
-	String thumb = rs_menu.getString("thumb");
-%>
+	<div class="cat"></div>
+	<div class="content">
+		<div>
+			<p>
+				<strong>²ËÃû£º</strong><%=name%></p>
+			<p>
+				<strong>µ¥¼Û£º</strong><%=price%>
+			</p>
+			<p>
+				<strong>ËµÃ÷£º</strong><%=details%>
+			</p>
+			<p>
+				<strong>²ËËùÊôÀà±ð£º</strong><%=style%></p>
+			<img src="../images/thumb/<%=thumb%>" width="150" height=120></img>
+			<form action="commit.jsp">
+				<p>
+					ÇëÊäÈëÊýÁ¿ <input type="text" name="num" /> <input type=hidden
+						name="menu_id" value="<%=request.getParameter("menu_id")%>" /> <input
+						type="submit" value="Ìá½»" />
+				</p>
+			</form>
+		</div>
+	</div>
 
-<div style="width:720px; margin:0px auto;">
-	<h2><%=name%>(<%=menu_id%>)</h2>
-	<img src="../images/thumb/<%=thumb%>" width="150" height=120></img>
-	<form action="commit.jsp">
-		<p>ÊýÁ¿</p>
-		<input type="text" name="num" />
-		<input type=hidden name="menu_id" value="<%=request.getParameter("menu_id")%>"/>
-  		<input type="submit" value="Ìá½»" />
-	</form>
-	
-</div>
-
-<%
-}
-%>
+	<%
+		}
+	%>
 
 </body>
 </html>

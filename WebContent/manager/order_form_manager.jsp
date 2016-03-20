@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link href="../css/manager.css" rel="stylesheet" type="text/css"
+<link href="../css/main.css" rel="stylesheet" type="text/css"
 	media="all" />
 <title>¶©µ¥¹ÜÀíÒ³Ãæ</title>
 </head>
@@ -22,8 +22,9 @@
 		</div>
 
 		<div id="main">
-			<div id="menu">
+			<div id="menu-v">
 				<ul>
+					<li><a href="index.jsp">·µ»Ø¹ÜÀíÖ÷Ò³</a></li>
 					<li><a href="#">²é¿´ËùÓÐµÄ¶©µ¥</a></li>
 				</ul>
 			</div>
@@ -33,31 +34,31 @@
 					Statement order_form_smt = con.createStatement();
 					ResultSet order_form_rs = order_form_smt.executeQuery("select * from order_form order by id desc");
 				%>
-				<table id="table-userinfo" style="text-align: center;" border="1" cellpadding="1"
-					cellspacing="1">
+				<table id="table-userinfo">
 					<%
-						String bg_str = "#F0F0F0";
+						String td_class = "td_class_1";
 						int index = 0;
 					%>
 					<tr bgcolor="ccccc0">
 						<strong>
-						<td width=50>id</td>
-						<td width=200>ÏÂµ¥¶©µ¥</td>
-						<td width=200>ÏÂ¶©µ¥ÓÃ»§(user_id)</td>
-						<td width=130>²Ëµ¥(menu_id)</td>
-						<td width=120>ÐèÒª¶àÉÙ·Ý</td>
-						<td width=130>ÌØÊâÒªÇóËµÃ÷</td></strong>
+							<td width=50>id</td>
+							<td width=200>ÏÂµ¥¶©µ¥</td>
+							<td width=200>ÏÂ¶©µ¥ÓÃ»§(user_id)</td>
+							<td width=130>²Ëµ¥(menu_id)</td>
+							<td width=120>ÐèÒª¶àÉÙ·Ý</td>
+							<td width=130>ÌØÊâÒªÇóËµÃ÷</td>
+						</strong>
 					</tr>
 					<%
 						while (order_form_rs.next()) {
 							if (0 == index++ % 2) {
-								bg_str = "#F0F0F0";
+								td_class = "td_class_1";
 							} else {
-								bg_str = "#F2F272";
+								td_class = "td_class_2";
 							}
 							String _id = order_form_rs.getString("id");
 							String _timestamp = order_form_rs.getString("timestamp");
-							
+
 							String _user_id = order_form_rs.getString("user_id");
 							String username = null;
 							Statement userinfo_smt = con.createStatement();
@@ -66,7 +67,7 @@
 								username = userinfo_rs.getString("user");
 								System.out.println(username);
 							}
-							
+
 							String _menu_id = order_form_rs.getString("menu_id");
 							String menu_name = null;
 							Statement menu_smt = con.createStatement();
@@ -79,15 +80,16 @@
 							String _repeat = order_form_rs.getString("repeat");
 							String _spec = order_form_rs.getString("spec");
 
-							System.out.println("id:" + _id + ",_timestamp:" + _timestamp + ",_user_id:" + _user_id + ",_menu_id:" + _menu_id + "_repeat:"+_repeat+"_spec:"+_spec);
+							System.out.println("id:" + _id + ",_timestamp:" + _timestamp + ",_user_id:" + _user_id + ",_menu_id:"
+									+ _menu_id + "_repeat:" + _repeat + "_spec:" + _spec);
 					%>
 					<tr>
-						<td bgcolor="<%=bg_str%>" width=50><%=_id%></td>
-						<td bgcolor="<%=bg_str%>" width=200><%=_timestamp%></td>
-						<td bgcolor="<%=bg_str%>" width=50><%=username%>(<%=_user_id%>)</td>
-						<td bgcolor="<%=bg_str%>" width=50><%=menu_name%>(<%=_menu_id%>)</td>
-						<td bgcolor="<%=bg_str%>" width=50><%=_repeat%></td>
-						<td bgcolor="<%=bg_str%>" width=50><%=_spec%></td>
+						<td class="<%=td_class%>" width=50><%=_id%></td>
+						<td class="<%=td_class%>" width=200><%=_timestamp%></td>
+						<td class="<%=td_class%>" width=50><%=username%>(<%=_user_id%>)</td>
+						<td class="<%=td_class%>" width=50><%=menu_name%>(<%=_menu_id%>)</td>
+						<td class="<%=td_class%>" width=50><%=_repeat%></td>
+						<td class="<%=td_class%>" width=50><%=_spec%></td>
 						<!-- <td bgcolor="#ffffff" width=50 style="text-align: center;"><form
 								action="user_manager_op.jsp">
 								<input type=hidden name="type" value="del" /> <input
