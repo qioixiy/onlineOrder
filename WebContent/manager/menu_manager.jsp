@@ -47,6 +47,7 @@
 							<td width=50>价格</td>
 							<td width=150>时间</td>
 							<td width=150>简介、说明</td>
+							<td width=150>图片</td>
 						</strong>
 					</tr>
 					<%
@@ -71,6 +72,7 @@
 						<td class="<%=td_class%>" width=50><%=_price%></td>
 						<td class="<%=td_class%>" width=50><%=_timestamp%></td>
 						<td class="<%=td_class%>" width=50><%=_details%></td>
+						<td class="<%=td_class%>" width=150> <img class="item-img" src="../images/thumb/<%=_thumb%>"></img></td>
 						<td bgcolor="#ffffff" width=50 style="text-align: center;"><a
 							href="menu_manager_op.jsp?op=del&menu_id=1">删除</a></td>
 					</tr>
