@@ -99,7 +99,7 @@
 							}
 						%>
 
-						<div align="right">
+						<div class="skip" align="right">
 							第<%=pageInt%>页，转到第
 							<%
 								rs.last();

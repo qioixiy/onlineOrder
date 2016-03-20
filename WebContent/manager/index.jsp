@@ -22,15 +22,15 @@
 
 <body>
 
+	<div id="container">
+		<div id="header">
+			<h1 id="title">系统管理页面</h1>
+		</div>
 	<%
 		if (rs.next()) {
 			System.out.println("find manager " + user);
 	%>
 
-	<div id="container">
-		<div id="header">
-			<h1 id="title">系统管理页面</h1>
-		</div>
 
 		<div id="main">
 			<div id="menu">
@@ -52,8 +52,9 @@
 						ResultSet user_rs = user_smt.executeQuery("select * from userinfo order by id desc");
 						System.out.println("func_id.equals(\"user_manager\")");
 				%>
-				<table id="table-user-manager" border="1" cellpadding="0" cellspacing="0">
-				<%
+				<table id="table-user-manager" border="1" cellpadding="0"
+					cellspacing="0">
+					<%
 						while (user_rs.next()) {
 							String _id = user_rs.getString("id");
 							String _user = user_rs.getString("user");
@@ -61,12 +62,12 @@
 
 							System.out.println("id:" + _id + ",user:" + _user + ",encrypt:" + _encrypt);
 				%>
-					<tr >
+					<tr>
 						<td width=50><%=_id%></td>
 						<td width=100><%=_user%></td>
 						<td width=50><%=_encrypt%></td>
 					</tr>
-				<%
+					<%
 						}
 				%>
 				</table>
@@ -74,21 +75,21 @@
 					}
 				%>
 
+				<%
+					} else {
+						System.out.println(user + " no find");
+				%>
+				<h2 id="err">你不是系统管理员</h2>
+				<a href="../">返回登录页面</a>
+				<%
+					}
+				%>
 			</div>
 		</div>
 
 		<div id="footer"></div>
 	</div>
 
-	<%
-		} else {
-			System.out.println(user + " no find");
-	%>
-	<h2 id="err">你不是系统管理员</h2>
-	<a href="../">返回登录页面</a>
-	<%
-		}
-	%>
 
 </body>
 </html>

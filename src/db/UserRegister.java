@@ -30,6 +30,5 @@ public class UserRegister {
 			e.printStackTrace();
 			throw e;
 		}
-
 	}
 }

@@ -41,6 +41,32 @@ public class Util {
 		}
 		return false;
 	}
+	
+	public static String verfiyUuid(String uuid) {
+		String user = null;
+		jdbc jdbc_conn = new jdbc();
+		Connection con = jdbc_conn.getConn();
+		Statement stmt;
+		try {
+			stmt = con.createStatement();
+			String sql = "select * from  login where uuid='" + uuid + "';";
+			ResultSet rs;
+			try {
+				rs = stmt.executeQuery(sql);
+				String redirect = "";
+				if (rs.next()) {
+					user = new String(rs.getString("user"));
+				}
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		return user;
+	}
 
 	public static String MD5(String s) {
 		final char hexDigits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
