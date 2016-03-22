@@ -3,7 +3,6 @@
 body {
 	font-size: 12px;
 	margin: 0;
-	background: #fff url(../images/bg.jpg) 50% 0 no-repeat;
 }
 
 ul li {
@@ -221,7 +220,7 @@ input::-ms-clear {
 }
 
 h1 {
-	margin: 80px auto 50px auto;
+	margin: 40px auto 50px auto;
 	text-align: center;
 	color: #fff;
 	margin-left: -25px;
@@ -251,9 +250,8 @@ h1 sup {
 }
 
 .jianyi {
-	color: #fff;
 	text-align: center;
-	margin-top: 25px;
+	margin-top: 50px;
 	color: #B3B8C4;
 }
 

@@ -84,9 +84,9 @@
 								</a>
 							</div>
 							<div class="txt">
-								<div class="title">菜名:<%=_name%></div>
-								<div class="price">单价:<%=_price%>元</div>
-								<div class="details">描述:<%=_details%></div>
+								<div class="title"><strong>菜名:</strong><%=_name%></div>
+								<div class="price"><strong>单价:</strong><%=_price%>元</div>
+								<div class="details"><strong>描述:</strong><%=_details%></div>
 								<div class="comments"><a href="../pingjia/index.jsp?menu_id=<%=_id%>">查看评价</a></div>
 								<div class="buy"><a href="../order_form/index.jsp?menu_id=<%=_id%>">下单</a></div>
 							</div>

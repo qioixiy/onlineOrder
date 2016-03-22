@@ -16,7 +16,11 @@
 		基于公安海警学院的网上自助订餐系统<sup>V2016</sup>
 	</h1>
 
-	<div class="login" style="margin-top: 50px;">
+	<div>
+		<img style="float:left; margin-left:100px;" src="images/bg.jpg" width="550px"></img>
+	</div>
+
+	<div class="login" style="margin-top:50px; margin-right:80px; background-color:#ccc; float:right;">
 
 		<div class="header">
 			<div class="switch" id="switch">
@@ -110,6 +114,7 @@
 		</div>
 		<!--注册end-->
 	</div>
-	<div class="jianyi">*推荐使用ie8或以上版本ie浏览器或Chrome内核浏览器访问本站</div>
+	<div style="clear:both;height:0;width:0;"></div>
+	<div class="jianyi" style="float:bottom;">*推荐使用ie8或以上版本ie浏览器或Chrome内核浏览器访问本站</div>
 </body>
 </html>
