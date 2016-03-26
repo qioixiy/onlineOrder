@@ -10,8 +10,14 @@
 
 <body>
 	<%
-		if (misc.Util.loginCheck(session)) {
-			response.sendRedirect("main/index.jsp");
+		String flag = request.getParameter("flag");
+
+		if (flag != null) {
+			if (misc.Util.loginCheck(session)) {
+				response.sendRedirect("main/index.jsp");
+			} else {
+				response.sendRedirect("login/index.jsp");
+			}
 		} else {
 			response.sendRedirect("login/index.jsp");
 		}
