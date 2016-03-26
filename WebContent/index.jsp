@@ -1,4 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@page import="misc.Util"%>
 <html>
 <head>
 <title></title>
@@ -8,8 +9,13 @@
 </head>
 
 <body>
-<%
-	response.sendRedirect("login/index.jsp");
-%>
+	<%
+		if (misc.Util.loginCheck(session)) {
+			response.sendRedirect("main/index.jsp");
+		} else {
+			response.sendRedirect("login/index.jsp");
+		}
+	%>
+
 </body>
 </html>

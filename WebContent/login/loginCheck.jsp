@@ -2,8 +2,6 @@
 	import="java.security.MessageDigest"
 	contentType="text/html;charset=gb2312"%>
 
-<jsp:useBean id="jdbc_conn" scope="page" class="db.jdbc" />
-
 <%
 	String username = new String(request.getParameter("user"));
 	String password = new String(request.getParameter("password"));
@@ -18,14 +16,19 @@
 	// verfiy code
 	String rand = (String) session.getAttribute("rand");
 	String input = request.getParameter("rand");
+	
 	System.out.println(rand + ":" + input);
+	
 	if (!rand.equals(input)) {
-		redirect = "Error.jsp";
+		redirect = "index.jsp?err=verfiy";
 		System.out.println("verfiy code Error");
 	}
+	
 	System.out.println(redirect);
+	
 	if (redirect.equals("")) {
 		redirect = "index.jsp";
 	}
+	
 	response.sendRedirect(redirect);
 %>

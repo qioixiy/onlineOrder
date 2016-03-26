@@ -2,6 +2,9 @@ package misc;
 
 import java.security.MessageDigest;
 import java.sql.*;
+
+import javax.servlet.http.HttpSession;
+
 import db.jdbc;
 
 public class Util {
@@ -92,6 +95,17 @@ public class Util {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
+		}
+	}
+	
+	public static boolean loginCheck(HttpSession session) {
+		String status = (String) session.getAttribute("username");
+		if (status == null) {
+			System.out.println("without login");
+			return false;
+		} else {
+			System.out.println("has login");
+			return true;
 		}
 	}
 }

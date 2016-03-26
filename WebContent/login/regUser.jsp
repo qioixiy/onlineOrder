@@ -5,6 +5,7 @@
 	<jsp:setProperty name="userBean" property="*" />
 </jsp:useBean>
 <jsp:useBean id="regist" class="db.UserRegister" scope="request" />
+
 <html>
 <head>
 <title>用户信息注册页面</title>
@@ -54,7 +55,6 @@
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	%>
 </body>
 </html>
