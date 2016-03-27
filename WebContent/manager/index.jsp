@@ -3,11 +3,11 @@
 <jsp:useBean id="jdbc_conn" scope="page" class="db.jdbc" />
 <%
 	String func_id = request.getParameter("func_id");
-	
+
 	Connection con = jdbc_conn.getConn();
 	Statement manager_smt = con.createStatement();
 	String user = (String) session.getAttribute("username");
-	if(user != null) {
+	if (user != null) {
 		ResultSet rs = manager_smt.executeQuery("select * from manager where username=" + "'" + user + "'");
 		if (rs.next()) {
 			System.out.println("find manager " + user);
@@ -23,6 +23,7 @@
 <link type="text/css" rel="stylesheet" href="css/style.css" />
 <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
+<script type="text/javascript" src="../js/ajax_get_url.js"></script>
 </head>
 
 <body>
@@ -46,7 +47,7 @@
 						<span></span>会员管理
 					</h4>
 					<div class="list-item none">
-						<a href='#'>查看所有</a>
+						<a href='#' onclick="get_url('user_manager.jsp')">查看所有</a>
 					</div>
 				</li>
 				<li>
@@ -54,7 +55,8 @@
 						<span></span>订单处理
 					</h4>
 					<div class="list-item none">
-						<a href='#'>查看所有订单</a> <a href='#'>未处理订单</a> <a href='#'>已完成订单</a>
+						<a href='#' onclick="get_url('order_form_manager.jsp')">查看所有订单</a>
+						<a href='#'>未处理订单</a> <a href='#'>已完成订单</a>
 					</div>
 				</li>
 				<li>
@@ -62,8 +64,9 @@
 						<span></span>菜单管理
 					</h4>
 					<div class="list-item none">
-						<a href=''>查看所有</a><a href=''>添加新的菜式</a> <a href=''>删除菜单</a> <a
-							href=''>修改菜单</a>
+						<a href='#' onclick="get_url('menu_manager.jsp')">查看所有</a><a
+							href='#' onclick="get_url('menu_manager_op.jsp')">添加新的菜式</a> <a
+							href='#'>删除菜单</a> <a href=''>修改菜单</a>
 					</div>
 				</li>
 				<li>
@@ -82,7 +85,9 @@
 					<li><span> </span></li>
 				</ul>
 			</div>
-			<div class="main"></div>
+			<div class="main">
+				<div class="inner-html" id="inner-html-1"></div>
+			</div>
 		</div>
 	</div>
 	<div class="bottom"></div>
