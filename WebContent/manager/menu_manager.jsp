@@ -18,9 +18,9 @@
 			<td width=150>菜名</td>
 			<td width=150>菜的类别</td>
 			<td width=50>价格</td>
-			<td width=150>时间</td>
+			<td width=180>时间</td>
 			<td width=150>简介、说明</td>
-			<td width=150>图片</td>
+			<td width=150></td>
 		</strong>
 	</tr>
 	<%

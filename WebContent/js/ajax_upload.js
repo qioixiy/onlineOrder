@@ -1,4 +1,5 @@
 function go() {
+	alert("for test");
 	f1.submit();
 	document.getElementById("pro").style.display = "block";
 	document.getElementById("prop").style.display = "";

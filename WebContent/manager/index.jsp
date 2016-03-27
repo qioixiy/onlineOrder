@@ -24,6 +24,7 @@
 <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
 <script type="text/javascript" src="../js/ajax_get_url.js"></script>
+<script type="text/javascript" src="../js/ajax_upload.js"></script>
 </head>
 
 <body>
