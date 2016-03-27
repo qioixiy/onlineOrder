@@ -3,13 +3,12 @@
 
 <form action="../servlet/UploadServlet" name="f1" id="f1" method="post"
 	enctype="multipart/form-data" target="if">
-	<input type="file" name="file1" /><br> <input type="button"
-		name="but1" value="上传logo" onclick="go()" />
+	<input type="file" name="file1" /><br>
+	<input type="button" name="but1" value="上传logo" onclick="go()" />
 </form>
 <br>
 <div id="pro" class="pro" align="left">
-	<img alt="" src="../images/progress.png" width="10" height="2"
-		id="imgpro">
+	<img alt="" src="../images/progress.png" width="10" height="2" id="imgpro">
 </div>
 <span id="prop" style="width: 15px; height: 15px; display: none;">0%</span>
 <iframe id="if" name="if" src="" style="display: none"></iframe>

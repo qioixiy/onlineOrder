@@ -31,11 +31,13 @@
 			<%
 				String sql = null;
 				if (menu_name == null || menu_type == null || menu_price == null || menu_detail == null) {
-					;
+					System.out.println("invalid data");
 				} else {
 					Statement menu_smt = con.createStatement();
 					sql = "INSERT INTO `menu` ( `id` , `name` , `style`, `price`, `thumb`, `timestamp`, `details`)"
-							+ "VALUES (NULL," + menu_name + "," + menu_type + "," + menu_price + "," + "'001.jpg'," + "NULL," + menu_detail + ")";
+							+ "VALUES (NULL," + "'" + menu_name + "'" + ","
+							+ "'" + menu_type + "'" + "," + "'" + menu_price + "'" + ","
+							+ "'001.jpg'," + "NULL," + "'" + menu_detail + "'" + ")";
 					System.out.println(sql);
 					menu_smt.execute(sql);
 				}
