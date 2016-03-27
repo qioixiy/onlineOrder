@@ -1,6 +1,5 @@
-<%@page contentType="text/html; charset=gb2312" language="java"
+<%@page contentType="text/html; charset=UTF-8" language="java"
 	import="java.sql.*" errorPage=""%>
-
 <jsp:useBean id="jdbc_conn" scope="page" class="db.jdbc" />
 <%
 	String func_id = request.getParameter("func_id");
@@ -8,85 +7,90 @@
 	Connection con = jdbc_conn.getConn();
 	Statement manager_smt = con.createStatement();
 	String user = (String) session.getAttribute("username");
-	
-	ResultSet rs = manager_smt.executeQuery("select * from manager where username=" + "'" + user + "'");
+	if(user != null) {
+		ResultSet rs = manager_smt.executeQuery("select * from manager where username=" + "'" + user + "'");
+		if (rs.next()) {
+			System.out.println("find manager " + user);
+		}
+	}
 %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link href="../css/main.css" rel="stylesheet" type="text/css" media="all"/>
-<title>ÏµÍ³ºóÌ¨¹ÜÀíÒ³Ãæ</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>åŽå°ç®¡ç†</title>
+<link type="text/css" rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/menu.js"></script>
 </head>
 
 <body>
-	<div id="container">
-		<div id="header">
-			<h1 id="title">ÏµÍ³ºóÌ¨¹ÜÀíÒ³Ãæ</h1>
+	<div class="top"></div>
+	<div id="header">
+		<div class="logo">åŽå°ç®¡ç†</div>
+		<div class="navigation">
+			<ul>
+				<li>æ¬¢è¿Žæ‚¨ï¼</li>
+				<li><a href=""><%=user%></a></li>
+				<li><a href="">é€€å‡º</a></li>
+			</ul>
 		</div>
-	<%
-		if (rs.next()) {
-			System.out.println("find manager " + user);
-	%>
-		<div id="main">
-			<div id="menu-v">
-				<ul>
-					<li><a href="../main/index.jsp">·µ»ØÖ÷Ò³</a></li>
-					<li><a href="user_manager.jsp">»áÔ±¹ÜÀí</a></li>
-					<li><a href="order_form_manager.jsp">¶©µ¥¹ÜÀí</a></li>
-					<li><a href="menu_manager.jsp">²Ëµ¥¹ÜÀí</a></li>
-					<li><a href="news_manager.jsp">ÐÅÏ¢¡¢ÐÂÎÅ¹ÜÀí</a></li>
-				</ul>
-			</div>
-
-			<div id="content">
-				<%
-					if (null == func_id) {
-						;
-					} else if (func_id.equals("user_manager")) {
-						Statement user_smt = con.createStatement();
-						ResultSet user_rs = user_smt.executeQuery("select * from userinfo order by id desc");
-						System.out.println("func_id.equals(\"user_manager\")");
-				%>
-				<table id="table-user-manager" border="1" cellpadding="0"
-					cellspacing="0">
-					<%
-						while (user_rs.next()) {
-							String _id = user_rs.getString("id");
-							String _user = user_rs.getString("user");
-							String _encrypt = user_rs.getString("encrypt");
-
-							System.out.println("id:" + _id + ",user:" + _user + ",encrypt:" + _encrypt);
-				%>
-					<tr>
-						<td width=50><%=_id%></td>
-						<td width=100><%=_user%></td>
-						<td width=50><%=_encrypt%></td>
-					</tr>
-					<%
-						}
-				%>
-				</table>
-				<%
-					}
-				%>
-
-				<%
-					} else {
-						System.out.println(user + " no find");
-				%>
-				<h2 id="err">Äã²»ÊÇÏµÍ³¹ÜÀíÔ±</h2>
-				<a href="../">·µ»ØµÇÂ¼Ò³Ãæ</a>
-				<%
-					}
-				%>
-			</div>
-		</div>
-
-		<div id="footer"></div>
 	</div>
 
-
+	<div id="content">
+		<div class="left_menu">
+			<ul id="nav_dot">
+				<li>
+					<h4 class="M1">
+						<span></span>ä¼šå‘˜ç®¡ç†
+					</h4>
+					<div class="list-item none">
+						<a href='#'>æŸ¥çœ‹æ‰€æœ‰</a>
+					</div>
+				</li>
+				<li>
+					<h4 class="M2">
+						<span></span>è®¢å•å¤„ç†
+					</h4>
+					<div class="list-item none">
+						<a href='#'>æŸ¥çœ‹æ‰€æœ‰è®¢å•</a> <a href='#'>æœªå¤„ç†è®¢å•</a> <a href='#'>å·²å®Œæˆè®¢å•</a>
+					</div>
+				</li>
+				<li>
+					<h4 class="M3">
+						<span></span>èœå•ç®¡ç†
+					</h4>
+					<div class="list-item none">
+						<a href=''>æŸ¥çœ‹æ‰€æœ‰</a><a href=''>æ·»åŠ æ–°çš„èœå¼</a> <a href=''>åˆ é™¤èœå•</a> <a
+							href=''>ä¿®æ”¹èœå•</a>
+					</div>
+				</li>
+				<li>
+					<h4 class="M5">
+						<span></span>å‘å¸ƒæ¶ˆæ¯
+					</h4>
+					<div class="list-item none">
+						<a href=''>æ–°çš„æ¶ˆæ¯</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="m-right">
+			<div class="right-nav">
+				<ul>
+					<li><span> </span></li>
+				</ul>
+			</div>
+			<div class="main"></div>
+		</div>
+	</div>
+	<div class="bottom"></div>
+	<div id="footer">
+		<p>CopyrightÂ© 2016</p>
+	</div>
+	<script>
+		navList(12);
+	</script>
 </body>
 </html>
