@@ -3,7 +3,7 @@
 <html>
 <head>
 <title></title>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 </head>
@@ -14,7 +14,7 @@
 
 		if (flag != null) {
 			if (misc.Util.loginCheck(session)) {
-				response.sendRedirect("main/index.jsp");
+				response.sendRedirect("main_new/index.jsp");
 			} else {
 				response.sendRedirect("login/index.jsp");
 			}

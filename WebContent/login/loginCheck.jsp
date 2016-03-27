@@ -5,6 +5,8 @@
 <%
 	String username = new String(request.getParameter("user"));
 	String password = new String(request.getParameter("password"));
+	System.out.println("username:" + username);
+	System.out.println("password:" + password);
 	String redirect = "";
 	
 	// verfiy User

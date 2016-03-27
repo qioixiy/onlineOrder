@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>系统登录</title>
+<title>用户注册</title>
 <link href="css/login.css" rel="stylesheet" rev="stylesheet"
 	type="text/css" media="all" />
 <link href="css/demo.css" rel="stylesheet" rev="stylesheet"
@@ -70,7 +70,6 @@
 		});
 
 	});
-
 </script>
 
 
@@ -96,26 +95,35 @@
 			<div id="o-box-down" style="table-layout: fixed;">
 				<div class="error-box"></div>
 
-				<form class="registerform_" action="loginCheck.jsp">
+				<form class="registerform_" action="regUser.jsp">
 					<div class="fm-item">
-						<label for="logonId" class="form-label">自助订餐系统登陆：</label> <input
-							type="text" value="" maxlength="100" id="username" name="user" class="i-text"
-							ajaxurl="demo/valid.jsp" datatype="s4-18"
+						<label for="logonId" class="form-label">用户名：</label> <input
+							type="text" value="" maxlength="100" id="username" name="user"
+							class="i-text" ajaxurl="demo/valid.jsp" datatype="s4-18"
 							errormsg="用户名至少4个字符,最多18个字符！">
-							<div class="ui-form-explain"></div>
+						<div class="ui-form-explain"></div>
 					</div>
 
 					<div class="fm-item">
 						<label for="logonId" class="form-label">登陆密码：</label> <input
-							type="password" value="" maxlength="100" id="password" name="password"
-							class="i-text" datatype="*4-16" nullmsg="请设置密码！"
-							errormsg="密码范围在4~16位之间！">
+							type="password" value="" placeholder="Password" maxlength="100"
+							id="password" class="i-text" datatype="*4-16" nullmsg="请设置密码！"
+							name="password" errormsg="密码范围在4~16位之间！">
+						<div class="ui-form-explain"></div>
+					</div>
+
+					<div class="fm-item">
+						<label for="logonId" class="form-label">重复登陆密码：</label> <input
+							type="password" value="" placeholder="Password" maxlength="100"
+							id="password" class="i-text" datatype="*6-16" nullmsg="请确认密码！"
+							errormsg="密码范围在6~16位之间！">
 							<div class="ui-form-explain"></div>
 					</div>
+
 					<div class="fm-item pos-r">
 						<label for="logonId" class="form-label">验证码</label> <input
-							type="text" value="" maxlength="100" id="yzm" class="i-text yzm"
-							nullmsg="请输入验证码！" name="rand">
+							type="text" value="输入验证码" maxlength="100" id="yzm"
+							class="i-text yzm" nullmsg="请输入验证码！">
 							<div class="ui-form-explain">
 								<img src="../verfiy_code/gen_code.jsp" class="yzm-img" />
 							</div>
@@ -124,10 +132,10 @@
 					<div class="fm-item">
 						<label for="logonId" class="form-label"></label>
 						<p>
-							<a href="register.jsp">还没有账号？免费注册</a>
+							<a href="index.jsp">返回登录</a>
 						</p>
 						<input type="submit" value="" tabindex="4" id="send-btn"
-							class="btn-login">
+							class="btn-register">
 							<div class="ui-form-explain"></div>
 					</div>
 
