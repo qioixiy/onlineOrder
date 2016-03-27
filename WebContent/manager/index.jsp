@@ -56,7 +56,9 @@
 					</h4>
 					<div class="list-item none">
 						<a href='#' onclick="get_url('order_form_manager.jsp')">查看所有订单</a>
-						<a href='#'>未处理订单</a> <a href='#'>已完成订单</a>
+						<a href='#' onclick="get_url('order_form_manager.jsp?status=null')">未处理订单</a>
+						<a href='#' onclick="get_url('order_form_manager.jsp?status=handing')">处理中订单</a>
+						<a href='#' onclick="get_url('order_form_manager.jsp?status=completed')">已完成订单</a>
 					</div>
 				</li>
 				<li>

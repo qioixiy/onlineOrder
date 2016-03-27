@@ -5,7 +5,14 @@
 <%
 	Connection con = jdbc_conn.getConn();
 	Statement order_form_smt = con.createStatement();
-	ResultSet order_form_rs = order_form_smt.executeQuery("select * from order_form order by id desc");
+
+	String status = request.getParameter("status");
+
+	String sql = "select * from order_form order by id desc";
+	if (status != null) {
+		sql = "SELECT * FROM `order_form` WHERE status='" + status + "'";
+	}
+	ResultSet order_form_rs = order_form_smt.executeQuery(sql);
 %>
 <table id="table-userinfo">
 	<%
