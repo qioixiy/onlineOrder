@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: 127.0.0.1
--- 生成日期: 2016 年 03 月 20 日 04:39
+-- 生成日期: 2016 年 03 月 27 日 13:55
 -- 服务器版本: 5.1.56
 -- PHP 版本: 5.2.17
 
@@ -83,14 +83,15 @@ CREATE TABLE IF NOT EXISTS `login` (
   `ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `timeout` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=gb2312 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=gb2312 AUTO_INCREMENT=4 ;
 
 --
 -- 转存表中的数据 `login`
 --
 
 INSERT INTO `login` (`id`, `user`, `uuid`, `ts`, `timeout`) VALUES
-(1, 'test', '2b706701-0fa8-494f-8cc5-0427fb252ead', '2016-03-19 12:21:36', '0000-00-00 00:00:00');
+(3, 'root', '5930aa1b-42e0-4810-806e-a041cf107cc7', '2016-03-20 13:01:06', '0000-00-00 00:00:00'),
+(1, 'test', '1a6d0435-ecc6-4e96-8f18-e38b72fda239', '2016-03-19 12:21:36', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -103,16 +104,14 @@ CREATE TABLE IF NOT EXISTS `manager` (
   `username` varchar(20) NOT NULL,
   `level` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=gb2312 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=gb2312 COMMENT='管理员账户' AUTO_INCREMENT=2 ;
 
 --
 -- 转存表中的数据 `manager`
 --
 
 INSERT INTO `manager` (`id`, `username`, `level`) VALUES
-(1, 'root', 1),
-(2, 'root', 1),
-(3, 'user1', 1);
+(1, 'root', 1);
 
 -- --------------------------------------------------------
 
@@ -129,26 +128,27 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `details` varchar(1024) NOT NULL COMMENT '菜单的详细说明，请注意填写',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=gb2312 AUTO_INCREMENT=17 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=gb2312 AUTO_INCREMENT=15 ;
 
 --
 -- 转存表中的数据 `menu`
 --
 
 INSERT INTO `menu` (`id`, `name`, `style`, `price`, `thumb`, `timestamp`, `details`) VALUES
-(1, '小猪猪', '蔬菜', 88, '001.jpg', '2016-03-06 00:00:00', '仅售88元，价值100元代金券，不限时段通用，除饮料、酒水外全场通用，独家合作！限量抢购！'),
-(2, '掌柜的店纯朴中原菜 ', '蔬菜', 89, '002.jpg', '2016-03-07 00:00:00', '仅售89元！价值100元的代金券1份，除酒水外全场通用，可叠加使用，提供免费WiFi。'),
-(3, '棒约翰比萨', '蔬菜', 90, '003.jpg', '2016-03-01 00:00:00', '价值100元的棒约翰代金券1张，除工作日午市套餐外全场通用，可叠加使用，提供免费WiFi。'),
-(4, 'PizzaExpress 马上诺 ', '蔬菜', 280, '004.jpg', '2016-03-07 00:00:00', '仅售289元！最高价值468元的马上诺蜜语双人套餐，提供免费WiFi'),
-(5, '东北风 ', '蔬菜', 98, '005.jpg', '2016-03-07 00:00:00', '仅售95元！价值100元的代金券1张，全场通用，可叠加使用。'),
-(6, '云海肴云南菜', '蔬菜', 101, '006.jpg', '2016-03-06 00:00:00', '仅售91元，价值100元代金券，全场通用，可叠加，不限时段通用，免费WiFi！知名品牌，联手点评，重磅推出，火爆魔都'),
-(7, '汉拿山 ', '蔬菜', 90, '007.jpg', '2016-03-03 00:00:00', '仅售90元！价值100元的代金券1张，全场通用，可叠加使用'),
-(8, '俏江南', '蔬菜', 75, '008.jpg', '2016-03-05 00:00:00', '仅售75元，价值100元代金券，全场通用，可叠加，不限时段通用！'),
-(9, '上海会馆 ', '蔬菜', 88, '009.jpg', '2016-03-05 00:00:00', '仅售88元，价值100元现金抵用券，不限时段通用'),
-(10, '成隆行蟹王府 ', '蔬菜', 1688, '010.jpg', '2016-03-04 00:00:00', '仅售1688元！价值3192元的10人套餐，提供免费WiFi'),
-(11, '四海游龙 ', '蔬菜', 16.9, '011.jpg', '2016-03-02 00:00:00', '仅售16.9元，价值20元代金券，全场通用，可叠加，不限时段通用'),
-(12, '食之秘', '蔬菜', 89, '012.jpg', '2016-03-01 00:00:00', '仅售89元，价值100元电子现金券，全场通用，可叠加，不限时段通用！'),
-(16, '1', '2', 3, '001.jpg', '2016-03-07 22:08:43', '4');
+(1, '干锅手撕包菜', '蔬菜', 5, '1.jpg', '2016-03-27 21:28:16', '包菜（牛心菜）、五花肉、干辣椒'),
+(2, '鱼香肉丝', '荤菜', 7, '2.jpg', '2016-03-27 21:29:30', '瘦肉、黑木耳、胡萝卜、?椒、豆瓣酱，葱姜蒜、'),
+(3, '糖醋排骨', '荤菜', 10, '3.jpg', '2016-03-27 21:30:58', '猪肋排、盐、料酒、酱油、冰糖、白醋、八角'),
+(4, '干锅土豆片', '蔬菜', 6, '4.jpg', '2016-03-27 21:32:03', '土豆、豆瓣酱 | 姜，蒜，葱，辣椒、猪肉、香菇'),
+(5, '蒜香蒸茄子', '蔬菜', 7, '5.jpg', '2016-03-27 21:32:46', '茄子、大蒜，生姜，青椒、生抽、料酒、鱼露'),
+(6, '干锅菜花', '蔬菜', 6, '6.jpg', '2016-03-27 21:33:13', '菜花 | 五花肉、姜、蒜、辣椒、盐、酱油'),
+(7, '酸辣土豆丝', '蔬菜', 5, '7.jpg', '2016-03-27 21:33:36', '土豆、青椒、干辣椒、花椒、姜、蒜、盐、鸡精、醋'),
+(8, '家常菜 蚝油生菜', '蔬菜', 5, '8.jpg', '2016-03-27 21:35:05', '生菜、蚝油、白糖、生粉、清水 '),
+(9, '糖醋里脊', '荤菜', 11, '9.jpg', '2016-03-27 21:35:37', '猪里脊、生粉 | 白糖、番茄酱、鸡蛋、姜、白胡椒粉'),
+(10, '糖醋藕丁', '蔬菜', 6, '10.jpg', '2016-03-27 21:36:27', '藕、糖 | 葱花、老抽、盐、鸡精'),
+(11, '红烧豆腐', '蔬菜', 7, '11.jpg', '2016-03-27 21:37:34', '豆腐、猪肉 | 葱、姜、蒜、豆瓣酱、生抽、老抽'),
+(12, '白菜炖粉条', '蔬菜', 5, '12.jpg', '2016-03-27 21:39:31', '白菜、粉条 | 五花肉、香菇、葱、姜、八角、盐、鸡'),
+(13, '麻辣香锅', '蔬菜', 13, '13.jpg', '2016-03-27 21:40:01', '莲藕、莴笋、土豆、菜花（小）、木耳、芹菜、大葱'),
+(14, '番茄炒蛋', '蔬菜', 8, '14.jpg', '2016-03-27 21:42:20', '番茄、鸡蛋 | 盐、糖 ');
 
 -- --------------------------------------------------------
 
@@ -191,19 +191,23 @@ CREATE TABLE IF NOT EXISTS `order_form` (
   `menu_id` int(11) NOT NULL COMMENT '对应菜单的id是多少',
   `repeat` int(11) NOT NULL DEFAULT '1' COMMENT '需要多少份？',
   `spec` varchar(1024) NOT NULL COMMENT '有没有什么特殊要求说明',
+  `status` varchar(100) NOT NULL DEFAULT 'null' COMMENT '订单状态，未处理、处理中、已经处理',
   `dish_id` varchar(20) NOT NULL DEFAULT 'unkown' COMMENT '餐盘id',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=gb2312 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=gb2312 AUTO_INCREMENT=8 ;
 
 --
 -- 转存表中的数据 `order_form`
 --
 
-INSERT INTO `order_form` (`id`, `timestamp`, `user_id`, `menu_id`, `repeat`, `spec`, `dish_id`) VALUES
-(1, '2016-03-06 00:00:00', 3, 12, 2, '加急做啊', 'unkown'),
-(2, '2016-03-06 17:25:22', 1, 10, 2, 'null', 'unkown'),
-(3, '2016-03-06 18:27:16', 1, 11, 3, 'null', 'unkown'),
-(4, '2016-03-19 23:46:16', 3, 10, 12, 'null', 'unkown');
+INSERT INTO `order_form` (`id`, `timestamp`, `user_id`, `menu_id`, `repeat`, `spec`, `status`, `dish_id`) VALUES
+(1, '2016-03-06 00:00:00', 3, 12, 2, '加急做啊', 'handing', 'unkown'),
+(2, '2016-03-06 17:25:22', 1, 10, 2, 'null', 'completed', 'unkown'),
+(3, '2016-03-06 18:27:16', 1, 11, 3, 'null', 'completed', 'unkown'),
+(4, '2016-03-19 23:46:16', 3, 10, 12, 'null', 'completed', 'unkown'),
+(5, '2016-03-20 22:32:40', 1, 12, 2, 'null', 'null', 'unkown'),
+(6, '2016-03-20 22:33:03', 1, 12, 2, 'null', 'null', 'unkown'),
+(7, '2016-03-20 22:33:43', 1, 5, 23, 'null', 'null', 'unkown');
 
 -- --------------------------------------------------------
 
@@ -350,17 +354,18 @@ INSERT INTO `pingjia` (`id`, `menu_id`, `data`, `score`, `timestamp`) VALUES
 CREATE TABLE IF NOT EXISTS `userinfo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` varchar(40) DEFAULT NULL,
+  `email` varchar(40) NOT NULL DEFAULT 'a@b.c' COMMENT '邮箱',
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `encrypt` tinyint(1) NOT NULL DEFAULT '1' COMMENT '密码是否加密了',
   `password` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=gb2312 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=gb2312 AUTO_INCREMENT=5 ;
 
 --
 -- 转存表中的数据 `userinfo`
 --
 
-INSERT INTO `userinfo` (`id`, `user`, `timestamp`, `encrypt`, `password`) VALUES
-(1, 'root', '2016-03-19 00:00:00', 0, 'password'),
-(2, 'username', '2016-03-19 00:00:00', 0, 'password'),
-(3, 'test', '2016-03-19 00:00:00', 1, '098F6BCD4621D373CADE4E832627B4F6');
+INSERT INTO `userinfo` (`id`, `user`, `email`, `timestamp`, `encrypt`, `password`) VALUES
+(1, 'root', 'a@b.c', '2016-03-19 00:00:00', 0, 'password'),
+(2, 'username', 'a@b.c', '2016-03-19 00:00:00', 0, 'password'),
+(3, 'test', 'a@b.c', '2016-03-19 00:00:00', 1, '098F6BCD4621D373CADE4E832627B4F6');
