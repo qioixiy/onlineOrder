@@ -5,7 +5,7 @@
 
 <%
 	if (!misc.Util.loginCheck(session)) {
-		response.sendRedirect("login/index.jsp");
+		response.sendRedirect("../login/index.jsp");
 	}
 %>
 
@@ -18,7 +18,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=gb2312" />
-<link href="../css/main.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../css/main.css" rel="stylesheet" type="text/css"
+	media="all" />
 <title>自助订餐系统主页</title>
 </head>
 
@@ -27,14 +28,14 @@
 		<div id="header">
 			<div class="login_status">
 				<%
-					String status = (String)session.getAttribute("username");
-					if (status == null) {
-						status = "请登录";
-					} else {
+					String username = (String) session.getAttribute("username");
+					String status = "请登录";
+					if (username != null) {
 						status = "欢迎你" + session.getAttribute("username");
 					}
 				%>
-				<p> <%=status%></p>
+				<p>
+					<%=status%></p>
 			</div>
 
 			<div id="menu">
@@ -42,26 +43,22 @@
 					<li><a href="../index.jsp">首页</a></li>
 					<li><a href="../manager/index.jsp">系统管理</a></li>
 					<li><a href="../liuyan/comments.jsp">查看留言</a></li>
-					<li><a href="http://www.gahjxy.com/xxgk/show.aspx?id=14&cid=13">关于我们</a></li>
+					<li><a
+						href="http://www.gahjxy.com/xxgk/show.aspx?id=14&cid=13">关于我们</a></li>
 				</ul>
 			</div>
 			<div class="div-clear"></div>
-			<div id="title">
-				<h1>自助订餐系统</h1>
-			</div>
 		</div>
 		<div id="main">
-			<div class="cat">
-			</div>
-			
+
 			<div class="content">
-				<div id="shop-all-list">
+				<div id="list-all">
 					<ul>
 						<%
 							int page_size = 10;
 							String pages = request.getParameter("page");
 							if (null == pages) {
-								pages="1";
+								pages = "1";
 							}
 							System.out.println("pages:" + pages);
 
@@ -85,22 +82,32 @@
 								String _details = rs.getString("details");
 								System.out.println("name:" + _name + ",thumb:" + _thumb);
 						%>
+						<span>
 						<li class="item">
 							<div class="pic">
-								<a title="" rel="nofollow" href="#" target="_blank">
-									<img class="item-img" src="../images/thumb/<%=_thumb%>"></img>
+								<a title="" rel="nofollow" href="#" target="_blank"> <img
+									class="item-img" src="../images/thumb/<%=_thumb%>"></img>
 								</a>
 							</div>
 							<div class="txt">
-								<div class="title"><strong>菜名:</strong><%=_name%></div>
-								<div class="price"><strong>单价:</strong><%=_price%>元</div>
-								<div class="details"><strong>描述:</strong><%=_details%></div>
-								<div class="comments"><a href="../pingjia/index.jsp?menu_id=<%=_id%>">查看评价</a></div>
-								<div class="buy"><a href="../order_form/index.jsp?menu_id=<%=_id%>">下单</a></div>
+								<div class="title">
+									<strong>菜名:</strong><%=_name%></div>
+								<div class="price">
+									<strong>单价:</strong><%=_price%>元
+								</div>
+								<div class="details">
+									<strong>描述:</strong><%=_details%></div>
+								<div class="comments">
+									<a href="../pingjia/index.jsp?menu_id=<%=_id%>">查看评价</a>
+								</div>
+								<div class="buy">
+									<a href="../order_form/index.jsp?menu_id=<%=_id%>">下单</a>
+								</div>
 							</div>
 							<div class="info"></div>
 							<div class="div-clear"></div>
 						</li>
+						</span>
 						<%
 							}
 						%>
@@ -108,13 +115,13 @@
 						<div class="skip" align="right">
 							第<%=pageInt%>页，转到第
 							<%
-								rs.last();
-								int rowCount = rs.getRow();
-								System.out.println("rowCount:" + rowCount + ",page_size:" + page_size);
-								int j = 1;
-								for (j = 1; j <= (rowCount + page_size) / page_size; j++) {
-							%>
-									<a href="index.jsp?page=<%=j%>"><%=j%></a>
+							rs.last();
+							int rowCount = rs.getRow();
+							System.out.println("rowCount:" + rowCount + ",page_size:" + page_size);
+							int j = 1;
+							for (j = 1; j <= (rowCount + page_size) / page_size; j++) {
+						%>
+							<a href="index.jsp?page=<%=j%>"><%=j%></a>
 							<%
 								}
 							%>页
@@ -123,28 +130,30 @@
 				</div>
 			</div>
 			<div class="sidebar">
-				<div class="new">
+				<div id="gwc">
+				</div>
+				<div id="new">
 					<div id="title">
 						<span><strong>新闻信息</strong></span>
 					</div>
 					<div id="new-content">
 						<ul>
-						<%
-							rs = stmt.executeQuery("select * from news order by id desc");
+							<%
+								rs = stmt.executeQuery("select * from news order by id desc");
 
-							int news_max_size = 10;
-							int title_max_len = 7;
-							for (i = 0; rs.next() && i < news_max_size; i++) {
-								String _id = rs.getString("id");
-								String _title = rs.getString("title");
-								if (_title.length() > title_max_len) {
-									_title = _title.substring(0, title_max_len) + "...";
-								}
-						%>
+								int news_max_size = 10;
+								int title_max_len = 7;
+								for (i = 0; rs.next() && i < news_max_size; i++) {
+									String _id = rs.getString("id");
+									String _title = rs.getString("title");
+									if (_title.length() > title_max_len) {
+										_title = _title.substring(0, title_max_len) + "...";
+									}
+							%>
 							<li><a href="../news/index.jsp?id=<%=_id%>"><%=_title%></a></li>
-						<%
-							}
-						%>
+							<%
+								}
+							%>
 						</ul>
 					</div>
 				</div>
