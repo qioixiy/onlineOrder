@@ -50,12 +50,21 @@
 			<div class="div-clear"></div>
 		</div>
 		<div id="main">
-
+			<div class="navi">
+				<div id="navi-menu">
+					<ul>
+					<li><a href="index.jsp?search=all">全部分类</a></li>
+					<li><a href="index.jsp?search=jiachangcai">家常菜</a></li>
+					<li><a href="index.jsp?search=huncai">荤菜</a></li>
+					<li><a href="index.jsp?search=sucai">素菜</a></li>
+					</ul>
+				</div>
+			</div>
 			<div class="content">
-				<div id="list-all">
+				<div class="list-all">
 					<ul>
 						<%
-							int page_size = 10;
+							int page_size = 5;
 							String pages = request.getParameter("page");
 							if (null == pages) {
 								pages = "1";
@@ -130,7 +139,7 @@
 				</div>
 			</div>
 			<div class="sidebar">
-				<div id="gwc">
+				<div id="gouwuche">
 				</div>
 				<div id="new">
 					<div id="title">

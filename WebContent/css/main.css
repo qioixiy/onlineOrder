@@ -56,16 +56,33 @@ li {
 {
     background-color:#eee;
 }
+
+#main {
+    margin-top:10px;
+}
 #main li {margin:0px; }
 
+#main .navi {
+	float:left;
+	width:15%;
+}
+#main .navi #navi-menu {
+	height:100px;
+	padding-left: 20px;
+	padding-top: 20px;
+	color:#922;
+	background-color:#fff;
+}
+
 #main .content {
-    width:70%;
-    margin-top:10px;
+	float:left;
+    width:65%;
     background-color:#fff;
     border:0px #F00 solid;
 }
-#main .content #list-all {
+#main .content .list-all {
 	margin: 10px;
+	padding:10px;
 }
 #table-userinfo {
 	cellspacing:0px;
@@ -109,35 +126,28 @@ li {
     padding:4px;
 }
 #main .sidebar{
-	width:30%;
+	width:20%;
     border:0px #F00 solid;
 }
 #footer {
 	text-align:center;
 	line-height:1.5;
-	margin:10px 0;
 	padding-top:40px;
     height:50px;
 }
 
-.content {
-    float:left;
-    width:700px;
-    height:100%;
-    margin:0px auto;
-}
 .sidebar {
  	float:left;
     width:200px;
     border:0px #333 solid;
     padding-bottom:20px;
 }
-.sidebar #new,#gwc {
+.sidebar #new,#gouwuche {
 	background-color:#fff;
-	margin:10px 0px 10px 10px;
+	margin:0px 0px 10px 10px;
 	padding:10px;
 	border:0px #333 solid;
 }
-.sidebar #gwc {
+.sidebar #gouwuche {
 	height:100px;
 }
