@@ -1,3 +1,4 @@
+
 /* common */
 * {
 	padding:0px;
@@ -32,12 +33,41 @@ li {
 
 #header {
     width:100%;
-    height:80px;
+    height:120px;
     background-color:#f8f8f8;
     border:0px #000 solid;
+	color:#922;
 }
-.login_status {
+#header .login_status {
 	float:left;
+	margin:10px;
+}
+
+#search-box {
+	width: 326px;
+	height: 29px;
+	margin: 0 auto;
+	padding:20px;
+}
+
+.input-box {
+	float: left;
+	width: 220px;
+	height: 29px;
+	line-height: 29px;
+	padding-left: 11px;
+	border: 1px;
+	text-align: left;
+	font-size: 14px
+}
+
+.button {
+	float: right;
+	border: 0px;
+	/*text-indent: -999px;*/
+	width: 70px;
+	height: 29px;
+	cursor: pointer
 }
 
 #menu ul {float:right;}
@@ -62,25 +92,23 @@ li {
 }
 #main li {margin:0px; }
 
-#main .navi {
+.content {
 	float:left;
-	width:15%;
+    width:80%;
+    border:0px #F00 solid;
+	background-color:#fff;
 }
-#main .navi #navi-menu {
-	height:100px;
+.content .navi {
+	float:left;
+	width:15%;	
 	padding-left: 20px;
 	padding-top: 20px;
 	color:#922;
 	background-color:#fff;
 }
 
-#main .content {
+.content .list-all {
 	float:left;
-    width:65%;
-    background-color:#fff;
-    border:0px #F00 solid;
-}
-#main .content .list-all {
 	margin: 10px;
 	padding:10px;
 }

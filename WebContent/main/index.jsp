@@ -12,6 +12,9 @@
 <%
 	Connection con = jdbc_conn.getConn();
 	Statement stmt = con.createStatement();
+
+	String search = request.getParameter("search");
+	System.out.println("search:" + search);
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -47,20 +50,27 @@
 						href="http://www.gahjxy.com/xxgk/show.aspx?id=14&cid=13">关于我们</a></li>
 				</ul>
 			</div>
+
 			<div class="div-clear"></div>
+			<form action="" method="get">
+				<div id="search-box">
+					<input name="" type="text" class="input-box" /> <input
+						name="search" type="submit" value="搜索" class="button" />
+				</div>
+				<div class="div-clear"></div>
 		</div>
 		<div id="main">
-			<div class="navi">
-				<div id="navi-menu">
-					<ul>
-					<li><a href="index.jsp?search=all">全部分类</a></li>
-					<li><a href="index.jsp?search=jiachangcai">家常菜</a></li>
-					<li><a href="index.jsp?search=huncai">荤菜</a></li>
-					<li><a href="index.jsp?search=sucai">素菜</a></li>
-					</ul>
-				</div>
-			</div>
 			<div class="content">
+				<div class="navi">
+					<div id="navi-menu">
+						<ul>
+							<li><a href="index.jsp?search=all">全部分类</a></li>
+							<li><a href="index.jsp?search=jiachangcai">家常菜</a></li>
+							<li><a href="index.jsp?search=huncai">荤菜</a></li>
+							<li><a href="index.jsp?search=sucai">素菜</a></li>
+						</ul>
+					</div>
+				</div>
 				<div class="list-all">
 					<ul>
 						<%
@@ -71,7 +81,24 @@
 							}
 							System.out.println("pages:" + pages);
 
-							ResultSet rs = stmt.executeQuery("select * from menu order by id desc");
+							ResultSet rs = null;
+							String filter = null;
+							String sql = "select * from menu order by id desc";
+							if (search != null) {
+								if (search.equals("jiachangcai")) {
+									String f = "家常菜";
+									sql = "select * from menu where style2='" + f + "'";
+								} else if (search.equals("sucai")) {
+									filter = "素菜";
+								} else if (search.equals("huncai")) {
+									filter = "荤菜";
+								}
+								if (null != filter) {
+									sql = "select * from menu where style='" + filter + "'";
+								}
+							}
+							System.out.println(sql);
+							rs = stmt.executeQuery(sql);
 
 							int i = 0, pageInt = Integer.parseInt(pages);
 							int skip = page_size * (pageInt - 1);
@@ -82,39 +109,43 @@
 								i++;
 							}
 							i = 0;
+
 							while (rs.next() && i < page_size) {
 								i++;
 								String _id = rs.getString("id");
 								String _name = rs.getString("name");
+								String style = rs.getString("style");
+								String style2 = rs.getString("style2");
 								String _thumb = rs.getString("thumb");
 								String _price = rs.getString("price");
 								String _details = rs.getString("details");
+
 								System.out.println("name:" + _name + ",thumb:" + _thumb);
 						%>
 						<span>
-						<li class="item">
-							<div class="pic">
-								<a title="" rel="nofollow" href="#" target="_blank"> <img
-									class="item-img" src="../images/thumb/<%=_thumb%>"></img>
-								</a>
-							</div>
-							<div class="txt">
-								<div class="title">
-									<strong>菜名:</strong><%=_name%></div>
-								<div class="price">
-									<strong>单价:</strong><%=_price%>元
+							<li class="item">
+								<div class="pic">
+									<a title="" rel="nofollow" href="#" target="_blank"> <img
+										class="item-img" src="../images/thumb/<%=_thumb%>"></img>
+									</a>
 								</div>
-								<div class="details">
-									<strong>描述:</strong><%=_details%></div>
-								<div class="comments">
-									<a href="../pingjia/index.jsp?menu_id=<%=_id%>">查看评价</a>
+								<div class="txt">
+									<div class="title">
+										<strong>菜名:</strong><%=_name%></div>
+									<div class="price">
+										<strong>单价:</strong><%=_price%>元
+									</div>
+									<div class="details">
+										<strong>描述:</strong><%=_details%></div>
+									<div class="comments">
+										<a href="../pingjia/index.jsp?menu_id=<%=_id%>">查看评价</a>
+									</div>
+									<div class="buy">
+										<a href="../order_form/index.jsp?menu_id=<%=_id%>">下单</a>
+									</div>
 								</div>
-								<div class="buy">
-									<a href="../order_form/index.jsp?menu_id=<%=_id%>">下单</a>
-								</div>
-							</div>
-							<div class="info"></div>
-							<div class="div-clear"></div>
+								<div class="info"></div>
+								<div class="div-clear"></div>
 						</li>
 						</span>
 						<%
@@ -139,8 +170,7 @@
 				</div>
 			</div>
 			<div class="sidebar">
-				<div id="gouwuche">
-				</div>
+				<div id="gouwuche"></div>
 				<div id="new">
 					<div id="title">
 						<span><strong>新闻信息</strong></span>
