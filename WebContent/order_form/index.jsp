@@ -4,6 +4,10 @@
 <jsp:useBean id="jdbc_conn" scope="page" class="db.jdbc" />
 
 <%
+	if (!misc.Util.loginCheck(session)) {
+		response.sendRedirect("../login/index.jsp");
+	}
+
 	Connection con = jdbc_conn.getConn();
 	Statement stmt = con.createStatement();
 	String menu_id = request.getParameter("menu_id");
@@ -19,7 +23,7 @@
 <title>ÏÂµ¥Ò³Ãæ</title>
 </head>
 
-<body>
+<body id="body">
 	<%
 		if (rs_menu.next()) {
 			String id = rs_menu.getString("id");

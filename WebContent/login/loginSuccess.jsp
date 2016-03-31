@@ -9,7 +9,7 @@
 	<%=session.getAttribute("user")%>
 	<%
 		session.setAttribute("login", "true");
-		session.setMaxInactiveInterval(60 * 3);
+		session.setMaxInactiveInterval(60 * 15);
 		response.sendRedirect("../main/");
 	%>
 </body>
