@@ -59,17 +59,18 @@
 						}
 					}
 					String tt = null;
+					String tt_href = null;
 					if (user_type.equals("manager")) {
 						tt = "系统管理";
+						tt_href="../manager/index.jsp";
 					} else if (user_type.equals("user")) {
 						tt = "我的帐户";
+						tt_href="../manager/index.jsp";
 					}
 					%>
-					<li><a href="../manager/index.jsp"><%=tt%></a></li>
-					
+					<li><a href="<%=tt_href%>"><%=tt%></a></li>
 					<li><a href="../liuyan/comments.jsp">查看留言</a></li>
-					<li><a
-						href="http://www.gahjxy.com/xxgk/show.aspx?id=14&cid=13">关于我们</a></li>
+					<li><a href="../login/index.jsp">退出</a></li>
 				</ul>
 			</div>
 

@@ -35,7 +35,7 @@
 			<ul>
 				<li>欢迎您！</li>
 				<li><a href=""><%=user%></a></li>
-				<li><a href="">退出</a></li>
+				<li><a href="../login/">退出</a></li>
 			</ul>
 		</div>
 	</div>
