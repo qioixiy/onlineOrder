@@ -7,9 +7,6 @@
 	if (!misc.Util.loginCheck(session)) {
 		response.sendRedirect("../login/index.jsp");
 	}
-%>
-
-<%
 	Connection con = jdbc_conn.getConn();
 	Statement stmt = con.createStatement();
 
@@ -45,31 +42,31 @@
 				<ul>
 					<li><a href="../index.jsp">首页</a></li>
 					<%
-					String user_type = "user";
-					{
-						Statement stmt_manager = con.createStatement();
-						String sql = "select * from manager where `username`='" + username + "'";
-						System.out.println(sql);
-						ResultSet rs = stmt.executeQuery(sql);
-						if (rs.next()) {
-							System.out.println("you are manager");
-							user_type = "manager";
-						} else {
-							;
+						String user_type = "user";
+						{
+							Statement stmt_manager = con.createStatement();
+							String sql = "select * from manager where `username`='" + username + "'";
+							System.out.println(sql);
+							ResultSet rs = stmt.executeQuery(sql);
+							if (rs.next()) {
+								System.out.println("you are manager");
+								user_type = "manager";
+							} else {
+								;
+							}
 						}
-					}
-					String tt = null;
-					String tt_href = null;
-					if (user_type.equals("manager")) {
-						tt = "系统管理";
-						tt_href="../manager/index.jsp";
-					} else if (user_type.equals("user")) {
-						tt = "我的帐户";
-						tt_href="../manager/index.jsp";
-					}
+						String tt = null;
+						String tt_href = null;
+						if (user_type.equals("manager")) {
+							tt = "系统管理";
+							tt_href = "../manager/index.jsp";
+						} else if (user_type.equals("user")) {
+							tt = "我的帐户";
+							tt_href = "../manager/index.jsp";
+						}
 					%>
 					<li><a href="<%=tt_href%>"><%=tt%></a></li>
-					<li><a href="../liuyan/comments.jsp">查看留言</a></li>
+					<li><a href="../liuyan/index.jsp">查看留言</a></li>
 					<li><a href="../login/index.jsp">退出</a></li>
 				</ul>
 			</div>
@@ -77,23 +74,23 @@
 			<div class="div-clear"></div>
 			<form action="" method="get">
 				<div id="search-box">
-					<input name="" type="text" class="input-box" /> <input name="search"
-						type="submit" value="搜索" class="button" />
+					<input name="" type="text" class="input-box" /> <input
+						name="search" type="submit" value="搜索" class="button" />
 				</div>
 				<div class="div-clear"></div>
 		</div>
 		<div id="main">
-		<div class="content">
-			<div class="navi">
-				<div id="navi-menu">
-					<ul>
-						<li><a href="index.jsp?search=all">全部分类</a></li>
-						<li><a href="index.jsp?search=jiachangcai">家常菜</a></li>
-						<li><a href="index.jsp?search=huncai">荤菜</a></li>
-						<li><a href="index.jsp?search=sucai">素菜</a></li>
-					</ul>
+			<div class="content">
+				<div class="navi">
+					<div id="navi-menu">
+						<ul>
+							<li><a href="index.jsp?search=all">全部分类</a></li>
+							<li><a href="index.jsp?search=jiachangcai">家常菜</a></li>
+							<li><a href="index.jsp?search=huncai">荤菜</a></li>
+							<li><a href="index.jsp?search=sucai">素菜</a></li>
+						</ul>
+					</div>
 				</div>
-			</div>
 				<div class="list-all">
 					<ul>
 						<%
@@ -182,7 +179,7 @@
 							int rowCount = rs.getRow();
 							System.out.println("rowCount:" + rowCount + ",page_size:" + page_size);
 							int j = 1;
-							for (j = 1; j <= (rowCount + page_size-1) / page_size; j++) {
+							for (j = 1; j <= (rowCount + page_size - 1) / page_size; j++) {
 						%>
 							<a href="index.jsp?search=<%=search%>&page=<%=j%>"><%=j%></a>
 							<%
