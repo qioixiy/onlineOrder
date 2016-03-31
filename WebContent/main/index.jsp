@@ -26,7 +26,7 @@
 <title>自助订餐系统主页</title>
 </head>
 
-<body id="body">
+<body>
 	<div id="container">
 		<div id="header">
 			<div class="login_status">

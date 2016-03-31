@@ -21,7 +21,7 @@
 <title>∆¿º€“≥√Ê</title>
 </head>
 
-<body id="body">
+<body>
 	<div id="container">
 
 		<div id="header">

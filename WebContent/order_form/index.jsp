@@ -23,7 +23,7 @@
 <title>下单页面</title>
 </head>
 
-<body id="body">
+<body>
 	<%
 		if (rs_menu.next()) {
 			String id = rs_menu.getString("id");
@@ -34,9 +34,28 @@
 			String details = rs_menu.getString("details");
 	%>
 
-	<div class="cat"></div>
-	<div class="content">
-		<div>
+	<div id="container">
+		<div id="header">
+			<div class="login_status">
+				<%
+					String username = (String) session.getAttribute("username");
+						String status = "请登录";
+						if (username != null) {
+							status = "欢迎你" + session.getAttribute("username");
+						}
+				%>
+				<p>
+					<%=status%></p>
+			</div>
+			<div id="menu">
+				<ul>
+					<li><a href="../index.jsp">首页</a></li>
+					<li><a href="../main/index.jsp">返回主页</a></li>
+					<li><a href="../login/index.jsp">退出</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="">
 			<p>
 				<strong>菜名：</strong><%=name%></p>
 			<p>
@@ -55,6 +74,11 @@
 						type="submit" value="提交" />
 				</p>
 			</form>
+		</div>
+		<div class="div-clear"></div>
+		<div id="footer">
+			<p>地址：浙江省宁波市北仑区振兴西路205号&nbsp;&nbsp;总机：0574-86155210</p>
+			<p>CopyRight&nbsp;&nbsp;公安海警学院信息公开 2016</p>
 		</div>
 	</div>
 
