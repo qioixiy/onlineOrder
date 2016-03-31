@@ -26,6 +26,7 @@ li {
     width:1024px;
     margin:0px auto;
 }
+
 .center {
 	text-align:center;
 	margin:0 auto;
@@ -38,38 +39,16 @@ li {
     border:0px #000 solid;
 	color:#922;
 }
+
 #header .login_status {
 	float:left;
 	margin:10px;
 }
-
-#search-box {
-	width: 326px;
-	height: 29px;
-	margin: 0 auto;
-	padding:20px;
+#header #menu {
+	float:right;
+	margin:10px;
+    border:0px #000 solid;
 }
-
-.input-box {
-	float: left;
-	width: 220px;
-	height: 29px;
-	line-height: 29px;
-	padding-left: 11px;
-	border: 1px;
-	text-align: left;
-	font-size: 14px
-}
-
-.button {
-	float: right;
-	border: 0px;
-	/*text-indent: -999px;*/
-	width: 70px;
-	height: 29px;
-	cursor: pointer
-}
-
 #menu ul {float:right;}
 #menu li {float:left;}
 #menu a
@@ -85,6 +64,32 @@ li {
 #menu a:hover
 {
     background-color:#eee;
+}
+
+#search-box {
+	width: 326px;
+	height: 29px;
+	margin: 0 auto;
+	padding:20px;
+}
+
+.input-box {
+	float: left;
+	width: 220px;
+	height: 29px;
+	line-height: 29px;
+	padding-left: 11px;
+	text-align: left;
+	font-size: 14px
+}
+
+.button {
+	float: right;
+	border: 0px;
+	/*text-indent: -999px;*/
+	width: 70px;
+	height: 29px;
+	cursor: pointer
 }
 
 #main {

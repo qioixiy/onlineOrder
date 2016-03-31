@@ -54,23 +54,23 @@
 			<div class="div-clear"></div>
 			<form action="" method="get">
 				<div id="search-box">
-					<input name="" type="text" class="input-box" /> <input
-						name="search" type="submit" value="搜索" class="button" />
+					<input name="" type="text" class="input-box" /> <input name="search"
+						type="submit" value="搜索" class="button" />
 				</div>
 				<div class="div-clear"></div>
 		</div>
 		<div id="main">
-			<div class="content">
-				<div class="navi">
-					<div id="navi-menu">
-						<ul>
-							<li><a href="index.jsp?search=all">全部分类</a></li>
-							<li><a href="index.jsp?search=jiachangcai">家常菜</a></li>
-							<li><a href="index.jsp?search=huncai">荤菜</a></li>
-							<li><a href="index.jsp?search=sucai">素菜</a></li>
-						</ul>
-					</div>
+		<div class="content">
+			<div class="navi">
+				<div id="navi-menu">
+					<ul>
+						<li><a href="index.jsp?search=all">全部分类</a></li>
+						<li><a href="index.jsp?search=jiachangcai">家常菜</a></li>
+						<li><a href="index.jsp?search=huncai">荤菜</a></li>
+						<li><a href="index.jsp?search=sucai">素菜</a></li>
+					</ul>
 				</div>
+			</div>
 				<div class="list-all">
 					<ul>
 						<%
@@ -159,9 +159,9 @@
 							int rowCount = rs.getRow();
 							System.out.println("rowCount:" + rowCount + ",page_size:" + page_size);
 							int j = 1;
-							for (j = 1; j <= (rowCount + page_size) / page_size; j++) {
+							for (j = 1; j <= (rowCount + page_size-1) / page_size; j++) {
 						%>
-							<a href="index.jsp?page=<%=j%>"><%=j%></a>
+							<a href="index.jsp?search=<%=search%>&page=<%=j%>"><%=j%></a>
 							<%
 								}
 							%>页
