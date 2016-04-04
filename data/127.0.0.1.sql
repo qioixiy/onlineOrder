@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: 127.0.0.1
--- 生成日期: 2016 年 03 月 30 日 16:13
+-- 生成日期: 2016 年 04 月 04 日 12:25
 -- 服务器版本: 5.1.56
 -- PHP 版本: 5.2.17
 
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `login` (
 --
 
 INSERT INTO `login` (`id`, `user`, `uuid`, `ts`, `timeout`) VALUES
-(3, 'root', '5930aa1b-42e0-4810-806e-a041cf107cc7', '2016-03-20 13:01:06', '0000-00-00 00:00:00'),
+(3, 'root', '70621da8-d752-415d-9c2a-a1fd78b3e322', '2016-03-20 13:01:06', '0000-00-00 00:00:00'),
 (1, 'test', '1a6d0435-ecc6-4e96-8f18-e38b72fda239', '2016-03-19 12:21:36', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
@@ -195,20 +195,18 @@ CREATE TABLE IF NOT EXISTS `order_form` (
   `status` varchar(100) NOT NULL DEFAULT 'null' COMMENT '订单状态，未处理、处理中、已经处理',
   `dish_id` varchar(20) NOT NULL DEFAULT 'unkown' COMMENT '餐盘id',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=gb2312 AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=gb2312 AUTO_INCREMENT=6 ;
 
 --
 -- 转存表中的数据 `order_form`
 --
 
 INSERT INTO `order_form` (`id`, `timestamp`, `user_id`, `menu_id`, `repeat`, `spec`, `status`, `dish_id`) VALUES
-(1, '2016-03-06 00:00:00', 3, 12, 2, '加急做啊', 'handing', 'unkown'),
-(2, '2016-03-06 17:25:22', 1, 10, 2, 'null', 'completed', 'unkown'),
-(3, '2016-03-06 18:27:16', 1, 11, 3, 'null', 'completed', 'unkown'),
-(4, '2016-03-19 23:46:16', 3, 10, 12, 'null', 'completed', 'unkown'),
-(5, '2016-03-20 22:32:40', 1, 12, 2, 'null', 'null', 'unkown'),
-(6, '2016-03-20 22:33:03', 1, 12, 2, 'null', 'null', 'unkown'),
-(7, '2016-03-20 22:33:43', 1, 5, 23, 'null', 'null', 'unkown');
+(1, '2016-04-04 20:22:29', 2, 14, 1, 'null', 'null', 'DF58'),
+(2, '2016-04-04 20:22:55', 3, 13, 1, 'null', 'null', 'unkown'),
+(3, '2016-04-04 20:23:19', 4, 12, 1, 'null', 'null', 'unkown'),
+(4, '2016-04-04 20:23:36', 5, 11, 1, 'null', 'null', 'unkown'),
+(5, '2016-04-04 20:24:05', 6, 10, 1, 'null', 'null', 'unkown');
 
 -- --------------------------------------------------------
 
@@ -355,18 +353,22 @@ INSERT INTO `pingjia` (`id`, `menu_id`, `data`, `score`, `timestamp`) VALUES
 CREATE TABLE IF NOT EXISTS `userinfo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` varchar(40) DEFAULT NULL,
+  `xuehao` varchar(12) NOT NULL DEFAULT '000000000000' COMMENT '学号',
   `email` varchar(40) NOT NULL DEFAULT 'a@b.c' COMMENT '邮箱',
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `encrypt` tinyint(1) NOT NULL DEFAULT '1' COMMENT '密码是否加密了',
   `password` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=gb2312 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=gb2312 AUTO_INCREMENT=7 ;
 
 --
 -- 转存表中的数据 `userinfo`
 --
 
-INSERT INTO `userinfo` (`id`, `user`, `email`, `timestamp`, `encrypt`, `password`) VALUES
-(1, 'root', 'a@b.c', '2016-03-19 00:00:00', 0, 'password'),
-(2, 'username', 'a@b.c', '2016-03-19 00:00:00', 0, 'password'),
-(3, 'test', 'a@b.c', '2016-03-19 00:00:00', 1, '098F6BCD4621D373CADE4E832627B4F6');
+INSERT INTO `userinfo` (`id`, `user`, `xuehao`, `email`, `timestamp`, `encrypt`, `password`) VALUES
+(1, 'root', '000000000000', 'a@b.c', '2016-03-19 00:00:00', 0, 'password'),
+(2, 'username', '037420120062', 'a@b.c', '2016-03-19 00:00:00', 0, 'password'),
+(3, 'test', '037420120063', 'a@b.c', '2016-03-19 00:00:00', 1, '098F6BCD4621D373CADE4E832627B4F6'),
+(4, 'zhangsan', '000000000000', 'a@b.c', '2016-04-04 20:17:20', 1, '5F4DCC3B5AA765D61D8327DEB882CF99'),
+(5, 'lisi', '000000000000', 'a@b.c', '2016-04-04 20:19:52', 1, '5F4DCC3B5AA765D61D8327DEB882CF99'),
+(6, 'wangwu', '000000000000', 'a@b.c', '2016-04-04 20:20:17', 1, '5F4DCC3B5AA765D61D8327DEB882CF99');
