@@ -193,7 +193,7 @@ public class ClientApi extends HttpServlet {
 		Statement stmt;
 		try {
 			stmt = con.createStatement();
-			String sql = "UPDATE `wldc`.`order_form` SET `dish_id` = '" + canpanID + "' WHERE `order_form`.`id` =" + orderID + "";
+			String sql = "UPDATE `wldc`.`order_form` SET  `status` = 'completed', `dish_id` = '" + canpanID + "' WHERE `order_form`.`id` =" + orderID + "";
 
 			System.out.println(sql);
 			stmt.executeUpdate(sql);
