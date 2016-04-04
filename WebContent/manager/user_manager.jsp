@@ -16,7 +16,7 @@
 	<tr bgcolor="ccccc0">
 		<td width=50>id</td>
 		<td width=100>ÓÃ»§Ãû</td>
-		<td width=50>encrypt?</td>
+		<td width=100>ÓÊÏä</td>
 	</tr>
 	<%
 		while (user_rs.next()) {
@@ -27,14 +27,12 @@
 			}
 			String _id = user_rs.getString("id");
 			String _user = user_rs.getString("user");
-			String _encrypt = user_rs.getString("encrypt");
-
-			System.out.println("id:" + _id + ",user:" + _user + ",encrypt:" + _encrypt);
+			String _email = user_rs.getString("email");
 	%>
 	<tr>
 		<td class="<%=td_class%>" width=50><%=_id%></td>
 		<td class="<%=td_class%>" width=200><%=_user%></td>
-		<td class="<%=td_class%>" width=50><%=_encrypt%></td>
+		<td class="<%=td_class%>" width=200><%=_email%></td>
 		<td bgcolor="#ffffff" width=50 style="text-align: center;"><a
 			href="user_manager_op.jsp?type=del&user_id=<%=_id%>">É¾³ı</a></td>
 		<td bgcolor="#ffffff" style="text-align: center;"><a
