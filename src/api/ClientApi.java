@@ -54,10 +54,12 @@ public class ClientApi extends HttpServlet {
 
 				String _user_id = order_form_rs.getString("user_id");
 				String username = null;
+				String xuehao = null;
 				Statement userinfo_smt = con.createStatement();
 				ResultSet userinfo_rs = userinfo_smt.executeQuery("select * from userinfo where id=" + _user_id);
 				if (userinfo_rs.next()) {
 					username = userinfo_rs.getString("user");
+					xuehao = userinfo_rs.getString("xuehao");
 				}
 
 				String _menu_id = order_form_rs.getString("menu_id");
@@ -78,6 +80,7 @@ public class ClientApi extends HttpServlet {
 						+ ",_timestamp:" + _timestamp
 						+ ",_user_id:" + _user_id
 						+ ",username:" + username
+						+ ",xuehao:" + xuehao
 						+ ",_menu_id:" + _menu_id
 						+ ",menu_name" + menu_name
 						+ ",price" + menu_price
@@ -90,6 +93,7 @@ public class ClientApi extends HttpServlet {
 				map.put("timestamp", _timestamp);
 				map.put("userid", _user_id);
 				map.put("username", username);
+				map.put("xuehao", xuehao);
 				map.put("menuid", _menu_id);
 				map.put("menuname", menu_name);
 				map.put("menuprice", menu_price);
@@ -179,6 +183,47 @@ public class ClientApi extends HttpServlet {
 
 		return jobject;
 	}
+	boolean UpdateOrderBindCanPan(String orderID, String canpanID)
+	{
+		System.out.println("orderID:" + orderID + ",canpanID:" + canpanID);
+		jdbc jdbc_conn = new jdbc();
+		Connection con = jdbc_conn.getConn();
+		
+		ResultSet rs;
+		Statement stmt;
+		try {
+			stmt = con.createStatement();
+			String sql = "UPDATE `wldc`.`order_form` SET `dish_id` = '" + canpanID + "' WHERE `order_form`.`id` =" + orderID + "";
+
+			System.out.println(sql);
+			stmt.executeUpdate(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
+	}
+	JSONObject orderBindCanPan(HttpServletRequest request, HttpServletResponse response) {
+		String uuid = request.getParameter("uuid");
+
+		JSONObject jobject = new JSONObject();
+		jobject.put("uuid", uuid);
+
+		String user = misc.Util.verfiyUuid(uuid);
+		if (user != null) {
+			jobject.put("ret", "ok");
+			jobject.put("id", "orderBindCanPan");
+			
+			String orderID = request.getParameter("orderID");
+			String canpanID = request.getParameter("canpanID");
+			UpdateOrderBindCanPan(orderID, canpanID);
+		} else {
+			jobject.put("ret", "fail");
+			jobject.put("reson", "invalid_uuid");
+		}
+
+		return jobject;
+	}
 
 	JSONObject dispatcher(HttpServletRequest request, HttpServletResponse response) {
 		String id = request.getParameter("id");
@@ -188,6 +233,8 @@ public class ClientApi extends HttpServlet {
 				return ClientLogin(request, response);
 			case "orderlist":
 				return GetAllOrderList(request, response);
+			case "orderBindCanPan":
+				return orderBindCanPan(request, response);
 			default:
 				Map<String, String> ret = new HashMap<String, String>();
 				ret.put("ret", "fail");
