@@ -50,6 +50,7 @@ public class ClientApi extends HttpServlet {
 			ResultSet order_form_rs = order_form_smt.executeQuery("select * from order_form order by id desc");
 			while (order_form_rs.next()) {
 				String _id = order_form_rs.getString("id");
+				String _status = order_form_rs.getString("status");
 				String _timestamp = order_form_rs.getString("timestamp");
 
 				String _user_id = order_form_rs.getString("user_id");
@@ -77,6 +78,7 @@ public class ClientApi extends HttpServlet {
 				String _dish_id = order_form_rs.getString("dish_id");
 
 				System.out.println("id:" + _id 
+						+ ",_status:" + _status
 						+ ",_timestamp:" + _timestamp
 						+ ",_user_id:" + _user_id
 						+ ",username:" + username
@@ -87,7 +89,10 @@ public class ClientApi extends HttpServlet {
 						+ ",_repeat:" + _repeat
 						+ ",_spec:" + _spec
 						+ ",_dish_id:" + _dish_id);
-
+				if (_status.equals("completed")) {
+					System.out.println(_status);
+					continue;
+				}
 				Map<String, String> map = new HashMap<String, String>();
 				map.put("id", _id);
 				map.put("timestamp", _timestamp);
@@ -224,6 +229,83 @@ public class ClientApi extends HttpServlet {
 
 		return jobject;
 	}
+	JSONObject GetCanPanIdAndTotalPrice(HttpServletRequest request, HttpServletResponse response) {
+		String uuid = request.getParameter("uuid");
+
+		JSONObject jobject = new JSONObject();
+		jobject.put("uuid", uuid);
+
+		String user = misc.Util.verfiyUuid(uuid);
+		if (user != null) {
+			jobject.put("ret", "ok");
+			jobject.put("id", "GetCanPanIdAndTotalPrice");
+			
+			String userID = request.getParameter("userID");
+			System.out.println("userID:" + userID);
+			jdbc jdbc_conn = new jdbc();
+			Connection con = jdbc_conn.getConn();
+			
+			try {
+				Statement smt = con.createStatement();
+				String sql = "select * from userinfo where `xuehao` = '" + userID + "'";
+				System.out.println(sql);
+				ResultSet rs_userinfo = smt.executeQuery(sql);
+				if (rs_userinfo.next()) {
+					String id = rs_userinfo.getString("id");
+					String sql_select_order_form = "SELECT * FROM `order_form` WHERE `user_id` =" + id;
+					System.out.println(sql_select_order_form);
+					ResultSet rs_order_form = smt.executeQuery(sql_select_order_form);
+					while(rs_order_form.next()) {
+						String _id = rs_order_form.getString("id");
+						String _timestamp = rs_order_form.getString("timestamp");
+						String _user_id = rs_order_form.getString("user_id");
+						String _menu_id = rs_order_form.getString("menu_id");
+						String _repeat = rs_order_form.getString("repeat");
+						String _spec = rs_order_form.getString("spec");
+						String _status = rs_order_form.getString("status");
+						String _dish_id = rs_order_form.getString("dish_id");
+						
+						String menu_name = null;
+						String menu_price = null;
+						Statement menu_smt = con.createStatement();
+						ResultSet menu_rs = menu_smt.executeQuery("select * from menu where id=" + _menu_id);
+						if (menu_rs.next()) {
+							menu_name = menu_rs.getString("name");
+							menu_price = menu_rs.getString("price");
+						} else {
+							System.out.println("can find menu id");
+						}
+						
+						System.out.println("_id:" + _id
+								+ "_timestamp:" +_timestamp
+								+ "_user_id:" + _user_id
+								+ "_menu_id:" + _menu_id
+								+ "_menu_price:" + menu_price
+								+ "_repeat:" + _repeat
+								+ "_spec:" + _spec
+								+ "_status:" + _status
+								+ "_dish_id:" + _dish_id);
+						jobject.put("xuehao", userID);
+						jobject.put("repeat", _repeat);
+						jobject.put("price", menu_price);
+						jobject.put("dish_id", _dish_id);
+					}
+				} else {
+					System.out.println("can find xuehao from userinfo");
+					jobject.put("ret", "fail");
+					jobject.put("reson", "can find xuehao");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			jobject.put("ret", "fail");
+			jobject.put("reson", "invalid_uuid");
+		}
+
+		return jobject;
+	}
 
 	JSONObject dispatcher(HttpServletRequest request, HttpServletResponse response) {
 		String id = request.getParameter("id");
@@ -235,6 +317,8 @@ public class ClientApi extends HttpServlet {
 				return GetAllOrderList(request, response);
 			case "orderBindCanPan":
 				return orderBindCanPan(request, response);
+			case "GetCanPanIdAndTotalPrice":
+				return GetCanPanIdAndTotalPrice(request, response);
 			default:
 				Map<String, String> ret = new HashMap<String, String>();
 				ret.put("ret", "fail");
