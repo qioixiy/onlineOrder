@@ -62,7 +62,7 @@
 				</li>
 				<li>
 					<h4 class="M2">
-						<span></span>订单处理
+						<span></span>订单查看
 					</h4>
 					<div class="list-item none">
 						<a href='#' onclick="get_url('order_form_manager.jsp')">查看所有订单</a>
