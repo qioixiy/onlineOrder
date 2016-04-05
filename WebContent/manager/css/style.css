@@ -48,4 +48,12 @@ body{font-family:Microsoft YaHei,Verdana,Arial,SimSun;color:#666;font-size:14px;
 .right-nav li a:hover{color:#888888; text-decoration:underline;}
 .main{width:100%;height:100%;background:#f6f6f6;overflow:auto;}
 .inner-html{padding:2px;}
+
+.td_class_1 {
+    background-color:#F0F0F0;
+}
+.td_class_2 {
+    background-color:#F0F8FF;
+}
+
                                                       
