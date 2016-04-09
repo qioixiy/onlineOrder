@@ -1,6 +1,8 @@
 package misc;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +29,15 @@ public class ajax extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		PrintWriter out = response.getWriter();
+		String user = request.getParameter("user");
+        String xuehao = request.getParameter("xuehao"); 
+        String email = request.getParameter("email"); 
+        String json = user + xuehao + email;
+
+        out.print(json);  
+        out.flush();
 	}
 
 	/**

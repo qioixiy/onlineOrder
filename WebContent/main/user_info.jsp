@@ -95,13 +95,14 @@
 					<div id="d2" style="display: none">
 						<form action="menu_manager_op_result.jsp">
 							<p>
-								用户<input type="text" name="user" value="<%=_user%>" />
+								用户<input type="text" id="user" value="<%=_user%>"
+									disabled="true" />
 							</p>
 							<p>
-								学号<input type="text" name="xuehao" value="<%=_xuehao%>" />
+								学号<input type="text" id="xuehao" value="<%=_xuehao%>" />
 							</p>
 							<p>
-								邮箱<input type="text" name="email" value="<%=_email%>" />
+								邮箱<input type="text" id="email" value="<%=_email%>" />
 							</p>
 							<input type="button" value="提交修改"
 								onclick="ajax_update_userinfo()" /><a href="javascript:void(0)"

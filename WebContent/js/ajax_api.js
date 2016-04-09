@@ -18,23 +18,28 @@ function createXMLHttpRequest() {
 
 function ajax_update_userinfo() {
 	createXMLHttpRequest();
-	var use_get = true;
+
+	var url = "../ajax";
+	var user = document.getElementById("user").value;
+	var xuehao = document.getElementById("xuehao").value;
+	var email = document.getElementById("email").value;
+	var paramer = "user=" + user + "&xuehao=" + xuehao + "&email=" + email;// 发送请求;
+
+	var method = null;
+	var use_get = false;
 	if (use_get) {
-		xmlHttpRequest.open("GET", "../ajax", true);
+		url = url + "?" + paramer;
+		paramer = null;
+		method = "GET";
 	} else {
-		xmlHttpRequest.open("POST", "../ajax", true);
+		method = "POST";
 	}
+	xmlHttpRequest.open(method, url, true);
 	xmlHttpRequest.onreadystatechange = callBack_ajax_update_userinfo;// 指定响应函数
 	xmlHttpRequest.setRequestHeader("Content-type",
 			"application/x-www-form-urlencoded");
 
-	var user = document.getElementsByName("user").value;
-	var xuehao = document.getElementsByName("xuehao").value;
-	var email = document.getElementsByName("email").value;
-
-	var body = null;
-	body = "user=" + user + "&xuehao=" + xuehao + "&email=" + email;// 发送请求
-	xmlHttpRequest.send(body);
+	xmlHttpRequest.send(paramer);
 }
 
 function callBack_ajax_update_userinfo() {
