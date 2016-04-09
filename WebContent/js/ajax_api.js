@@ -45,6 +45,10 @@ function ajax_update_userinfo() {
 function callBack_ajax_update_userinfo() {
 	if (xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200) {
 		result = xmlHttpRequest.responseText;
-		alert(result);
+		if (result == 1) {
+			alert("success");
+		} else {
+			alert("failed");
+		}
 	}
 }
