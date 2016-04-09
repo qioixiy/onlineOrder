@@ -44,6 +44,7 @@
 					}
 				%>
 				<li><a href="<%=href_link%>"><%=href_name%></a></li>
+				<li><a href="../main/">返回主页</a></li>
 				<li><a href="../login/">退出</a></li>
 			</ul>
 		</div>

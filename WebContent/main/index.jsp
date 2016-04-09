@@ -61,8 +61,8 @@
 							tt = "系统管理";
 							tt_href = "../manager/index.jsp";
 						} else if (user_type.equals("user")) {
-							tt = "我的帐户";
-							tt_href = "../manager/index.jsp";
+							tt = "我的信息";
+							tt_href = "user_info.jsp";
 						}
 					%>
 					<li><a href="<%=tt_href%>"><%=tt%></a></li>
