@@ -97,7 +97,7 @@
 						<span></span>发布消息
 					</h4>
 					<div class="list-item none">
-						<a href=''>新的消息</a>
+						<a href='#' onclick="get_url('add_news.jsp')">添加新的消息</a>
 					</div>
 				</li>
 			</ul>

@@ -102,7 +102,41 @@ public class ajax extends HttpServlet {
 		out.print(ret);
 		out.flush();
 	}
+	private void AddNews(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		int ret = 1;
+		jdbc jdbc_conn = new jdbc();
+		Connection con = jdbc_conn.getConn();
 
+		String title = request.getParameter("title");
+		String data = request.getParameter("data");
+
+		title = CharCodeTrans(title, "ISO-8859-1", "UTF-8");
+		data = CharCodeTrans(data, "ISO-8859-1", "UTF-8");
+
+		System.out.println("title:" + title + "data:" + data);
+
+		String sql = null;
+		if (title == null || data == null) {
+			System.out.println("invalid data");
+		} else {
+			Statement menu_smt;
+			try {
+				menu_smt = con.createStatement();
+				sql = "INSERT INTO `news` ( `id` , `title` , `date`, `data`)"
+						+ "VALUES (NULL,'" + title + "',NULL,'" + data + "')";
+				System.out.println(sql);
+				menu_smt.execute(sql);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				ret = 0;
+			}
+		}
+		PrintWriter out = response.getWriter();
+		out.print(ret);
+		out.flush();
+	}
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -123,6 +157,10 @@ public class ajax extends HttpServlet {
 			case "submit_newmenu":
 				SubmitNewMenu(request, response);
 				break;
+			case "add_news":
+				AddNews(request, response);
+				break;
+				
 			default:
 				break;
 			}

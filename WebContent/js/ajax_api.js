@@ -92,6 +92,35 @@ function callBack_default() {
 	}
 }
 
+function ajax_add_news()
+{
+	createXMLHttpRequest();
+
+	var func_paramer = "add_news";
+	var url = "../ajax";
+	var title = document.getElementsByName("title")[0].value;
+	var data = document.getElementsByName("data")[0].value;
+	
+	var paramer = "func=" + func_paramer + "&title=" + title
+			+ "&data=" + data;
+
+	var method = null;
+	var use_get = false;
+	if (use_get) {
+		url = url + "?" + paramer;
+		paramer = null;
+		method = "GET";
+	} else {
+		method = "POST";
+	}
+	xmlHttpRequest.open(method, url, true);
+	xmlHttpRequest.onreadystatechange = callBack_default;
+	xmlHttpRequest.setRequestHeader("Content-type",
+			"application/x-www-form-urlencoded");
+
+	xmlHttpRequest.send(paramer);// 发送请求;
+}
+
 function test() {
 	alert("test");
 }

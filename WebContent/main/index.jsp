@@ -128,7 +128,7 @@
 								}
 								if (null != filter) {
 									sql = "select * from menu where style='" + filter + "'";
-								} else {
+								} else if (!search.equals("null")) {
 									sql = "select * from menu where `name` like '%" + search + "%'";
 								}
 							}
