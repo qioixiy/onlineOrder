@@ -18,7 +18,7 @@
 <!DOCTYPE>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>后台管理</title>
 <link type="text/css" rel="stylesheet" href="css/style.css" />
 <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
@@ -79,7 +79,7 @@
 					</h4>
 					<div class="list-item none">
 						<a href='#' onclick="get_url('menu_manager.jsp')">查看所有</a><a
-							href='#' onclick="get_url('menu_manager_op.jsp')">添加新的菜式</a>
+							href='#' onclick="get_url('menu_manager_add.jsp')">添加新的菜式</a>
 					</div>
 				</li>
 				<li>

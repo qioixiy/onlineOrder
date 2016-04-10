@@ -5,6 +5,17 @@
 <%
 	Connection con = jdbc_conn.getConn();
 	Statement menu_smt = con.createStatement();
+	
+	String op = request.getParameter("op");
+	String menu_id = request.getParameter("menu_id");
+	if (op != null) {
+		if (op.equals("del")) {
+			String sql = "delete from `menu` where `id` = " + menu_id;
+			System.out.println(sql);
+			menu_smt.execute(sql);
+		}
+	}
+
 	ResultSet meun_rs = menu_smt.executeQuery("select * from menu order by id desc");
 %>
 <table id="table-userinfo">
@@ -45,7 +56,7 @@
 		<td class="<%=td_class%>" width=50><%=_timestamp%></td>
 		<td class="<%=td_class%>" width=50><%=_details%></td>
 		<td bgcolor="#ffffff" width=50 style="text-align: center;"><a
-			href="menu_manager_op.jsp?op=del&menu_id=1">É¾³ý</a></td>
+			href="#" onclick="get_url('menu_manager.jsp?op=del&menu_id=<%=_id%>')">É¾³ý</a></td>
 	</tr>
 	<%
 		}
