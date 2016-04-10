@@ -16,7 +16,9 @@
 	<tr bgcolor="ccccc0">
 		<td width=50>id</td>
 		<td width=100>用户名</td>
+		<td width=100>学号</td>
 		<td width=100>邮箱</td>
+		<td width=100>注册时间</td>
 	</tr>
 	<%
 		while (user_rs.next()) {
@@ -27,12 +29,16 @@
 			}
 			String _id = user_rs.getString("id");
 			String _user = user_rs.getString("user");
+			String _xuehao = user_rs.getString("xuehao");
 			String _email = user_rs.getString("email");
+			String _timestamp = user_rs.getString("timestamp");
 	%>
 	<tr>
 		<td class="<%=td_class%>" width=50><%=_id%></td>
 		<td class="<%=td_class%>" width=200><%=_user%></td>
+		<td class="<%=td_class%>" width=200><%=_xuehao%></td>
 		<td class="<%=td_class%>" width=200><%=_email%></td>
+		<td class="<%=td_class%>" width=200><%=_timestamp%></td>
 		<td bgcolor="#ffffff" width=50 style="text-align: center;"><a
 			href="user_manager_op.jsp?type=del&user_id=<%=_id%>">删除</a></td>
 		<td bgcolor="#ffffff" style="text-align: center;"><a
