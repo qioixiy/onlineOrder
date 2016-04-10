@@ -11,6 +11,9 @@
 	Statement stmt = con.createStatement();
 
 	String search = request.getParameter("search");
+	if (null != search) {
+		search = new String(search.getBytes("ISO-8859-1"), "gb2312");
+	}
 	System.out.println("search:" + search);
 %>
 
@@ -25,9 +28,10 @@
 		<!-- Prevent caching at the proxy server -->
 		<meta http-equiv="expires" content="0">
 			<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
-<link href="../css/main.css" rel="stylesheet" type="text/css"
-	media="all" />
-<title>自助订餐系统主页</title>
+			<link href="../css/main.css" rel="stylesheet" type="text/css"
+				media="all" />
+			<title>自助订餐系统主页</title> <script type="text/javascript"
+				src="../js/ajax_get_url.js"></script>
 </head>
 
 <body>
@@ -79,12 +83,14 @@
 			</div>
 
 			<div class="div-clear"></div>
-			<form action="" method="get">
+			<form action="index.jsp" id="form_search" name="search" method="post">
 				<div id="search-box">
-					<input name="" type="text" class="input-box" /> <input
-						name="search" type="submit" value="搜索" class="button" />
+					<input id="input_search" type="text" class="input-box" /> <input
+						name="search" type="button" value="搜索" class="button"
+						onclick="main_search()" />
 				</div>
-				<div class="div-clear"></div>
+			</form>
+			<div class="div-clear"></div>
 		</div>
 		<div id="main">
 			<div class="content">
@@ -122,6 +128,8 @@
 								}
 								if (null != filter) {
 									sql = "select * from menu where style='" + filter + "'";
+								} else {
+									sql = "select * from menu where `name` like '%" + search + "%'";
 								}
 							}
 							System.out.println(sql);

@@ -34,6 +34,14 @@ function get_url_callBack() {
 	}
 }
 
+function main_search()
+{
+	var url = document.getElementById("form_search").action;
+	var val = document.getElementById("input_search").value;
+	url = url + "?search=" + val;
+	document.getElementById("form_search").action = url;
+	document.getElementById("form_search").submit();
+}
 function test_alert() {
 	alert("for test");
 }
