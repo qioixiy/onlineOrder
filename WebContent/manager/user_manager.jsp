@@ -3,8 +3,24 @@
 
 <jsp:useBean id="jdbc_conn" scope="page" class="db.jdbc" />
 <%
+	String type = request.getParameter("type");
+	String user_id = request.getParameter("user_id");
+
 	Connection con = jdbc_conn.getConn();
 	Statement user_smt = con.createStatement();
+	if (type != null) {
+		String sql = "";
+		if (type.equals("del")) {
+			sql = "delete from userinfo where id=" + user_id;
+			user_smt.execute(sql);
+		} else if (type.equals("set_as_manager")) {
+			String user_name = request.getParameter("user_name");
+			sql = "INSERT INTO `manager` ( `id` , `username` , `level`) VALUES (NULL , '" + user_name + "', '1')";
+			System.out.println(sql);
+			user_smt.execute(sql);
+		}
+	}
+
 	ResultSet user_rs = user_smt.executeQuery("select * from userinfo order by id desc");
 %>
 <table id="table-userinfo">
@@ -40,9 +56,9 @@
 		<td class="<%=td_class%>" width=200><%=_email%></td>
 		<td class="<%=td_class%>" width=200><%=_timestamp%></td>
 		<td bgcolor="#ffffff" width=50 style="text-align: center;"><a
-			href="user_manager_op.jsp?type=del&user_id=<%=_id%>">删除</a></td>
+			href="#" onclick="get_url('user_manager.jsp?type=del&user_id=<%=_id%>')">删除</a></td>
 		<td bgcolor="#ffffff" style="text-align: center;"><a
-			href="user_manager_op.jsp?type=set_as_manager&user_id=<%=_id%>&user_name=<%=_user%>">设置为管理员</a></td>
+			href="#" onclick="get_url('user_manager.jsp?type=set_as_manager&user_id=<%=_id%>&user_name=<%=_user%>')">设置为管理员</a></td>
 	</tr>
 	<%
 		}
