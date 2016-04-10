@@ -5,8 +5,10 @@
 <%
 	Connection con = jdbc_conn.getConn();
 
+	String menu_image = request.getParameter("menu_image");
 	String menu_name = request.getParameter("menu_name");
 	String menu_type = request.getParameter("menu_type");
+	String menu_subtype = request.getParameter("menu_subtype");
 	String menu_price = request.getParameter("menu_price");
 	String menu_detail = request.getParameter("menu_detail");
 	System.out.println(menu_name + menu_type + menu_price + menu_detail);
@@ -34,10 +36,10 @@
 					System.out.println("invalid data");
 				} else {
 					Statement menu_smt = con.createStatement();
-					sql = "INSERT INTO `menu` ( `id` , `name` , `style`, `price`, `thumb`, `timestamp`, `details`)"
+					sql = "INSERT INTO `menu` ( `id` , `name` , `style`, `style2`, `price`, `thumb`, `timestamp`, `details`)"
 							+ "VALUES (NULL," + "'" + menu_name + "'" + ","
-							+ "'" + menu_type + "'" + "," + "'" + menu_price + "'" + ","
-							+ "'001.jpg'," + "NULL," + "'" + menu_detail + "'" + ")";
+							+ "'" + menu_type + "'" + ","+ "'" + menu_type + "'" + "," + "'" + menu_price + "'" + ","
+							+ "'" + menu_image + "'," + "NULL," + "'" + menu_detail + "'" + ")";
 					System.out.println(sql);
 					menu_smt.execute(sql);
 				}

@@ -1,9 +1,15 @@
+function getFileName(o){
+    var pos=o.lastIndexOf("\\");
+    return o.substring(pos+1);  
+}
+
 function go() {
 	//alert("for test");
 	f1.submit();
-	document.getElementById("pro").style.display = "block";
+	document.getElementById("pro").style.display = "none";
 	document.getElementById("prop").style.display = "";
 	timer = setInterval("getP()", 50);
+	document.getElementsByName("menu_image")[0].value = getFileName(document.getElementsByName("file1")[0].value);
 }
 
 var xmlHttpRequest;
