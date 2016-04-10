@@ -117,19 +117,20 @@
 							ResultSet rs = null;
 							String filter = null;
 							String sql = "select * from menu order by id desc";
-							if (search != null) {
-								if (search.equals("jiachangcai")) {
-									String f = "家常菜";
-									sql = "select * from menu where style2='" + f + "'";
-								} else if (search.equals("sucai")) {
+							if (search != null && (!search.equals("null")) && (!search.equals("all"))) {
+								if (search.equals("sucai")) {
 									filter = "素菜";
 								} else if (search.equals("huncai")) {
 									filter = "荤菜";
 								}
 								if (null != filter) {
 									sql = "select * from menu where style='" + filter + "'";
-								} else if (!search.equals("null")) {
+								} else {
 									sql = "select * from menu where `name` like '%" + search + "%'";
+								}
+								if (search.equals("jiachangcai")) {
+									String f = "家常菜";
+									sql = "select * from menu where style2='" + f + "'";
 								}
 							}
 							System.out.println(sql);
