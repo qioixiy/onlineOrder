@@ -18,6 +18,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=gb2312" />
+<!-- HTTP 1.1 -->
+<meta http-equiv="pragma" content="no-cache">
+	<!-- HTTP 1.0 -->
+	<meta http-equiv="cache-control" content="no-cache">
+		<!-- Prevent caching at the proxy server -->
+		<meta http-equiv="expires" content="0">
+			<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
 <link href="../css/main.css" rel="stylesheet" type="text/css"
 	media="all" />
 <title>自助订餐系统主页</title>

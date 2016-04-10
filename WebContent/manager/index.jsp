@@ -19,6 +19,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<!-- HTTP 1.1 -->
+<meta http-equiv="pragma" content="no-cache">
+<!-- HTTP 1.0 -->
+<meta http-equiv="cache-control" content="no-cache">
+<!-- Prevent caching at the proxy server -->
+<meta http-equiv="expires" content="0">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
 <title>后台管理</title>
 <link type="text/css" rel="stylesheet" href="css/style.css" />
 <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
@@ -41,7 +48,7 @@
 					if (null != user) {
 						href_name = user;
 					} else {
-						href_link="../login/index.jsp";
+						href_link = "../login/index.jsp";
 					}
 				%>
 				<li><a href="<%=href_link%>"><%=href_name%></a></li>
@@ -68,9 +75,12 @@
 					</h4>
 					<div class="list-item none">
 						<a href='#' onclick="get_url('order_form_manager.jsp')">查看所有订单</a>
-						<a href='#' onclick="get_url('order_form_manager.jsp?status=null')">未处理订单</a>
-						<a href='#' onclick="get_url('order_form_manager.jsp?status=handing')">处理中订单</a>
-						<a href='#' onclick="get_url('order_form_manager.jsp?status=completed')">已完成订单</a>
+						<a href='#'
+							onclick="get_url('order_form_manager.jsp?status=null')">未处理订单</a>
+						<a href='#'
+							onclick="get_url('order_form_manager.jsp?status=handing')">处理中订单</a>
+						<a href='#'
+							onclick="get_url('order_form_manager.jsp?status=completed')">已完成订单</a>
 					</div>
 				</li>
 				<li>
