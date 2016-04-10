@@ -117,8 +117,9 @@ public class ajax extends HttpServlet {
 		System.out.println("title:" + title + "data:" + data);
 
 		String sql = null;
-		if (title == null || data == null) {
+		if (title == null || title.equals("") || data == null || data.equals("")) {
 			System.out.println("invalid data");
+			ret = 0;
 		} else {
 			Statement menu_smt;
 			try {
