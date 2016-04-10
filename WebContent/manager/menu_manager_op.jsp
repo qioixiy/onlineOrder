@@ -13,8 +13,7 @@
 <span id="prop" style="width: 15px; height: 15px; display: none;" style="display: none">0%</span>
 <iframe id="if" name="if" src="" style="display: none"></iframe>
 
-<form action="menu_manager_op_result.jsp">
-
+<form action="../ajax">
 	图片<input type="text" name="menu_image" value="请上传" readonly/></br>
 	名字<input type="text" name="menu_name" /></br>
 	 类别<input type="text" name="menu_type" /></br>
@@ -22,5 +21,5 @@
 	 价格<input type="text" name="menu_price" /></br>
 	 描述</br>
 	<textarea id="" cols="50" rows="10" name="menu_detail"></textarea> </br>
-	<input type="submit" value="提交" />
+	<input type="button" value="提交" onclick="ajax_submit_newmenu()"/>
 </form>

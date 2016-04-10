@@ -25,6 +25,7 @@
 <script type="text/javascript" src="js/menu.js"></script>
 <script type="text/javascript" src="../js/ajax_get_url.js"></script>
 <script type="text/javascript" src="../js/ajax_upload.js"></script>
+<script type="text/javascript" src="../js/ajax_api.js"></script>
 </head>
 
 <body>
@@ -78,8 +79,7 @@
 					</h4>
 					<div class="list-item none">
 						<a href='#' onclick="get_url('menu_manager.jsp')">查看所有</a><a
-							href='#' onclick="get_url('menu_manager_op.jsp')">添加新的菜式</a> <a
-							href='#'>删除菜单</a> <a href=''>修改菜单</a>
+							href='#' onclick="get_url('menu_manager_op.jsp')">添加新的菜式</a>
 					</div>
 				</li>
 				<li>

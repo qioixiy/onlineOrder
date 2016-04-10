@@ -19,11 +19,15 @@ function createXMLHttpRequest() {
 function ajax_update_userinfo() {
 	createXMLHttpRequest();
 
+	var func_paramer = "update_userinfo";
+
 	var url = "../ajax";
 	var user = document.getElementById("user").value;
 	var xuehao = document.getElementById("xuehao").value;
 	var email = document.getElementById("email").value;
-	var paramer = "user=" + user + "&xuehao=" + xuehao + "&email=" + email;// 发送请求;
+
+	var paramer = "func=" + func_paramer + "&user=" + user + "&xuehao="
+			+ xuehao + "&email=" + email;
 
 	var method = null;
 	var use_get = false;
@@ -35,14 +39,49 @@ function ajax_update_userinfo() {
 		method = "POST";
 	}
 	xmlHttpRequest.open(method, url, true);
-	xmlHttpRequest.onreadystatechange = callBack_ajax_update_userinfo;// 指定响应函数
+	xmlHttpRequest.onreadystatechange = callBack_default;// 指定响应函数
 	xmlHttpRequest.setRequestHeader("Content-type",
 			"application/x-www-form-urlencoded");
 
-	xmlHttpRequest.send(paramer);
+	xmlHttpRequest.send(paramer);// 发送请求;
 }
 
-function callBack_ajax_update_userinfo() {
+function ajax_submit_newmenu() {
+
+	createXMLHttpRequest();
+
+	var func_paramer = "submit_newmenu";
+	var url = "../ajax";
+	var menu_image = document.getElementsByName("menu_image")[0].value;
+	var menu_name = document.getElementsByName("menu_name")[0].value;
+	var menu_type = document.getElementsByName("menu_type")[0].value;
+	var menu_subtype = document.getElementsByName("menu_subtype")[0].value;
+	var menu_price = document.getElementsByName("menu_price")[0].value;
+	var menu_detail = document.getElementsByName("menu_detail")[0].value;
+
+	var paramer = "func=" + func_paramer + "&menu_image=" + menu_image
+			+ "&menu_name=" + menu_name + "&menu_type=" + menu_type
+			+ "&menu_subtype=" + menu_subtype + "&menu_price=" + menu_price
+			+ "&menu_detail=" + menu_detail;
+
+	var method = null;
+	var use_get = false;
+	if (use_get) {
+		url = url + "?" + paramer;
+		paramer = null;
+		method = "GET";
+	} else {
+		method = "POST";
+	}
+	xmlHttpRequest.open(method, url, true);
+	xmlHttpRequest.onreadystatechange = callBack_default;
+	xmlHttpRequest.setRequestHeader("Content-type",
+			"application/x-www-form-urlencoded");
+
+	xmlHttpRequest.send(paramer);// 发送请求;
+}
+
+function callBack_default() {
 	if (xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200) {
 		result = xmlHttpRequest.responseText;
 		if (result == 1) {
@@ -51,4 +90,8 @@ function callBack_ajax_update_userinfo() {
 			alert("failed");
 		}
 	}
+}
+
+function test() {
+	alert("test");
 }

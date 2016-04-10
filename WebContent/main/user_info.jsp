@@ -93,7 +93,7 @@
 						</table>
 					</div>
 					<div id="d2" style="display: none">
-						<form action="menu_manager_op_result.jsp">
+						<form>
 							<p>
 								”√ªß<input type="text" id="user" value="<%=_user%>"
 									disabled="true" />
