@@ -66,12 +66,12 @@
 			<div class="div-clear"></div>
 		</div>
 		<div id="main">
-			<div style="padding: 10px; background-color: #ddd;">
+			<div style="padding: 10px; background-color: #d0d0d0;">
 				<div
-					style="float: left; width: 50%; min-height: 300px; background-color: #eee; padding: 10px;">
+					style="float: left; width: 50%; min-height: 300px; background-color: #d4d4d4; padding: 10px;">
 					<h2>我的信息</h2>
 					<a href="javascript:void(0)" onclick="userInfoEdit(this)">编辑</a>
-					<div id="d1" style="background-color: #edd; padding: 10px;">
+					<div id="d1" style="background-color: #dddddd; padding: 10px;">
 						<p id="user-id" name=<%=_id%>></p>
 						<table>
 							<tr>
@@ -111,10 +111,10 @@
 					</div>
 				</div>
 				<div
-					style="min-height: 300px; background-color: #aee; padding: 10px;">
+					style="min-height: 300px; background-color: #d4d4d4; padding: 10px;">
 					<h2>我的订单</h2>
 					<div
-						style="background-color: #edd; padding: 10px; border: 1px solid #ccc;">
+						style="background-color: #dddddd; padding: 10px; border: 1px solid #ccc;">
 						<table>
 							<tr>
 								<td>订单</td>
