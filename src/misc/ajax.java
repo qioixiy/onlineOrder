@@ -2,6 +2,7 @@ package misc;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -55,6 +56,7 @@ public class ajax extends HttpServlet {
 		out.print(ret);
 		out.flush();
 	}
+
 	private void SubmitNewMenu(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int ret = 1;
@@ -67,12 +69,15 @@ public class ajax extends HttpServlet {
 		String menu_subtype = request.getParameter("menu_subtype");
 		String menu_price = request.getParameter("menu_price");
 		String menu_detail = request.getParameter("menu_detail");
-		System.out.println("menu_image:" + menu_image
-				+ "menu_name:" + menu_name
-				+ "menu_type:" + menu_type
-				+ "menu_subtype:" + menu_subtype
-				+ "menu_price:" + menu_price
-				+ "menu_detail:" + menu_detail);
+
+		menu_image = CharCodeTrans(menu_image, "ISO-8859-1", "UTF-8");
+		menu_name = CharCodeTrans(menu_name, "ISO-8859-1", "UTF-8");
+		menu_type = CharCodeTrans(menu_type, "ISO-8859-1", "UTF-8");
+		menu_subtype = CharCodeTrans(menu_subtype, "ISO-8859-1", "UTF-8");
+		menu_detail = CharCodeTrans(menu_detail, "ISO-8859-1", "UTF-8");
+
+		System.out.println("menu_image:" + menu_image + "menu_name:" + menu_name + "menu_type:" + menu_type
+				+ "menu_subtype:" + menu_subtype + "menu_price:" + menu_price + "menu_detail:" + menu_detail);
 
 		String sql = null;
 		if (menu_name == null || menu_type == null || menu_price == null || menu_detail == null) {
@@ -82,9 +87,9 @@ public class ajax extends HttpServlet {
 			try {
 				menu_smt = con.createStatement();
 				sql = "INSERT INTO `menu` ( `id` , `name` , `style`, `style2`, `price`, `thumb`, `timestamp`, `details`)"
-						+ "VALUES (NULL," + "'" + menu_name + "'" + ","
-						+ "'" + menu_type + "'" + ","+ "'" + menu_type + "'" + "," + "'" + menu_price + "'" + ","
-						+ "'" + menu_image + "'," + "NULL," + "'" + menu_detail + "'" + ")";
+						+ "VALUES (NULL," + "'" + menu_name + "'" + "," + "'" + menu_type + "'" + "," + "'" + menu_type
+						+ "'" + "," + "'" + menu_price + "'" + "," + "'" + menu_image + "'," + "NULL," + "'"
+						+ menu_detail + "'" + ")";
 				System.out.println(sql);
 				menu_smt.execute(sql);
 			} catch (SQLException e) {
@@ -97,6 +102,7 @@ public class ajax extends HttpServlet {
 		out.print(ret);
 		out.flush();
 	}
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -133,4 +139,30 @@ public class ajax extends HttpServlet {
 		doGet(request, response);
 	}
 
+	public static String bytesToHexString(byte[] src) {
+		StringBuilder stringBuilder = new StringBuilder("");
+		if (src == null || src.length <= 0) {
+			return null;
+		}
+		for (int i = 0; i < src.length; i++) {
+			int v = src[i] & 0xFF;
+			String hv = Integer.toHexString(v);
+			if (hv.length() < 2) {
+				stringBuilder.append(0);
+			}
+			stringBuilder.append(hv);
+		}
+		return stringBuilder.toString();
+	}
+
+	public static String CharCodeTrans(String destSrc, String from, String to) {
+		String str = null;
+		try {
+			str = new String(destSrc.getBytes(from), to);
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return str;
+	}
 }
