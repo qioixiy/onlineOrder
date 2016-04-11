@@ -16,6 +16,11 @@ function createXMLHttpRequest() {
 	}
 }
 
+function callBack_update_userinfo()
+{
+	callBack_default();
+	location=location;
+}
 function ajax_update_userinfo() {
 	createXMLHttpRequest();
 
@@ -39,7 +44,7 @@ function ajax_update_userinfo() {
 		method = "POST";
 	}
 	xmlHttpRequest.open(method, url, true);
-	xmlHttpRequest.onreadystatechange = callBack_default;// 指定响应函数
+	xmlHttpRequest.onreadystatechange = callBack_update_userinfo;// 指定响应函数
 	xmlHttpRequest.setRequestHeader("Content-type",
 			"application/x-www-form-urlencoded");
 

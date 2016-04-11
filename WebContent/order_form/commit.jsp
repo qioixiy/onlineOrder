@@ -1,3 +1,4 @@
+<%@page import="misc.SendMail"%>
 <%@page contentType="text/html; charset=gb2312" language="java"
 	import="java.sql.*" errorPage=""%>
 
@@ -13,9 +14,11 @@
 	String num = request.getParameter("num");
 	String username = (String) session.getAttribute("username");
 	String user_id = null;
+	String user_email = null;
 	ResultSet rs_userinfo = stmt.executeQuery("select * from userinfo where user=" + "'" + username + "'");
 	if (rs_userinfo.next()) {
 		user_id = rs_userinfo.getString("id");
+		user_email = rs_userinfo.getString("email");
 		System.out.println("username:" + username + ",user_id:" + user_id);
 	} else {
 		response.sendRedirect("../login/index.jsp");
@@ -63,6 +66,10 @@
 						System.out.println(sql);
 						boolean result = stmt_order.execute(sql);
 						System.out.println(result);
+
+						String mailTitle = "你提交新的订单";
+						String mailContent = "菜名:" + name + ",份数:" + num + "份,单价:" + price + "元";
+						SendMail.sendMailWithDefaultServer(user_email, mailTitle, mailContent);
 			%>
 			<p>下单成功</p>
 			<a href="../main/index.jsp">返回主页</a>
