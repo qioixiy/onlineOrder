@@ -74,13 +74,13 @@
 						<span></span>订单查看
 					</h4>
 					<div class="list-item none">
-						<a href='#' onclick="get_url('order_form_manager.jsp')">查看所有订单</a>
+						<a href='#' onclick="get_url('order.jsp')">查看所有订单</a>
 						<a href='#'
-							onclick="get_url('order_form_manager.jsp?status=null')">未处理订单</a>
+							onclick="get_url('order.jsp?status=null')">未处理订单</a>
 						<a href='#'
-							onclick="get_url('order_form_manager.jsp?status=handing')">处理中订单</a>
+							onclick="get_url('order.jsp?status=handing')">处理中订单</a>
 						<a href='#'
-							onclick="get_url('order_form_manager.jsp?status=completed')">已完成订单</a>
+							onclick="get_url('order.jsp?status=completed')">已完成订单</a>
 					</div>
 				</li>
 				<li>
@@ -88,8 +88,8 @@
 						<span></span>菜单管理
 					</h4>
 					<div class="list-item none">
-						<a href='#' onclick="get_url('menu_manager.jsp')">查看所有</a><a
-							href='#' onclick="get_url('menu_manager_add.jsp')">添加新的菜式</a>
+						<a href='#' onclick="get_url('menu_list.jsp')">查看所有</a><a
+							href='#' onclick="get_url('menu_add.jsp')">添加新的菜式</a>
 					</div>
 				</li>
 				<li>
