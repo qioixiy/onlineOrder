@@ -21,7 +21,7 @@
 	
 	System.out.println(rand + ":" + input);
 	
-	if (!rand.equals(input)) {
+	if (rand == null || !rand.equals(input)) {
 		redirect = "index.jsp?err=verfiy";
 		System.out.println("verfiy code Error");
 	}

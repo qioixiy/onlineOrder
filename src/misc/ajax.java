@@ -138,6 +138,45 @@ public class ajax extends HttpServlet {
 		out.print(ret);
 		out.flush();
 	}
+	private void UserAdd(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		int ret = 1;
+		jdbc jdbc_conn = new jdbc();
+		Connection con = jdbc_conn.getConn();
+
+		String user_name = request.getParameter("user_name");
+		String user_password = request.getParameter("user_password");
+
+		user_name = CharCodeTrans(user_name, "ISO-8859-1", "UTF-8");
+		user_password = CharCodeTrans(user_password, "ISO-8859-1", "UTF-8");
+
+		System.out.println("user_name:" + user_name + "user_password:" + user_password);
+
+		String sql = null;
+		if (user_name == null || user_name.equals("") || user_password == null || user_password.equals("")) {
+			System.out.println("invalid data");
+			ret = 0;
+		} else {
+			Statement menu_smt;
+			try {
+				menu_smt = con.createStatement();
+				user_password = misc.Util.MD5(user_password);
+				sql = "INSERT INTO `userinfo` (`id`,`user`,`xuehao`,`email`,`timestamp`,`encrypt`,`password`)" +
+					"VALUES (NULL , '" + user_name + "', '000000000000', 'a@b.c', CURRENT_TIMESTAMP , '1', '" + user_password + "')";
+
+
+				System.out.println(sql);
+				menu_smt.execute(sql);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				ret = 0;
+			}
+		}
+		PrintWriter out = response.getWriter();
+		out.print(ret);
+		out.flush();
+	}
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -161,7 +200,9 @@ public class ajax extends HttpServlet {
 			case "add_news":
 				AddNews(request, response);
 				break;
-				
+			case "user_add":
+				UserAdd(request, response);
+				break;
 			default:
 				break;
 			}

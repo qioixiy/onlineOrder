@@ -66,7 +66,8 @@
 						<span></span>会员管理
 					</h4>
 					<div class="list-item none">
-						<a href='#' onclick="get_url('user_manager.jsp')">查看所有</a>
+						<a href='#' onclick="get_url('user_manager.jsp')">查看所有会员</a>
+						<a href='#' onclick="get_url('user_add.jsp')">添加会员</a>
 					</div>
 				</li>
 				<li>
@@ -97,7 +98,7 @@
 						<span></span>发布消息
 					</h4>
 					<div class="list-item none">
-						<a href='#' onclick="get_url('add_news.jsp')">添加新的消息</a>
+						<a href='#' onclick="get_url('news_add.jsp')">添加新的消息</a>
 					</div>
 				</li>
 			</ul>

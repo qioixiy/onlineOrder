@@ -123,7 +123,37 @@ function ajax_add_news()
 	xmlHttpRequest.setRequestHeader("Content-type",
 			"application/x-www-form-urlencoded");
 
-	xmlHttpRequest.send(paramer);// 发送请求;
+	xmlHttpRequest.send(paramer);// 发送请求
+}
+
+function ajax_user_add()
+{
+	createXMLHttpRequest();
+
+	alert("as");
+	var func_paramer = "user_add";
+	var url = "../ajax";
+	var user_name = document.getElementsByName("user_name")[0].value;
+	var user_password = document.getElementsByName("user_password")[0].value;
+	
+	var paramer = "func=" + func_paramer + "&user_name=" + user_name
+			+ "&user_password=" + user_password;
+alert(paramer);
+	var method = null;
+	var use_get = false;
+	if (use_get) {
+		url = url + "?" + paramer;
+		paramer = null;
+		method = "GET";
+	} else {
+		method = "POST";
+	}
+	xmlHttpRequest.open(method, url, true);
+	xmlHttpRequest.onreadystatechange = callBack_default;
+	xmlHttpRequest.setRequestHeader("Content-type",
+			"application/x-www-form-urlencoded");
+
+	xmlHttpRequest.send(paramer);// 发送请求
 }
 
 function test() {

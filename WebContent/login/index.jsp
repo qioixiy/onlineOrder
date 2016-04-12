@@ -117,7 +117,7 @@
 							type="text" value="" maxlength="100" id="yzm" class="i-text yzm"
 							nullmsg="请输入验证码！" name="rand">
 							<div class="ui-form-explain">
-								<img src="../verfiy_code/gen_code.jsp" class="yzm-img" />
+								<img src="../verfiy_code/gen_code.jsp" onerror="this.src='../images/code_default.jpg'" class="yzm-img" />
 							</div>
 					</div>
 
