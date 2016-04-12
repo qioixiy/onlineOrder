@@ -130,7 +130,6 @@ function ajax_user_add()
 {
 	createXMLHttpRequest();
 
-	alert("as");
 	var func_paramer = "user_add";
 	var url = "../ajax";
 	var user_name = document.getElementsByName("user_name")[0].value;
@@ -138,7 +137,7 @@ function ajax_user_add()
 	
 	var paramer = "func=" + func_paramer + "&user_name=" + user_name
 			+ "&user_password=" + user_password;
-alert(paramer);
+
 	var method = null;
 	var use_get = false;
 	if (use_get) {

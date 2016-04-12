@@ -19,6 +19,8 @@ function createXMLHttpRequest() {
 function get_url(url) {
 	createXMLHttpRequest();
 	xmlHttpRequest.open("GET", url, true);
+	xmlHttpRequest.setRequestHeader("Cache-Control","no-cache");
+	xmlHttpRequest.setRequestHeader("If-Modified-Since","0")
 	xmlHttpRequest.onreadystatechange = get_url_callBack;// 指定响应函数
 	// xmlHttpRequest.setRequestHeader("Content-type",
 	// "application/x-www-form-urlencoded");
