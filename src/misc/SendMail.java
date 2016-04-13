@@ -54,9 +54,6 @@ public class SendMail {
 	}
 
 	public static void main(String[] args) throws Exception {
-		// sendMail("zhouxueyuan1106@163.com", "zhouxueyuan1106", "163.com",
-		// "wldcadmin@163.com", "Java Mail 测试邮件",
-		// "<a>html 元素</a>:<b>邮件内容</b>");
 		sendMailWithDefaultServer("zhouxueyuan1106@163.com", "Java Mail 测试邮件", "<a>html 元素</a>:<b>邮件内容</b>");
 	}
 }
