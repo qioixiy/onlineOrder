@@ -95,10 +95,11 @@
 				</li>
 				<li>
 					<h4 class="M5">
-						<span></span>发布消息
+						<span></span>消息管理
 					</h4>
 					<div class="list-item none">
-						<a href='#' onclick="get_url('news_add.jsp')">添加新的消息</a>
+						<a href='#' onclick="get_url('news.jsp?func_id=list_all')">查看所有消息</a>
+						<a href='#' onclick="get_url('news.jsp?func_id=add_news')">添加新的消息</a>
 					</div>
 				</li>
 			</ul>
