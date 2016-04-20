@@ -15,9 +15,9 @@
 <table id="table-userinfo">
 	<tr bgcolor="ccccc0">
 		<td width=50>id</td>
-		<td width=100>主要内容</td>
+		<td width=200>主要内容</td>
 		<td width=100>发布日期</td>
-		<td width=100>摘要</td>
+		<td width=400>摘要</td>
 	</tr>
 	<%
 		String td_class = "td_class_1";
@@ -41,8 +41,8 @@
 	<tr>
 		<td class="<%=td_class%>" width=50><%=_id%></td>
 		<td class="<%=td_class%>" width=200><%=_title%></td>
-		<td class="<%=td_class%>" width=200><%=_date%></td>
-		<td class="<%=td_class%>" width=200><%=_data%></td>
+		<td class="<%=td_class%>" width=100><%=_date%></td>
+		<td class="<%=td_class%>" width=400><%=_data%></td>
 		<td bgcolor="#ffffff" style="text-align: center;"><a href="#"
 			onclick="get_url('news.jsp?func_id=del&id=<%=_id%>')">删除</a></td>
 	</tr>

@@ -15,8 +15,8 @@
 <table id="table-userinfo">
 	<tr bgcolor="ccccc0">
 		<td width=50>id</td>
-		<td width=100>留言日期</td>
-		<td width=100>摘要</td>
+		<td width=150>留言日期</td>
+		<td width=450>摘要</td>
 	</tr>
 	<%
 		String td_class = "td_class_1";
@@ -38,7 +38,7 @@
 	<tr>
 		<td class="<%=td_class%>" width=50><%=_id%></td>
 		<td class="<%=td_class%>" width=150><%=_date%></td>
-		<td class="<%=td_class%>" width=300><%=_content%></td>
+		<td class="<%=td_class%>" width=450><%=_content%></td>
 		<td bgcolor="#ffffff" style="text-align: center;"><a href="#"
 			onclick="get_url('liuyan.jsp?func_id=del&id=<%=_id%>')">删除</a></td>
 	</tr>
