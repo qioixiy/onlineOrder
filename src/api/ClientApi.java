@@ -198,7 +198,7 @@ public class ClientApi extends HttpServlet {
 		Statement stmt;
 		try {
 			stmt = con.createStatement();
-			String sql = "UPDATE `wldc`.`order_form` SET  `status` = 'completed', `dish_id` = '" + canpanID + "' WHERE `order_form`.`id` =" + orderID + "";
+			String sql = "UPDATE `wldc`.`order_form` SET  `status` = 'binded', `dish_id` = '" + canpanID + "' WHERE `order_form`.`id` =" + orderID + "";
 
 			System.out.println(sql);
 			stmt.executeUpdate(sql);
@@ -247,14 +247,16 @@ public class ClientApi extends HttpServlet {
 			
 			try {
 				Statement smt = con.createStatement();
+				
 				String sql = "select * from userinfo where `xuehao` = '" + userID + "'";
 				System.out.println(sql);
 				ResultSet rs_userinfo = smt.executeQuery(sql);
 				if (rs_userinfo.next()) {
-					String id = rs_userinfo.getString("id");
-					String sql_select_order_form = "SELECT * FROM `order_form` WHERE `user_id` =" + id;
+					String id = rs_userinfo.getString("id"); 
+					String sql_select_order_form = "SELECT * FROM `order_form` WHERE `status` = 'binded' and `user_id` =" + id;
 					System.out.println(sql_select_order_form);
 					ResultSet rs_order_form = smt.executeQuery(sql_select_order_form);
+					Statement set_completed_stmt = con.createStatement();
 					while(rs_order_form.next()) {
 						String _id = rs_order_form.getString("id");
 						String _timestamp = rs_order_form.getString("timestamp");
@@ -264,6 +266,11 @@ public class ClientApi extends HttpServlet {
 						String _spec = rs_order_form.getString("spec");
 						String _status = rs_order_form.getString("status");
 						String _dish_id = rs_order_form.getString("dish_id");
+						
+						// set order completed
+						String order_completed_sql = "UPDATE `wldc`.`order_form` SET `status` = 'completed' WHERE `order_form`.`user_id` ='" + _user_id + "'";
+						System.out.println(order_completed_sql);
+						set_completed_stmt.executeUpdate(order_completed_sql);
 						
 						String menu_name = null;
 						String menu_price = null;
