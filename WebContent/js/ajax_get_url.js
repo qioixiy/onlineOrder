@@ -16,6 +16,7 @@ function createXMLHttpRequest() {
 	}
 }
 
+// 通过ajax获取到url
 function get_url(url) {
 	createXMLHttpRequest();
 	xmlHttpRequest.open("GET", url, true);
@@ -29,6 +30,7 @@ function get_url(url) {
 
 }
 
+// url返回callback
 function get_url_callBack() {
 	if (xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200) {
 		result = xmlHttpRequest.responseText;
@@ -36,6 +38,7 @@ function get_url_callBack() {
 	}
 }
 
+// 主页面搜索ajax提交
 function main_search()
 {
 	var url = document.getElementById("form_search").action;

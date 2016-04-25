@@ -7,6 +7,7 @@
 	if (!misc.Util.loginCheck(session)) {
 		response.sendRedirect("../login/index.jsp");
 	}
+	// 连接数据库
 	Connection con = jdbc_conn.getConn();
 	Statement stmt = con.createStatement();
 	String user = (String) session.getAttribute("username");
@@ -73,6 +74,7 @@
 					<a href="javascript:void(0)" onclick="userInfoEdit(this)">编辑</a>
 					<div id="d1" style="background-color: #dddddd; padding: 10px;">
 						<p id="user-id" name=<%=_id%>></p>
+						<!-- 列出用户相关信息 -->
 						<table>
 							<tr>
 								<td><strong> 用户名</strong></td>
@@ -124,6 +126,7 @@
 								<td>餐盘号</td>
 							</tr>
 							<%
+								// 列出用户订单信息
 								String sql = "select * from order_form where user_id=" + "'" + _id + "'";
 								System.out.println(sql);
 								ResultSet rs = stmt.executeQuery(sql);
@@ -158,6 +161,7 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+		// 显示编辑模式
 		function userInfoEdit() {
 			document.getElementById("d1").style.display = "none";
 			document.getElementById("d2").style.display = "block";

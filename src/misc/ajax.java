@@ -30,7 +30,8 @@ public class ajax extends HttpServlet {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	// 实现ajax用户更新接口
 	private void UpdateUserinfo(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String user = request.getParameter("user");
@@ -57,6 +58,7 @@ public class ajax extends HttpServlet {
 		out.flush();
 	}
 
+	// 添加新的菜单ajax实现
 	private void SubmitNewMenu(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int ret = 1;
@@ -102,6 +104,8 @@ public class ajax extends HttpServlet {
 		out.print(ret);
 		out.flush();
 	}
+	
+	//添加新的new ajax实现
 	private void AddNews(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int ret = 1;
@@ -138,6 +142,8 @@ public class ajax extends HttpServlet {
 		out.print(ret);
 		out.flush();
 	}
+	
+	// 添加用户ajax 实现
 	private void UserAdd(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int ret = 1;

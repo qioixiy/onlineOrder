@@ -1,5 +1,6 @@
 var xmlHttpRequest;
 
+// 创建xmlhttp请求对象
 function createXMLHttpRequest() {
 	if (window.XMLHttpRequest) { // Mozilla
 		xmlHttpRequest = new XMLHttpRequest();
@@ -16,11 +17,14 @@ function createXMLHttpRequest() {
 	}
 }
 
+// 编辑用户信息的回调
 function callBack_update_userinfo()
 {
 	callBack_default();
 	location=location;
 }
+
+// 编辑用户信息ajax请求
 function ajax_update_userinfo() {
 	createXMLHttpRequest();
 
@@ -51,6 +55,7 @@ function ajax_update_userinfo() {
 	xmlHttpRequest.send(paramer);// 发送请求;
 }
 
+//添加新menuajax请求
 function ajax_submit_newmenu() {
 
 	createXMLHttpRequest();
@@ -86,6 +91,7 @@ function ajax_submit_newmenu() {
 	xmlHttpRequest.send(paramer);// 发送请求;
 }
 
+// 默认的ajax回调
 function callBack_default() {
 	if (xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200) {
 		result = xmlHttpRequest.responseText;
@@ -97,6 +103,7 @@ function callBack_default() {
 	}
 }
 
+// 添加新的信息ajax请求
 function ajax_add_news()
 {
 	createXMLHttpRequest();
@@ -126,6 +133,7 @@ function ajax_add_news()
 	xmlHttpRequest.send(paramer);// 发送请求
 }
 
+//添加用户ajax请求
 function ajax_user_add()
 {
 	createXMLHttpRequest();

@@ -8,6 +8,7 @@
 	<h1>登录成功</h1>
 	<%=session.getAttribute("user")%>
 	<%
+		// 在验证通过后跳转到main页面
 		session.setAttribute("login", "true");
 		session.setMaxInactiveInterval(60 * 15);
 		response.sendRedirect("../main/");

@@ -4,14 +4,18 @@
 <jsp:useBean id="jdbc_conn" scope="page" class="db.jdbc" />
 
 <%
+	// 检查是否是正常登录中
 	if (!misc.Util.loginCheck(session)) {
 		response.sendRedirect("../login/index.jsp");
 	}
+	// 创建数据库的连接
 	Connection con = jdbc_conn.getConn();
 	Statement stmt = con.createStatement();
 
+	// 是否有search参数， 如果有就返回搜索的结果
 	String search = request.getParameter("search");
 	if (null != search) {
+		// 将所有的编码统一为gb2312， 因为数据库使用了gb2312编码
 		search = new String(search.getBytes("ISO-8859-1"), "gb2312");
 	}
 	System.out.println("search:" + search);
@@ -39,6 +43,7 @@
 		<div id="header">
 			<div class="login_status">
 				<%
+				// 拿到当前session登录的用户名，根据用户名显示提示消息
 					String username = (String) session.getAttribute("username");
 					String status = "请登录";
 					if (username != null) {
@@ -55,6 +60,7 @@
 					<%
 						String user_type = "user";
 						{
+							// 查询登录用户是否是管理员
 							Statement stmt_manager = con.createStatement();
 							String sql = "select * from manager where `username`='" + username + "'";
 							System.out.println(sql);
@@ -107,6 +113,7 @@
 				<div class="list-all">
 					<ul>
 						<%
+							//分页显示支持
 							int page_size = 5;
 							String pages = request.getParameter("page");
 							if (null == pages) {
@@ -114,6 +121,7 @@
 							}
 							System.out.println("pages:" + pages);
 
+							// 查询所有的菜单信息
 							ResultSet rs = null;
 							String filter = null;
 							String sql = "select * from menu order by id desc";
@@ -146,6 +154,7 @@
 							}
 							i = 0;
 
+							// 循环取出查询数据
 							while (rs.next() && i < page_size) {
 								i++;
 								String _id = rs.getString("id");
@@ -191,6 +200,7 @@
 						<div class="skip" align="right">
 							第<%=pageInt%>页，转到第
 							<%
+							// 页面跳转序号
 							rs.last();
 							int rowCount = rs.getRow();
 							System.out.println("rowCount:" + rowCount + ",page_size:" + page_size);
@@ -214,6 +224,7 @@
 					<div id="new-content">
 						<ul>
 							<%
+								// 查询新闻消息数据
 								rs = stmt.executeQuery("select * from news order by id desc");
 
 								int news_max_size = 10;

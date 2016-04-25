@@ -30,6 +30,7 @@ public class ClientApi extends HttpServlet {
 		doPost(request, response);
 	}
 
+	// 获取唯一的UUID
 	String getUuid() {
 		UUID uuid = UUID.randomUUID();
 		return uuid.toString();
@@ -39,6 +40,7 @@ public class ClientApi extends HttpServlet {
 		;
 	}
 
+	// 内部使用，从数据库中拿到所有未处理的订单
 	private List<Map<String, String>> GetOrderListFromdb() {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 
@@ -115,6 +117,7 @@ public class ClientApi extends HttpServlet {
 		return list;
 	}
 
+	// 客户端登录请求
 	JSONObject ClientLogin(HttpServletRequest request, HttpServletResponse response) {
 		String user = request.getParameter("user");
 		String password = request.getParameter("password");
@@ -171,6 +174,7 @@ public class ClientApi extends HttpServlet {
 		return JSONObject.fromObject(map);
 	}
 
+	// 取得所有订单list
 	JSONObject GetAllOrderList(HttpServletRequest request, HttpServletResponse response) {
 		String uuid = request.getParameter("uuid");
 
@@ -188,6 +192,8 @@ public class ClientApi extends HttpServlet {
 
 		return jobject;
 	}
+	
+	// 更新餐盘绑定状态
 	boolean UpdateOrderBindCanPan(String orderID, String canpanID)
 	{
 		System.out.println("orderID:" + orderID + ",canpanID:" + canpanID);
@@ -208,6 +214,8 @@ public class ClientApi extends HttpServlet {
 		}
 		return true;
 	}
+	
+	// 绑定订单的餐盘ID
 	JSONObject orderBindCanPan(HttpServletRequest request, HttpServletResponse response) {
 		String uuid = request.getParameter("uuid");
 
@@ -229,6 +237,8 @@ public class ClientApi extends HttpServlet {
 
 		return jobject;
 	}
+	
+	// 取得用户餐盘和对应的价格
 	JSONObject GetCanPanIdAndTotalPrice(HttpServletRequest request, HttpServletResponse response) {
 		String uuid = request.getParameter("uuid");
 
@@ -314,6 +324,7 @@ public class ClientApi extends HttpServlet {
 		return jobject;
 	}
 
+	// 分发请求参数
 	JSONObject dispatcher(HttpServletRequest request, HttpServletResponse response) {
 		String id = request.getParameter("id");
 		if (id != null) {
@@ -340,6 +351,7 @@ public class ClientApi extends HttpServlet {
 		}
 	}
 
+	// 对客户端的请求响应入口
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
@@ -356,6 +368,7 @@ public class ClientApi extends HttpServlet {
 		out.close();
 	}
 
+	// 
 	public String BuildJson() {
 
 		// JSON格式数据解析对象

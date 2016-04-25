@@ -29,7 +29,7 @@ function getP() {
 	xmlHttpRequest.send("&timeStamp=" + (new Date()).getTime());
 
 }
-// 回调函数
+// 上传过程回调函数
 function callBack() {
 
 	if (xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200) {

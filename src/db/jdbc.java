@@ -14,9 +14,11 @@ public class jdbc {
 	String user = "root";
 	String password = "";
 
+	// 创建数据库连接
 	public java.sql.Connection getConn() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			// 数据库地址 用户名 密码
 			String url = "jdbc:mysql://" + dbip + ":3306/wldc" + "?user=" + user + "&password=" + password
 					+ "&useUnicode=true&characterEncoding=gb2312";
 			conn = DriverManager.getConnection(url);
@@ -26,6 +28,7 @@ public class jdbc {
 		return this.conn;
 	}
 
+	// 转换编码
 	public String ex_chinese(String str) {
 		System.out.println("-" + str);
 		if (str == null) {
@@ -40,6 +43,7 @@ public class jdbc {
 		return str;
 	}
 
+	// 取得当前时间
 	public String gettime() {
 		String datestr = "";
 		try {

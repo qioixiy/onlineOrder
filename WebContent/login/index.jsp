@@ -16,7 +16,7 @@
 
 <script>
 	$(function() {
-
+		// 选择行高亮
 		$(".i-text").focus(function() {
 			$(this).addClass('h-light');
 		});
@@ -24,42 +24,42 @@
 		$(".i-text").focusout(function() {
 			$(this).removeClass('h-light');
 		});
-
+		// 输入提示
 		$("#username").focus(function() {
 			var username = $(this).val();
 			if (username == '输入账号') {
 				$(this).val('');
 			}
 		});
-
+		// 输入提示
 		$("#username").focusout(function() {
 			var username = $(this).val();
 			if (username == '') {
 				$(this).val('输入账号');
 			}
 		});
-
+		// 输入提示
 		$("#password").focus(function() {
 			var username = $(this).val();
 			if (username == '输入密码') {
 				$(this).val('');
 			}
 		});
-
+		// 输入提示
 		$("#yzm").focus(function() {
 			var username = $(this).val();
 			if (username == '输入验证码') {
 				$(this).val('');
 			}
 		});
-
+		// 输入提示
 		$("#yzm").focusout(function() {
 			var username = $(this).val();
 			if (username == '') {
 				$(this).val('输入验证码');
 			}
 		});
-
+		// 输入提示
 		$(".registerform").Validform({
 			tiptype : function(msg, o, cssctl) {
 				var objtip = $(".error-box");

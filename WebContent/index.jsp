@@ -12,6 +12,7 @@
 	<%
 		String flag = request.getParameter("flag");
 
+		// 根据url的flag参数进行跳转
 		if (flag != null) {
 			if (misc.Util.loginCheck(session)) {
 				response.sendRedirect("main_new/index.jsp");
