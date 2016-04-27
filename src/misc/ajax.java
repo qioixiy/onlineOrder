@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import db.jdbc;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 /**
  * Servlet implementation class ajax
@@ -183,6 +185,55 @@ public class ajax extends HttpServlet {
 		out.print(ret);
 		out.flush();
 	}
+	
+	/* 处理购物车数据 */
+	private void SubmitCart(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException
+	{
+		int ret = 1;
+		String data = request.getParameter("data");
+		System.out.println("data:" + data);
+		
+		String username = (String) request.getSession().getAttribute("username");
+		if (username == null) {
+			return;
+		}
+		//*
+		System.out.println("username:" + username);
+		db.jdbc jdbc_conn = new db.jdbc();
+		Connection con = jdbc_conn.getConn();
+		Statement stmt;
+		try {
+			stmt = con.createStatement();
+			ResultSet rs_userinfo = stmt.executeQuery("select * from userinfo where user=" + "'" + username + "'");
+			String user_id = null;
+			if (rs_userinfo.next()) {
+				user_id = rs_userinfo.getString("id");
+				System.out.println("username:" + username + ",user_id:" + user_id);
+			}
+			JSONObject mJSONObject = JSONObject.fromObject(data);
+			JSONArray mJSONArray_Data = mJSONObject.getJSONArray("data");
+			System.out.println(mJSONArray_Data.toString());
+			for ( int i = 0; i < mJSONArray_Data.size(); i++)
+			{
+				JSONObject __JSONObject = mJSONArray_Data.getJSONObject(i);
+				String menu_id = __JSONObject.getString("menu_id");
+				String num = __JSONObject.getString("repeat");;
+				String sql = "INSERT INTO `order_form` ( `id` , `user_id` , `menu_id` , `repeat` , `spec` ) VALUES (NULL , '"
+						+ user_id + "', '" + menu_id + "', '" + num + "', 'null')";
+				System.out.println("sql:"+sql);
+				stmt.execute(sql);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		PrintWriter out = response.getWriter();
+		out.print(ret);
+		out.flush();
+	}
+	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -208,6 +259,9 @@ public class ajax extends HttpServlet {
 				break;
 			case "user_add":
 				UserAdd(request, response);
+				break;
+			case "submit_cart":
+				SubmitCart(request, response);
 				break;
 			default:
 				break;

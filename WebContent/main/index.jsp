@@ -190,7 +190,7 @@
 									</div>
 									<div class="buy">
 										<a href="../order_form/index.jsp?menu_id=<%=_id%>">下单</a>
-										<a style="font-size:12px;"href="javascript:void(0)" onclick="SetOrderForm('NO<%=i_skip+i%>','<%=_name%>','1','<%=_price%>');WriteOrderInDiv();" />加入购物车</a>
+										<a style="font-size:12px;"href="javascript:void(0)" onclick="SetOrderForm('NO<%=i_skip+i%>','<%=_name%>','1','<%=_price%>','<%=_id%>');WriteOrderInDiv();" />加入购物车</a>
 									</div>
 								</div>
 								<div class="info"></div>

@@ -95,6 +95,7 @@ function ajax_submit_newmenu() {
 function callBack_default() {
 	if (xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200) {
 		result = xmlHttpRequest.responseText;
+
 		if (result == 1) {
 			alert("success");
 		} else {
@@ -161,6 +162,34 @@ function ajax_user_add()
 			"application/x-www-form-urlencoded");
 
 	xmlHttpRequest.send(paramer);// 发送请求
+}
+
+
+//添加新购物车信息提交ajax请求
+function ajax_submit_cart(json) {
+
+	createXMLHttpRequest();
+
+	var func_paramer = "submit_cart";
+	var url = "../ajax";
+
+	var paramer = "func=" + func_paramer + "&data=" + json;
+
+	var method = null;
+	var use_get = false;
+	if (use_get) {
+		url = url + "?" + paramer;
+		paramer = null;
+		method = "GET";
+	} else {
+		method = "POST";
+	}
+	xmlHttpRequest.open(method, url, true);
+	xmlHttpRequest.onreadystatechange = callBack_default;
+	xmlHttpRequest.setRequestHeader("Content-type",
+			"application/x-www-form-urlencoded");
+
+	xmlHttpRequest.send(paramer);// 发送请求;
 }
 
 function test() {

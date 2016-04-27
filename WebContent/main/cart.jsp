@@ -34,11 +34,13 @@
 			<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
 			<link href="../css/main.css" rel="stylesheet" type="text/css"
 				media="all" />
-			<title>购物车</title> <script type="text/javascript"
-				src="../js/ajax_get_url.js"></script>
+			<title>购物车</title>
 </head>
 
-<body><script src="../js/cart.js" type="text/javascript"></script>
+<body>
+	<script type="text/javascript" src="../js/ajax_get_url.js"></script>
+	<script type="text/javascript" src="../js/ajax_api.js"></script>
+	<script type="text/javascript" src="../js/cart.js"></script>
     
 	<div id="container">
 		<div id="header">

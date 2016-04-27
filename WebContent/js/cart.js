@@ -109,7 +109,7 @@ function clearOrder()
     document.cookie="24_OrderForm='';expires=" + Then.toGMTString();
 }
 //<--End//<--Start--添加商品至购物车的函数,参数(商品编号,商品名称，商品数量，商品单价)
-function SetOrderForm(item_no,item_name,item_amount,item_price)
+function SetOrderForm(item_no,item_name,item_amount,item_price,item_id)
 {
 	//alert("item_no:" + item_no + ",item_name:" + item_name + ",item_amount:" + item_amount + ",item_price:" + item_price);
     var cookieString=document.cookie;
@@ -126,7 +126,7 @@ function SetOrderForm(item_no,item_name,item_amount,item_price)
         var mer_list=ReadOrderForm('24_OrderForm');
         var Then = new Date();
         Then.setTime(Then.getTime()+30*60*1000);
-        var item_detail="|"+item_no+"&"+item_name+"&"+item_price+"&"+item_amount;
+        var item_detail="|"+item_no+"&"+item_name+"&"+item_price+"&"+item_amount+"&"+item_id;
         if(mer_list==false)
         {
             document.cookie="24_OrderForm="+escape(item_detail)+";expires=" + Then.toGMTString();
@@ -174,6 +174,7 @@ function submit_cart()
     strs=OrderString.split("|");//用|分割出购物车中的每个产品
     //alert(strs);
     
+    var obj = new Object();
     var arr = new Array();
     var empty = true;
     for (i=1;i<strs.length ;i++ )
@@ -181,14 +182,21 @@ function submit_cart()
     	empty = false;
         //OneOrder=strs[i].split("%26");
         OneOrder=strs[i].split("&");
-        arr[i-1] = new Object();
+        //alert(OneOrder);
         
+        arr[i-1] = new Object();
         arr[i-1].menu_name = OneOrder[1];
         arr[i-1].menu_price = OneOrder[2];
         arr[i-1].repeat = OneOrder[3];
+        arr[i-1].menu_id = OneOrder[4];
     }
     if (!empty) {
-    	alert(JSON.stringify(arr));
+        obj.data = arr;
+    	json = JSON.stringify(obj);
+    	ajax_submit_cart(json);
+    	//alert(json);
+    	clearOrder();
+    	window.location.href = "index.jsp";
     } else {
     	alert("空的购物车,不需要提交");
     }
