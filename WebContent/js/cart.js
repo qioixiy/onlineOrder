@@ -162,3 +162,34 @@ function updateOrderCookie()
     document.cookie="24_OrderForm="+escape(item_detail)+";expires=" + Then.toGMTString();
 }
 //<--End--订单更新
+
+function submit_cart()
+{
+	var OrderString=unescape(ReadOrderForm('24_OrderForm'));//获取cookies中的购物车信息
+	//alert(OrderString);
+    //document.write(OrderString);
+    var strs= new Array(); //定义一个数组，用于存储购物车里的每一条信息
+    var OneOrder="";
+    //strs=OrderString.split("%7C");//用|分割出购物车中的每个产品
+    strs=OrderString.split("|");//用|分割出购物车中的每个产品
+    //alert(strs);
+    
+    var arr = new Array();
+    var empty = true;
+    for (i=1;i<strs.length ;i++ )
+    {
+    	empty = false;
+        //OneOrder=strs[i].split("%26");
+        OneOrder=strs[i].split("&");
+        arr[i-1] = new Object();
+        
+        arr[i-1].menu_name = OneOrder[1];
+        arr[i-1].menu_price = OneOrder[2];
+        arr[i-1].repeat = OneOrder[3];
+    }
+    if (!empty) {
+    	alert(JSON.stringify(arr));
+    } else {
+    	alert("空的购物车,不需要提交");
+    }
+}

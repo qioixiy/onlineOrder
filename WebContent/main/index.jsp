@@ -252,10 +252,12 @@
 					</div>
 					<div id="Info">
 						总计：<strong><span id="total"
-							style="color: #FF0000; font-size: 36px">0</span></strong>元 <input
+							style="color: #FF0000; font-size: 36px">0</span></strong>元</br> <input
 							type="button" value="清空"
-							onclick="clearOrder();WriteOrderInDiv();" /></br> <input id="input_cart_status"
-							type="button" value="总价" onclick="show('Cart')" style="display:none;"/>
+							onclick="clearOrder();WriteOrderInDiv();" /><input
+							id="input_cart_status" type="button" value="总价"
+							onclick="show('Cart')" style="display: none;" /> <a
+							href="cart.jsp">提交</a>
 					</div>
 				</div>
 			</div>
