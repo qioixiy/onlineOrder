@@ -169,14 +169,11 @@ body {
     border:0px #333 solid;
     padding-bottom:20px;
 }
-.sidebar #new,#gouwuche {
+.sidebar #new,#cart {
 	background-color:#fff;
 	margin:0px 0px 10px 10px;
 	padding:10px;
 	border:0px #333 solid;
-}
-.sidebar #gouwuche {
-	height:100px;
 }
 
 .li-liuyan {

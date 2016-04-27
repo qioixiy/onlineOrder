@@ -38,7 +38,7 @@
 				src="../js/ajax_get_url.js"></script>
 </head>
 
-<body><script src="../js/chart.js" type="text/javascript"></script>
+<body><script src="../js/cart.js" type="text/javascript"></script>
     
 	<div id="container">
 		<div id="header">
@@ -243,8 +243,7 @@
 						</ul>
 					</div>
 				</div>
-
-				<div id="gouwuche">
+				<div id="cart">
 					<div id="Cart"
 						style="line-height: 24px; font-size: 12px; background-color: #f0f0f0; border-top: 1px #ffffff solid；display:none;">
 					</div>
