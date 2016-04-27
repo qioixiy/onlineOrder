@@ -245,19 +245,23 @@
 				</div>
 
 				<div id="gouwuche">
-				<div width="300px">
-      <div id="Cart" style="line-height: 24px; font-size: 12px; background-color: #f0f0f0;
-                            border-top: 1px #ffffff solid；display:none; ">
-      </div>
-      <div id="Info">
-        总计：<strong><span id="total" style="color: #FF0000; font-size: 36px">0</span></strong>元
-        <input type="button" value="清空" onclick="clearOrder();WriteOrderInDiv();" />
-        <input type="button" value="展开/收缩" onclick="show('Cart')" />
-      </div>
-      <input type="button" value="加入商品1" onclick="SetOrderForm('NO1','商品1','1','3.5');WriteOrderInDiv();" />
-      <input type="button" value="加入商品2" onclick="SetOrderForm('NO2','商品2','1','5.5');WriteOrderInDiv();" />
-      <input type="button" value="加入商品3" onclick="SetOrderForm('NO3','商品3','1','10.5');WriteOrderInDiv();" />
-    </div></div>
+					<div id="Cart"
+						style="line-height: 24px; font-size: 12px; background-color: #f0f0f0; border-top: 1px #ffffff solid；display:none;">
+					</div>
+					<div id="Info">
+						总计：<strong><span id="total"
+							style="color: #FF0000; font-size: 36px">0</span></strong>元 <input
+							type="button" value="清空"
+							onclick="clearOrder();WriteOrderInDiv();" /> <input
+							type="button" value="展开/收缩" onclick="show('Cart')" />
+					</div>
+					<input type="button" value="加入商品1"
+						onclick="SetOrderForm('NO1','商品1','1','3.5');WriteOrderInDiv();" />
+					<input type="button" value="加入商品2"
+						onclick="SetOrderForm('NO2','商品2','1','5.5');WriteOrderInDiv();" />
+					<input type="button" value="加入商品3"
+						onclick="SetOrderForm('NO3','商品3','1','10.5');WriteOrderInDiv();" />
+				</div>
 			</div>
 		</div>
 		<div class="div-clear"></div>

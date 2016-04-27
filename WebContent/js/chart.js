@@ -129,18 +129,18 @@ function SetOrderForm(item_no,item_name,item_amount,item_price)
         if(mer_list==false)
         {
             document.cookie="24_OrderForm="+escape(item_detail)+";expires=" + Then.toGMTString();
-            alert("“"+item_name+"”\n"+"已经加入您的订单！");
+            //alert("“"+item_name+"”\n"+"已经加入您的订单！");
         }
         else
         {
             if (mer_list.indexOf(escape(item_no))!=-1)
             {
-                alert('此商品您已添加\n请进入订单修改数量！')
+                //alert('此商品您已添加\n请进入订单修改数量！')
             }
             else
             {
                 document.cookie="24_OrderForm="+mer_list+escape(item_detail)+";expires=" + Then.toGMTString();
-                alert("“"+item_name+"”\n"+"已经加入您的订单！");
+                //alert("“"+item_name+"”\n"+"已经加入您的订单！");
             }
         }
     }//*/
