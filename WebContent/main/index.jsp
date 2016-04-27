@@ -1,21 +1,21 @@
-<%@page contentType="text/html; charset=gb2312" language="java"
+<%@page contentType="text/html; charset=UTF-8" language="java"
 	import="java.sql.*" errorPage=""%>
 
 <jsp:useBean id="jdbc_conn" scope="page" class="db.jdbc" />
 
 <%
-	// ����Ƿ���������¼��
+	// 检查是否是正常登录中
 	if (!misc.Util.loginCheck(session)) {
 		response.sendRedirect("../login/index.jsp");
 	}
-	// �������ݿ������
+	// 创建数据库的连接
 	Connection con = jdbc_conn.getConn();
 	Statement stmt = con.createStatement();
 
-	// �Ƿ���search������ ����оͷ��������Ľ��
+	// 是否有search参数， 如果有就返回搜索的结果
 	String search = request.getParameter("search");
 	if (null != search) {
-		// �����еı���ͳһΪgb2312�� ��Ϊ���ݿ�ʹ����gb2312����
+		// 将所有的编码统一为gb2312， 因为数据库使用了gb2312编码
 		search = new String(search.getBytes("ISO-8859-1"), "gb2312");
 	}
 	System.out.println("search:" + search);
@@ -34,20 +34,21 @@
 			<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
 			<link href="../css/main.css" rel="stylesheet" type="text/css"
 				media="all" />
-			<title>��������ϵͳ��ҳ</title> <script type="text/javascript"
+			<title>自助订餐系统主页</title> <script type="text/javascript"
 				src="../js/ajax_get_url.js"></script>
 </head>
 
-<body>
+<body><script src="../js/chart.js" type="text/javascript"></script>
+    
 	<div id="container">
 		<div id="header">
 			<div class="login_status">
 				<%
-				// �õ���ǰsession��¼���û����������û�����ʾ��ʾ��Ϣ
+				// 拿到当前session登录的用户名，根据用户名显示提示消息
 					String username = (String) session.getAttribute("username");
-					String status = "���¼";
+					String status = "请登录";
 					if (username != null) {
-						status = "��ӭ��" + session.getAttribute("username");
+						status = "欢迎你" + session.getAttribute("username");
 					}
 				%>
 				<p>
@@ -56,11 +57,11 @@
 
 			<div id="menu">
 				<ul>
-					<li><a href="../index.jsp">��ҳ</a></li>
+					<li><a href="../index.jsp">首页</a></li>
 					<%
 						String user_type = "user";
 						{
-							// ��ѯ��¼�û��Ƿ��ǹ���Ա
+							// 查询登录用户是否是管理员
 							Statement stmt_manager = con.createStatement();
 							String sql = "select * from manager where `username`='" + username + "'";
 							System.out.println(sql);
@@ -75,16 +76,16 @@
 						String tt = null;
 						String tt_href = null;
 						if (user_type.equals("manager")) {
-							tt = "ϵͳ����";
+							tt = "系统管理";
 							tt_href = "../manager/index.jsp";
 						} else if (user_type.equals("user")) {
-							tt = "�ҵ���Ϣ";
+							tt = "我的信息";
 							tt_href = "user_info.jsp";
 						}
 					%>
 					<li><a href="<%=tt_href%>"><%=tt%></a></li>
-					<li><a href="../liuyan/index.jsp">�鿴����</a></li>
-					<li><a href="../login/index.jsp">�˳�</a></li>
+					<li><a href="../liuyan/index.jsp">查看留言</a></li>
+					<li><a href="../login/index.jsp">退出</a></li>
 				</ul>
 			</div>
 
@@ -92,7 +93,7 @@
 			<form action="index.jsp" id="form_search" name="search" method="post">
 				<div id="search-box">
 					<input id="input_search" type="text" class="input-box" /> <input
-						name="search" type="button" value="����" class="button"
+						name="search" type="button" value="搜索" class="button"
 						onclick="main_search()" />
 				</div>
 			</form>
@@ -103,17 +104,17 @@
 				<div class="navi">
 					<div id="navi-menu">
 						<ul>
-							<li><a href="index.jsp?search=all">ȫ������</a></li>
-							<li><a href="index.jsp?search=jiachangcai">�ҳ���</a></li>
-							<li><a href="index.jsp?search=huncai">���</a></li>
-							<li><a href="index.jsp?search=sucai">�ز�</a></li>
+							<li><a href="index.jsp?search=all">全部分类</a></li>
+							<li><a href="index.jsp?search=jiachangcai">家常菜</a></li>
+							<li><a href="index.jsp?search=huncai">荤菜</a></li>
+							<li><a href="index.jsp?search=sucai">素菜</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="list-all">
 					<ul>
 						<%
-							//��ҳ��ʾ֧��
+							//分页显示支持
 							int page_size = 5;
 							String pages = request.getParameter("page");
 							if (null == pages) {
@@ -121,15 +122,15 @@
 							}
 							System.out.println("pages:" + pages);
 
-							// ��ѯ���еĲ˵���Ϣ
+							// 查询所有的菜单信息
 							ResultSet rs = null;
 							String filter = null;
 							String sql = "select * from menu order by id desc";
 							if (search != null && (!search.equals("null")) && (!search.equals("all"))) {
 								if (search.equals("sucai")) {
-									filter = "�ز�";
+									filter = "素菜";
 								} else if (search.equals("huncai")) {
-									filter = "���";
+									filter = "荤菜";
 								}
 								if (null != filter) {
 									sql = "select * from menu where style='" + filter + "'";
@@ -137,7 +138,7 @@
 									sql = "select * from menu where `name` like '%" + search + "%'";
 								}
 								if (search.equals("jiachangcai")) {
-									String f = "�ҳ���";
+									String f = "家常菜";
 									sql = "select * from menu where style2='" + f + "'";
 								}
 							}
@@ -154,7 +155,7 @@
 							}
 							i = 0;
 
-							// ѭ��ȡ����ѯ����
+							// 循环取出查询数据
 							while (rs.next() && i < page_size) {
 								i++;
 								String _id = rs.getString("id");
@@ -176,17 +177,17 @@
 								</div>
 								<div class="txt">
 									<div class="title">
-										<strong>����:</strong><%=_name%></div>
+										<strong>菜名:</strong><%=_name%></div>
 									<div class="price">
-										<strong>����:</strong><%=_price%>Ԫ
+										<strong>单价:</strong><%=_price%>元
 									</div>
 									<div class="details">
-										<strong>����:</strong><%=_details%></div>
+										<strong>描述:</strong><%=_details%></div>
 									<div class="comments">
-										<a href="../pingjia/index.jsp?menu_id=<%=_id%>">�鿴����</a>
+										<a href="../pingjia/index.jsp?menu_id=<%=_id%>">查看评价</a>
 									</div>
 									<div class="buy">
-										<a href="../order_form/index.jsp?menu_id=<%=_id%>">�µ�</a>
+										<a href="../order_form/index.jsp?menu_id=<%=_id%>">下单</a>
 									</div>
 								</div>
 								<div class="info"></div>
@@ -198,9 +199,9 @@
 						%>
 
 						<div class="skip" align="right">
-							��<%=pageInt%>ҳ��ת����
+							第<%=pageInt%>页，转到第
 							<%
-							// ҳ����ת���
+							// 页面跳转序号
 							rs.last();
 							int rowCount = rs.getRow();
 							System.out.println("rowCount:" + rowCount + ",page_size:" + page_size);
@@ -210,21 +211,20 @@
 							<a href="index.jsp?search=<%=search%>&page=<%=j%>"><%=j%></a>
 							<%
 								}
-							%>ҳ
+							%>页
 						</div>
 					</ul>
 				</div>
 			</div>
 			<div class="sidebar">
-				<div id="gouwuche"></div>
 				<div id="new">
 					<div id="title">
-						<span><strong>������Ϣ</strong></span>
+						<span><strong>新闻信息</strong></span>
 					</div>
 					<div id="new-content">
 						<ul>
 							<%
-								// ��ѯ������Ϣ����
+								// 查询新闻消息数据
 								rs = stmt.executeQuery("select * from news order by id desc");
 
 								int news_max_size = 10;
@@ -243,13 +243,32 @@
 						</ul>
 					</div>
 				</div>
+
+				<div id="gouwuche">
+				<div width="300px">
+      <div id="Cart" style="line-height: 24px; font-size: 12px; background-color: #f0f0f0;
+                            border-top: 1px #ffffff solid；display:none; ">
+      </div>
+      <div id="Info">
+        总计：<strong><span id="total" style="color: #FF0000; font-size: 36px">0</span></strong>元
+        <input type="button" value="清空" onclick="clearOrder();WriteOrderInDiv();" />
+        <input type="button" value="展开/收缩" onclick="show('Cart')" />
+      </div>
+      <input type="button" value="加入商品1" onclick="SetOrderForm('NO1','商品1','1','3.5');WriteOrderInDiv();" />
+      <input type="button" value="加入商品2" onclick="SetOrderForm('NO2','商品2','1','5.5');WriteOrderInDiv();" />
+      <input type="button" value="加入商品3" onclick="SetOrderForm('NO3','商品3','1','10.5');WriteOrderInDiv();" />
+    </div></div>
 			</div>
 		</div>
 		<div class="div-clear"></div>
 		<div id="footer">
-			<p>��ַ���㽭ʡ�����б�����������·205��&nbsp;&nbsp;�ܻ���0574-86155210</p>
-			<p>CopyRight&nbsp;&nbsp;��������ѧԺ��Ϣ���� 2016</p>
+			<p>地址：浙江省宁波市北仑区振兴西路205号&nbsp;&nbsp;总机：0574-86155210</p>
+			<p>CopyRight&nbsp;&nbsp;公安海警学院信息公开 2016</p>
 		</div>
 	</div>
+	
+    <script>
+      WriteOrderInDiv();
+    </script>
 </body>
 </html>
