@@ -148,11 +148,13 @@
 							int i = 0, pageInt = Integer.parseInt(pages);
 							int skip = page_size * (pageInt - 1);
 							System.out.println(skip);
+							int i_skip = 0;
 							while (i < skip && rs.next()) {
 								String _id = rs.getString("id");
 								System.out.println(_id);
 								i++;
 							}
+							i_skip = i;
 							i = 0;
 
 							// 循环取出查询数据
@@ -188,6 +190,7 @@
 									</div>
 									<div class="buy">
 										<a href="../order_form/index.jsp?menu_id=<%=_id%>">下单</a>
+										<a style="font-size:12px;"href="javascript:void(0)" onclick="SetOrderForm('NO<%=i_skip+i%>','<%=_name%>','1','<%=_price%>');WriteOrderInDiv();" />加入购物车</a>
 									</div>
 								</div>
 								<div class="info"></div>
@@ -251,15 +254,9 @@
 						总计：<strong><span id="total"
 							style="color: #FF0000; font-size: 36px">0</span></strong>元 <input
 							type="button" value="清空"
-							onclick="clearOrder();WriteOrderInDiv();" /> <input
-							type="button" value="展开/收缩" onclick="show('Cart')" />
+							onclick="clearOrder();WriteOrderInDiv();" /></br> <input id="input_cart_status"
+							type="button" value="总价" onclick="show('Cart')" style="display:none;"/>
 					</div>
-					<input type="button" value="加入商品1"
-						onclick="SetOrderForm('NO1','商品1','1','3.5');WriteOrderInDiv();" />
-					<input type="button" value="加入商品2"
-						onclick="SetOrderForm('NO2','商品2','1','5.5');WriteOrderInDiv();" />
-					<input type="button" value="加入商品3"
-						onclick="SetOrderForm('NO3','商品3','1','10.5');WriteOrderInDiv();" />
 				</div>
 			</div>
 		</div>

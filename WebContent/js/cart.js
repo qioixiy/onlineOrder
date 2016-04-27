@@ -111,6 +111,7 @@ function clearOrder()
 //<--End//<--Start--添加商品至购物车的函数,参数(商品编号,商品名称，商品数量，商品单价)
 function SetOrderForm(item_no,item_name,item_amount,item_price)
 {
+	//alert("item_no:" + item_no + ",item_name:" + item_name + ",item_amount:" + item_amount + ",item_price:" + item_price);
     var cookieString=document.cookie;
     if (cookieString.length>=4000)
     {
