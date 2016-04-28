@@ -16,7 +16,7 @@
 	String search = request.getParameter("search");
 	if (null != search) {
 		// 将所有的编码统一为gb2312， 因为数据库使用了gb2312编码
-		search = new String(search.getBytes("ISO-8859-1"), "gb2312");
+		search = new String(search.getBytes("ISO-8859-1"), "UTF-8");
 	}
 	System.out.println("search:" + search);
 %>
@@ -189,7 +189,7 @@
 										<a href="../pingjia/index.jsp?menu_id=<%=_id%>">查看评价</a>
 									</div>
 									<div class="buy">
-										<a href="../order_form/index.jsp?menu_id=<%=_id%>">下单</a>
+										<!-- <a href="../order_form/index.jsp?menu_id=<%=_id%>">下单</a>  -->
 										<a style="font-size:12px;"href="javascript:void(0)" onclick="SetOrderForm('NO<%=i_skip+i%>','<%=_name%>','1','<%=_price%>','<%=_id%>');WriteOrderInDiv();" />加入购物车</a>
 									</div>
 								</div>
