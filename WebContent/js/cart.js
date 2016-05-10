@@ -34,24 +34,22 @@ function WriteOrderInDiv()
     strs=OrderString.split("|");//用|分割出购物车中的每个产品
     for (i=1;i<strs.length ;i++ )  
     {
+    	//alert(strs[i]);
         gwc+="<tr>";
         //OneOrder=strs[i].split("%26");
         OneOrder=strs[i].split("&");
-        for (a=1;a<OneOrder.length ;a++ )  
+        for (a=1; a<OneOrder.length && a < 4; a++ )  
         {
-            if(a!=3)
-            {
-                gwc+="<td>";
-                gwc+=OneOrder[a];
-                gwc+="</td>";
-            }
-            else
+            if(a == 3)
             {
                 gwc+="<td id='dd'>";
                 gwc+="<input title='填写想购买的数量,请使用合法数字字符' style='width:10px;' id='Num"+i+"' type='text' onkeyup='EveryCount();'value='"+OneOrder[a]+"'>";
                 gwc+="</td>";
+            } else {
+	            gwc+="<td>";
+	            gwc+=OneOrder[a];
+	            gwc+="</td>";
             }
-            //document.getElementById("gwc").innerHTML+=OneOrder[a]+"<br/>";//每个产品的每个属性分割后字符输出
         }
         gwc+="<td>";
         gwc+=OneOrder[2]*OneOrder[3];
@@ -127,6 +125,7 @@ function SetOrderForm(item_no,item_name,item_amount,item_price,item_id)
         var Then = new Date();
         Then.setTime(Then.getTime()+30*60*1000);
         var item_detail="|"+item_no+"&"+item_name+"&"+item_price+"&"+item_amount+"&"+item_id;
+        //alert(item_detail);
         if(mer_list==false)
         {
             document.cookie="24_OrderForm="+escape(item_detail)+";expires=" + Then.toGMTString();
