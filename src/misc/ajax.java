@@ -241,9 +241,9 @@ public class ajax extends HttpServlet {
 					String thumb = rs_menu.getString("thumb");
 					String price = rs_menu.getString("price");
 					if (email_data == null) {
-						email_data = "菜名:" + menu_id + ",份数:" + num + "份,单价:" + price + "元<br>";
+						email_data = "菜名:" + name + ",份数:" + num + "份,单价:" + price + "元<br>";
 					} else {
-						email_data += "菜名:" + menu_id + ",份数:" + num + "份,单价:" + price + "元<br>";
+						email_data += "菜名:" + name + ",份数:" + num + "份,单价:" + price + "元<br>";
 					}
 				} else {
 					System.out.println("can not find menu_id");
