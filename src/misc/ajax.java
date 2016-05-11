@@ -202,18 +202,28 @@ public class ajax extends HttpServlet {
 		System.out.println("username:" + username);
 		db.jdbc jdbc_conn = new db.jdbc();
 		Connection con = jdbc_conn.getConn();
+		
 		Statement stmt;
 		try {
 			stmt = con.createStatement();
-			ResultSet rs_userinfo = stmt.executeQuery("select * from userinfo where user=" + "'" + username + "'");
+			
+			//user info
 			String user_id = null;
+			String user_email = null;
+			ResultSet rs_userinfo = stmt.executeQuery("select * from userinfo where user=" + "'" + username + "'");
 			if (rs_userinfo.next()) {
 				user_id = rs_userinfo.getString("id");
-				System.out.println("username:" + username + ",user_id:" + user_id);
+				user_email = rs_userinfo.getString("email");
+				System.out.println("username:" + username + ",user_id:" + user_id + ",email:" + user_email);
+			} else {
+				response.sendRedirect("../login/index.jsp");
+				return;
 			}
+			
 			JSONObject mJSONObject = JSONObject.fromObject(data);
 			JSONArray mJSONArray_Data = mJSONObject.getJSONArray("data");
 			System.out.println(mJSONArray_Data.toString());
+			String email_data = null;
 			for ( int i = 0; i < mJSONArray_Data.size(); i++)
 			{
 				JSONObject __JSONObject = mJSONArray_Data.getJSONObject(i);
@@ -223,6 +233,32 @@ public class ajax extends HttpServlet {
 						+ user_id + "', '" + menu_id + "', '" + num + "', 'null')";
 				System.out.println("sql:"+sql);
 				stmt.execute(sql);
+				
+				// make email data
+				ResultSet rs_menu = stmt.executeQuery("select * from menu where id=" + menu_id);
+				if (rs_menu.next()) {
+					String name = rs_menu.getString("name");
+					String thumb = rs_menu.getString("thumb");
+					String price = rs_menu.getString("price");
+					if (email_data == null) {
+						email_data = "菜名:" + menu_id + ",份数:" + num + "份,单价:" + price + "元<br>";
+					} else {
+						email_data += "菜名:" + menu_id + ",份数:" + num + "份,单价:" + price + "元<br>";
+					}
+				} else {
+					System.out.println("can not find menu_id");
+				}
+			}
+			
+			// send success email
+
+			String mailTitle = "你提交新的订单";
+			String mailContent = email_data;
+			try {
+				SendMail.sendMailWithDefaultServer(user_email, mailTitle, mailContent);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
