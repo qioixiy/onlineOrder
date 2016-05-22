@@ -30,13 +30,14 @@
 		int index = 0;
 	%>
 	<tr bgcolor="ccccc0">
-		<td width=50>id</td>
+		<td width=50>序号</td>
 		<td width=100>用户名</td>
 		<td width=100>学号</td>
 		<td width=100>邮箱</td>
 		<td width=100>注册时间</td>
 	</tr>
 	<%
+		int index_id = 0;
 		while (user_rs.next()) {
 			if (0 == index++ % 2) {
 				td_class = "td_class_1";
@@ -48,9 +49,10 @@
 			String _xuehao = user_rs.getString("xuehao");
 			String _email = user_rs.getString("email");
 			String _timestamp = user_rs.getString("timestamp");
+			index_id++;
 	%>
 	<tr>
-		<td class="<%=td_class%>" width=50><%=_id%></td>
+		<td class="<%=td_class%>" width=50><%=index_id%></td>
 		<td class="<%=td_class%>" width=200><%=_user%></td>
 		<td class="<%=td_class%>" width=200><%=_xuehao%></td>
 		<td class="<%=td_class%>" width=200><%=_email%></td>

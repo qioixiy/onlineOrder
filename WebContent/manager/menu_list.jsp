@@ -25,7 +25,7 @@
 	%>
 	<tr bgcolor="ccccc0">
 		<strong>
-			<td width=50>id</td>
+			<td width=50>序号</td>
 			<td width=150>菜名</td>
 			<td width=150>菜的类别</td>
 			<td width=50>价格</td>
@@ -35,6 +35,7 @@
 		</strong>
 	</tr>
 	<%
+		int index_id = 0;
 		while (meun_rs.next()) {
 			if (0 == index++ % 2) {
 				td_class = "td_class_1";
@@ -47,9 +48,10 @@
 			String _price = meun_rs.getString("price");
 			String _timestamp = meun_rs.getString("timestamp");
 			String _details = meun_rs.getString("details");
+			index_id++;
 	%>
 	<tr>
-		<td class="<%=td_class%>" width=50><%=_id%></td>
+		<td class="<%=td_class%>" width=50><%=index_id%></td>
 		<td class="<%=td_class%>" width=200><%=_name%></td>
 		<td class="<%=td_class%>" width=50><%=_style%></td>
 		<td class="<%=td_class%>" width=50><%=_price%></td>

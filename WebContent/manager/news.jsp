@@ -14,7 +14,7 @@
 %>
 <table id="table-userinfo">
 	<tr bgcolor="ccccc0">
-		<td width=50>id</td>
+		<td width=50>序号</td>
 		<td width=200>主要内容</td>
 		<td width=100>发布日期</td>
 		<td width=400>摘要</td>
@@ -23,6 +23,8 @@
 		String td_class = "td_class_1";
 			String bg_str = "#F0F0F0";
 			int index = 0;
+			int index_id = 0;
+			
 
 			String sql = "select * from news order by id DESC";
 			ResultSet news_rs = smt.executeQuery(sql);
@@ -37,9 +39,10 @@
 				System.out.println("_title:" + _title);
 				System.out.println("_date:" + _date);
 				System.out.println("_data:" + _data);
+				index_id++;
 	%>
 	<tr>
-		<td class="<%=td_class%>" width=50><%=_id%></td>
+		<td class="<%=td_class%>" width=50><%=index_id%></td>
 		<td class="<%=td_class%>" width=200><%=_title%></td>
 		<td class="<%=td_class%>" width=100><%=_date%></td>
 		<td class="<%=td_class%>" width=400><%=_data%></td>

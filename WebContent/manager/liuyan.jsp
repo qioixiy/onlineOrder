@@ -14,7 +14,7 @@
 %>
 <table id="table-userinfo">
 	<tr bgcolor="ccccc0">
-		<td width=50>id</td>
+		<td width=50>ะ๒บล</td>
 		<td width=150>ม๔ัิศีฦฺ</td>
 		<td width=450>ีชาช</td>
 	</tr>
@@ -25,6 +25,7 @@
 
 			String sql = "select * from comments order by id DESC";
 			ResultSet news_rs = smt.executeQuery(sql);
+			int index_id = 0;
 			while (news_rs.next()) {
 				String _id = news_rs.getString("id");
 				String _date = news_rs.getString("date");
@@ -34,9 +35,10 @@
 				System.out.println("id:" + _id);
 				System.out.println("_date:" + _date);
 				System.out.println("_content:" + _content);
+				index_id++;
 	%>
 	<tr>
-		<td class="<%=td_class%>" width=50><%=_id%></td>
+		<td class="<%=td_class%>" width=50><%=index_id%></td>
 		<td class="<%=td_class%>" width=150><%=_date%></td>
 		<td class="<%=td_class%>" width=450><%=_content%></td>
 		<td bgcolor="#ffffff" style="text-align: center;"><a href="#"

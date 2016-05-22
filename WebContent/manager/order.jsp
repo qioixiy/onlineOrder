@@ -18,10 +18,11 @@
 	<%
 		String td_class = "td_class_1";
 		int index = 0;
+		int index_id = 0;
 	%>
 	<tr bgcolor="ccccc0">
 		<strong>
-			<td width=50>id</td>
+			<td width=50>序号</td>
 			<td width=200>下单订单</td>
 			<td width=200>下订单用户(user_id)</td>
 			<td width=130>菜单(menu_id)</td>
@@ -62,9 +63,10 @@
 
 			System.out.println("id:" + _id + ",_timestamp:" + _timestamp + ",_user_id:" + _user_id + ",_menu_id:"
 					+ _menu_id + "_repeat:" + _repeat + "_spec:" + _spec);
+			index_id++;
 	%>
 	<tr>
-		<td class="<%=td_class%>" width=50><%=_id%></td>
+		<td class="<%=td_class%>" width=50><%=index_id%></td>
 		<td class="<%=td_class%>" width=200><%=_timestamp%></td>
 		<td class="<%=td_class%>" width=50><%=username%>(<%=_user_id%>)</td>
 		<td class="<%=td_class%>" width=50><%=menu_name%>(<%=_menu_id%>)</td>
