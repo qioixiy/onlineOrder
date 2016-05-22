@@ -5,8 +5,8 @@
 
 <struts>
 	<package name="struts2" extends="struts-default">
-		<action name="HelloWorld" class="action.HelloWorld">
-			<result>/action/HelloWorld.jsp</result>
+		<action name="Manager" class="action.Manager">
+			<result>/manager/index.jsp</result>
 		</action>
 	</package>
 </struts>

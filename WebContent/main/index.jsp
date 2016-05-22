@@ -77,7 +77,7 @@
 						String tt_href = null;
 						if (user_type.equals("manager")) {
 							tt = "系统管理";
-							tt_href = "../manager/index.jsp";
+							tt_href = "../manager/Manager";
 						} else if (user_type.equals("user")) {
 							tt = "我的信息";
 							tt_href = "user_info.jsp";
