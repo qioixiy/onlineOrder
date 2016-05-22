@@ -222,7 +222,7 @@
 			<div class="sidebar">
 				<div id="new">
 					<div id="title">
-						<span><strong>新闻信息</strong></span>
+						<span><strong>活动信息</strong></span>
 					</div>
 					<div id="new-content">
 						<ul>
