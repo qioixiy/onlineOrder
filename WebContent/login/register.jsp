@@ -68,6 +68,23 @@
 			},
 			ajaxPost : true
 		});
+		
+		//验证登陆
+		$('#send-btn').submit(function(){
+			var username = $("#username").val();
+			var password = $("#password").val();
+			var yzm = $("#yzm").val();
+			if (username == '') {
+				alert("用户不能为空");
+				return false;
+			} else if (password == '') {
+				alert("密码不能为空");
+			} else if (yzm == '') {
+				alert("验证码不能为空");
+			} else {
+				return true;
+			}
+		});
 
 	});
 </script>
