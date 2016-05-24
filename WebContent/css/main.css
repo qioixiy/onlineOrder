@@ -34,8 +34,10 @@ body {
 
 #header {
     width:100%;
-    height:120px;
+    height:150px;
     background-color:#f8f8f8;
+    background: #fff url(../images/search_bg.png);background-size: 100% auto;
+background-repeat: no-repeat; 
     border:0px #000 solid;
 	color:#922;
 }
