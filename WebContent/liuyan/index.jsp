@@ -130,7 +130,7 @@
 										<%
 										for (int j = 1; j <= page_totle; j++) {
 									%>
-										<a href="comments.jsp?page=<%=j%>"><%=j%></a>
+										<a href="index.jsp?page=<%=j%>"><%=j%></a>
 										<%
 											}
 										%>ҳ
