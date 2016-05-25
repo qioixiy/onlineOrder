@@ -102,7 +102,7 @@
 				src="images/logo.gif"></a>
 		</h1>
 		<div class="headerNav">
-			<a target="_blank" href="#">关于我们</a>
+			<!-- <a target="_blank" href="#">关于我们</a> -->
 		</div>
 	</div>
 
