@@ -5,7 +5,7 @@
 <%
 	Connection con = jdbc_conn.getConn();
 	Statement menu_smt = con.createStatement();
-	
+	System.out.println("get menu_list.jsp");
 	String op = request.getParameter("op");
 	String menu_id = request.getParameter("menu_id");
 	if (op != null) {
@@ -57,8 +57,8 @@
 		<td class="<%=td_class%>" width=50><%=_price%></td>
 		<td class="<%=td_class%>" width=50><%=_timestamp%></td>
 		<td class="<%=td_class%>" width=50><%=_details%></td>
-		<td bgcolor="#ffffff" width=50 style="text-align: center;"><a
-			href="#" onclick="get_url('menu_manager.jsp?op=del&menu_id=<%=_id%>')">É¾³ý</a></td>
+		<td bgcolor="ffffff" width=50 style="text-align: center;"><a
+			href="#" onclick="get_url('menu_list.jsp?op=del&menu_id=<%=_id%>')">É¾³ý</a></td>
 	</tr>
 	<%
 		}
